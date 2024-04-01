@@ -1,6 +1,6 @@
-package  src
+package src
 
-public class Endereco  {
+public class Endereco {
     private String cep;
     private String estado;
     private String cidade;
