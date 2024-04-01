@@ -8,6 +8,19 @@ public class Endereco {
     private String numero;
     private String complemento;
 
+    public Endereco(String cep, String estado, String cidade, String rua, String numero, String complemento) {
+        this.cep = cep;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.rua = rua;
+        this.numero = numero;
+        this.complemento = complemento;
+    }
+
+    public Endereco() {
+        super();
+    }
+
     public String getCep() {
         return cep;
     }

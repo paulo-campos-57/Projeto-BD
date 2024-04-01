@@ -8,6 +8,19 @@ public class User {
     private String contato;
     private Endereco end;
 
+    public User(int id, String nome_usuario, String email, String senha, String contato, Endereco end) {
+        this.id = id;
+        this.nome_usuario = nome_usuario;
+        this.email = email;
+        this.senha = senha;
+        this.contato = contato;
+        this.end = end;
+    }
+
+    public User() {
+        super();
+    }
+
     public int getId() {
         return id;
     }

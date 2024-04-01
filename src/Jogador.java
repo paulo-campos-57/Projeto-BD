@@ -7,6 +7,10 @@ public class Jogador extends User {
         this.personagem = personagem;
     }
 
+    public Jogador() {
+        super();
+    }
+
     public Personagem getPersonagem() {
         return personagem;
     }

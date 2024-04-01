@@ -7,6 +7,19 @@ public class Personagem {
     private String habilidades;
     private String backstory;
 
+
+    public Personagem(String nome, int nivel, String classe, String habilidades, String backstory) {
+        this.nome = nome;
+        this.nivel = nivel;
+        this.classe = classe;
+        this.habilidades = habilidades;
+        this.backstory = backstory;
+    }
+
+    public Personagem() {
+        super();
+    }
+
     public String getNome() {
         return nome;
     }
