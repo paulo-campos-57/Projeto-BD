@@ -18,4 +18,11 @@ public class Jogador extends User {
     public void setPersonagem(Personagem personagem) {
         this.personagem = personagem;
     }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Jogador{" +
+                "personagem=" + personagem +
+                '}';
+    }
 }

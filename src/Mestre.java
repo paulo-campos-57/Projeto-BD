@@ -28,4 +28,12 @@ public class Mestre extends User {
     public void setMonstros(String monstros) {
         this.monstros = monstros;
     }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Mestre{" +
+                "npc='" + npc + '\'' +
+                ", monstros='" + monstros + '\'' +
+                '}';
+    }
 }

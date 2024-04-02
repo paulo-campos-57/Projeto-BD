@@ -68,4 +68,16 @@ public class User {
     public void setEnd(Endereco end) {
         this.end = end;
     }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nome_usuario='" + nome_usuario + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", contato='" + contato + '\'' +
+                ", end=" + end +
+                '}';
+    }
 }

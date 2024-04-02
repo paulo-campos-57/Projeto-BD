@@ -32,4 +32,12 @@ public class Livro extends Produto {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Livro{" +
+                "qtd_paginas=" + qtd_paginas +
+                ", estado=" + estado +
+                '}';
+    }
 }

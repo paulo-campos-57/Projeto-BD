@@ -59,4 +59,15 @@ public class Personagem {
     public void setBackstory(String backstory) {
         this.backstory = backstory;
     }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Personagem{" +
+                "nome='" + nome + '\'' +
+                ", nivel=" + nivel +
+                ", classe='" + classe + '\'' +
+                ", habilidades='" + habilidades + '\'' +
+                ", backstory='" + backstory + '\'' +
+                '}';
+    }
 }

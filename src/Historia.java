@@ -90,4 +90,18 @@ public class Historia {
     public void setPersonagens(Personagem personagens) {
         this.personagens = personagens;
     }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Historia{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", prologo=" + prologo +
+                ", qtd_jogadores=" + qtd_jogadores +
+                ", dt_inicio=" + dt_inicio +
+                ", presencial=" + presencial +
+                ", mestre=" + mestre +
+                ", personagens=" + personagens +
+                '}';
+    }
 }

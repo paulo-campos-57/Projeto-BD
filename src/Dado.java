@@ -1,6 +1,6 @@
 package src
 
-public class Dado extends Produto{
+public class Dado extends Produto {
     private int qtd_lados;
 
     public Dado(int qtd_lados) {
@@ -17,5 +17,12 @@ public class Dado extends Produto{
 
     public void setQtd_lados(int qtd_lados) {
         this.qtd_lados = qtd_lados;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Dado{" +
+                "qtd_lados=" + qtd_lados +
+                '}';
     }
 }
