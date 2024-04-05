@@ -1,4 +1,4 @@
-package src
+package src.Models;
 
 public class Personagem {
     private String nome;

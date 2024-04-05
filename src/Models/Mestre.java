@@ -1,4 +1,4 @@
-package src
+package src.Models;
 
 public class Mestre extends User {
     private String npc;

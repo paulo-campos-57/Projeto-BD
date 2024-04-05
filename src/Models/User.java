@@ -1,4 +1,4 @@
-package src
+package src.Models;
 
 public class User {
     private int id;

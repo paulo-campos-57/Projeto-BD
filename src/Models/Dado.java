@@ -1,4 +1,4 @@
-package src
+package src.Models;
 
 public class Dado extends Produto {
     private int qtd_lados;

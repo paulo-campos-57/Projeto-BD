@@ -1,18 +1,18 @@
-package src
+package src.Models;
 
 import java.time.LocalDate;
 
 public class Historia {
     private int id;
     private String nome;
-    private Strig prologo;
+    private String prologo;
     private int qtd_jogadores;
     private LocalDate dt_inicio;
     private boolean presencial;
     private Mestre mestre;
     private Personagem personagens;
 
-    public Historia(int id, String nome, Strig prologo, int qtd_jogadores, LocalDate dt_inicio, boolean presencial, Mestre mestre, Personagem personagens) {
+    public Historia(int id, String nome, String prologo, int qtd_jogadores, LocalDate dt_inicio, boolean presencial, Mestre mestre, Personagem personagens) {
         this.id = id;
         this.nome = nome;
         this.prologo = prologo;
@@ -43,11 +43,11 @@ public class Historia {
         this.nome = nome;
     }
 
-    public Strig getPrologo() {
+    public String getPrologo() {
         return prologo;
     }
 
-    public void setPrologo(Strig prologo) {
+    public void setPrologo(String prologo) {
         this.prologo = prologo;
     }
 

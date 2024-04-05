@@ -1,4 +1,4 @@
-package src
+package src.Models;
 
 public class Jogador extends User {
     private Personagem personagem;
