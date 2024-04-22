@@ -1,12 +1,11 @@
-body {
-    background-color: darkblue;
-    font-family: Arial, sans-serif;
-    text-align: center;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.container {
-    width: 80%;
-    background-color: aqua;
+body {
+    background-color: #D2B48C;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -15,4 +14,13 @@ h1 {
 
 p {
     font-size: 18px;
+}
+
+.container {
+    background-color: white;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 70%;
+    min-height: 450px;
+    padding: 30px 30px;
 }
