@@ -1,48 +1,52 @@
 package models;
 
 public class User {
-    private int id;
-    private String nome_usuario;
-    private String email;
+    private int id_user;
+    private String user_name;
     private String senha;
-    private String contato;
-    private Endereco end;
+    private String contato1;
+    private String contato2;
+    private String estado;
+    private String cidade;
+    private String bairro;
+    private String rua;
+    private String numero;
+    private String complemento;
 
-    public User(int id, String nome_usuario, String email, String senha, String contato, Endereco end) {
-        this.id = id;
-        this.nome_usuario = nome_usuario;
-        this.email = email;
+    public User(int id_user, String user_name, String senha, String contato1, String contato2, String estado,
+            String cidade, String bairro, String rua, String numero, String complemento) {
+        super();
+        this.id_user = id_user;
+        this.user_name = user_name;
         this.senha = senha;
-        this.contato = contato;
-        this.end = end;
+        this.contato1 = contato1;
+        this.contato2 = contato2;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.rua = rua;
+        this.numero = numero;
+        this.complemento = complemento;
     }
 
     public User() {
         super();
     }
 
-    public int getId() {
-        return id;
+    public int getId_user() {
+        return id_user;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
-    public String getNome_usuario() {
-        return nome_usuario;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setNome_usuario(String nome_usuario) {
-        this.nome_usuario = nome_usuario;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public String getSenha() {
@@ -53,31 +57,84 @@ public class User {
         this.senha = senha;
     }
 
-    public String getContato() {
-        return contato;
+    public String getContato1() {
+        return contato1;
     }
 
-    public void setContato(String contato) {
-        this.contato = contato;
+    public void setContato1(String contato1) {
+        this.contato1 = contato1;
     }
 
-    public Endereco getEnd() {
-        return end;
+    public String getContato2() {
+        return contato2;
     }
 
-    public void setEnd(Endereco end) {
-        this.end = end;
+    public void setContato2(String contato2) {
+        this.contato2 = contato2;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    @Override
+    public String toString() {
         return "User{" +
-                "id=" + id +
-                ", nome_usuario='" + nome_usuario + '\'' +
-                ", email='" + email + '\'' +
+                "id_user=" + id_user +
+                ", user_name='" + user_name + '\'' +
                 ", senha='" + senha + '\'' +
-                ", contato='" + contato + '\'' +
-                ", end=" + end +
+                ", contato1='" + contato1 + '\'' +
+                ", contato2='" + contato2 + '\'' +
+                ", estado='" + estado + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", rua='" + rua + '\'' +
+                ", numero='" + numero + '\'' +
+                ", complemento='" + complemento + '\'' +
                 '}';
     }
 }
