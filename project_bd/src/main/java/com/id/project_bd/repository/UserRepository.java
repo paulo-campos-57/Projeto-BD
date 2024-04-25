@@ -17,7 +17,7 @@ public class UserRepository {
         user.getId_user(), user.getUser_name(), user.getSenha(), user.getContato1(), user.getContato2(), user.getEstado(), user.getCidade(), user.getBairro(), user.getRua(), user.getNumero(), user.getComplemento());
     }
 
-    public void deleteUser(int cod) {
-        jdbcTemplate.update("DELETE FROM USER WHERE ID_USER = ?", cod);
+    public void deleteUser(User user) {
+        jdbcTemplate.update("DELETE FROM USER WHERE ID_USER = ?", user.getId_user());
     }
 }

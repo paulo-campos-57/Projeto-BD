@@ -24,7 +24,7 @@ public class UserController {
 
     @DeleteMapping
     public String deleteUser(@RequestBody User user) {
-        userRepository.deleteUser(1);
+        userRepository.deleteUser(user);
         return "Usuário deletado com sucesso!\n";
     }
 }
