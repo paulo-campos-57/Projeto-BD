@@ -1,14 +1,14 @@
 package com.id.project_bd.models;
 
 public class Produto {
-    private int id;
-    private String nome;
+    private int id_produto;
+    private String nomeProduto;
     private String descricao;
     private double preco;
 
-    public Produto(int id, String nome, String descricao, double preco) {
-        this.id = id;
-        this.nome = nome;
+    public Produto(int id_produto, String nomeProduto, String descricao, double preco) {
+        this.id_produto = id_produto;
+        this.nomeProduto = nomeProduto;
         this.descricao = descricao;
         this.preco = preco;
     }
@@ -17,20 +17,20 @@ public class Produto {
         super();
     }
 
-    public int getId() {
-        return id;
+    public int getIdProduto() {
+        return id_produto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdProduto(int id_produto) {
+        this.id_produto = id_produto;
     }
 
-    public String getNome() {
-        return nome;
+    public String getnomeProduto() {
+        return nomeProduto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setnomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
     public String getDescricao() {
@@ -52,8 +52,8 @@ public class Produto {
     @java.lang.Override
     public java.lang.String toString() {
         return "Produto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
+                "id_produto=" + id_produto +
+                ", nomeProduto='" + nomeProduto + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", preco=" + preco +
                 '}';

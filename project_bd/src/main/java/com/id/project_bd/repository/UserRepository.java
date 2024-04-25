@@ -14,6 +14,7 @@ public class UserRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    //Inserir no banco de dados o user
     public void insertUser(User user) {
         jdbcTemplate.update(
                 "INSERT INTO USER(USER_NAME, SENHA, CONTATO1, CONTATO2, ESTADO, CIDADE, BAIRRO, RUA, NUMERO, COMPLEMENTO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -22,6 +23,7 @@ public class UserRepository {
                 user.getComplemento());
     }
 
+    //deletando user
     public void deleteUser(User user) {
         jdbcTemplate.update("DELETE FROM USER WHERE ID_USER = ?", user.getId_user());
     }
