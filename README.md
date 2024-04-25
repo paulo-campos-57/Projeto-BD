@@ -6,7 +6,14 @@ Compatível com sistemas Unix e  Windows.<br>
 <img align="center" alt="Java" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" />
 <img align="center" alt="MySQL" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" />
 <img align="center" alt="Spring" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" />  
-##
+
+# Requisitos
+Para a execução desse projeto, é necessário preencher os seguintes requisitos:
+<table>
+  <tr>- Java 17 (JDK 17)</tr><br>
+  <tr>- Apache Maven</tr>
+</table>
+
 # Desenvolvedores
 <table>
   <tr>
