@@ -3,6 +3,7 @@ package com.id.project_bd.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 import com.id.project_bd.models.User;
@@ -41,5 +42,10 @@ public class UserRepository {
             user.setComplemento(resultSet.getString("COMPLEMENTO"));
             return user;
         });
+    }
+
+    public void updateUser(User user) {
+        jdbcTemplate.update("UPDATE USER SET ESTADO = ?, CIDADE = ?, BAIRRO = ?, RUA = ?, NUMERO =?, COMPLEMENTO = ? WHERE ID_USER = ?",
+        user.getEstado(), user.getCidade(), user.getBairro(), user.getRua(), user.getNumero(), user.getComplemento(), user.getId_user());
     }
 }
