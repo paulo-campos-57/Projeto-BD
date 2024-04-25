@@ -1,4 +1,4 @@
-package models;
+package com.id.project_bd.models;
 
 public class Jogador extends User {
     private Personagem personagem;

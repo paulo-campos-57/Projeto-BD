@@ -1,4 +1,4 @@
-package models;
+package com.id.project_bd.models;
 
 public class Dado extends Produto {
     private int qtd_lados;

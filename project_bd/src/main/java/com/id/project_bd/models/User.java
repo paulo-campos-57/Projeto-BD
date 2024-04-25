@@ -1,4 +1,4 @@
-package models;
+package com.id.project_bd.models;
 
 public class User {
     private int id_user;
