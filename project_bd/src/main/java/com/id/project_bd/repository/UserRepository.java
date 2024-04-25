@@ -16,8 +16,8 @@ public class UserRepository {
 
     public void insertUser(User user) {
         jdbcTemplate.update(
-                "INSERT INTO USER(ID_USER, USER_NAME, SENHA, CONTATO1, CONTATO2, ESTADO, CIDADE, BAIRRO, RUA, NUMERO, COMPLEMENTO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                user.getId_user(), user.getUser_name(), user.getSenha(), user.getContato1(), user.getContato2(),
+                "INSERT INTO USER(USER_NAME, SENHA, CONTATO1, CONTATO2, ESTADO, CIDADE, BAIRRO, RUA, NUMERO, COMPLEMENTO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                user.getUser_name(), user.getSenha(), user.getContato1(), user.getContato2(),
                 user.getEstado(), user.getCidade(), user.getBairro(), user.getRua(), user.getNumero(),
                 user.getComplemento());
     }
