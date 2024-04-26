@@ -1,5 +1,7 @@
 package com.id.project_bd.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,12 @@ public class ProdutoRepository {
     public void insertProduto(Produto produto){
         jdbcTemplate.update("INSERT INTO PRODUTO(NOME_PRODUTO, DESCRICAO, PRECO) VALUES (?, ?, ?)",
         produto.getnomeProduto(), produto.getDescricao(), produto.getPreco());
+    }
+
+    //alterando o valor de descrição e preco em produto
+    public void updateProduto(Produto produto){
+        jdbcTemplate.update("UPDATE PRODUTO SET DESCRICAO = ?, PRECO = ? WHERE ID_PRODUTO = ?",
+        produto.getDescricao(), produto.getPreco(), produto.getIdProduto());
     }
 
 }
