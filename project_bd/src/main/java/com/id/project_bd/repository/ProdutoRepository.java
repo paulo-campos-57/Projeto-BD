@@ -18,6 +18,10 @@ public class ProdutoRepository {
     public void insertProduto(Produto produto){
         jdbcTemplate.update("INSERT INTO PRODUTO(NOME_PRODUTO, DESCRICAO, PRECO) VALUES (?, ?, ?)",
         produto.getnomeProduto(), produto.getDescricao(), produto.getPreco());
+
+        // Obter o ID gerado e atribuí-lo ao produto
+        Integer idGerado = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
+        produto.setIdProduto(idGerado);
     }
 
     //alterando o valor de descrição e preco em produto

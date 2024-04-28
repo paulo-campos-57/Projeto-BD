@@ -28,7 +28,7 @@ public class ProdutoController {
     @PostMapping
     public String createProduto(@RequestBody Produto produto) {
         produtoRepository.insertProduto(produto);
-        return "Produto cadastrado com sucesso!\n";
+        return "Produto " + produto.getIdProduto() + " cadastrado com sucesso!\n";
     }
 
     @PutMapping("/{id_produto}")

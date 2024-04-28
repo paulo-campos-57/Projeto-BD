@@ -25,13 +25,13 @@ public class UserController {
     @PostMapping
     public String createUser(@RequestBody User user) {
         userRepository.insertUser(user);
-        return "Usuário criado com sucesso!\n";
+        return "Usuário " + user.getId_user() + " criado com sucesso!\n";
     }
 
     @DeleteMapping
     public String deleteUser(@RequestBody User user) {
         userRepository.deleteUser(user);
-        return "Usuário deletado com sucesso!\n";
+        return "Usuário " + user.getId_user() + " deletado com sucesso!\n";
     }
 
     @GetMapping
