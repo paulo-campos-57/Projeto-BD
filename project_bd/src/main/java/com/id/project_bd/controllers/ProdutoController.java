@@ -1,7 +1,10 @@
 package com.id.project_bd.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.id.project_bd.models.Produto;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -30,6 +35,19 @@ public class ProdutoController {
         produtoRepository.insertProduto(produto);
         return "Produto " + produto.getIdProduto() + " cadastrado com sucesso!\n";
     }
+
+    @DeleteMapping
+    public String deleteProduto(@RequestBody Produto produto){
+        produtoRepository.deleteProduto(produto);
+        return "Produto " + produto.getIdProduto() + " deletado com sucesso!\n";
+    }
+
+    @GetMapping
+    public List<Produto> getProduto() {
+        return produtoRepository.getAllProdutos();
+    }
+    
+
 
     @PutMapping("/{id_produto}")
     public String updateProduto(@PathVariable int id_produto, @RequestBody Produto produto) {

@@ -58,4 +58,9 @@ public class Produto {
                 ", preco=" + preco +
                 '}';
     }
+
+    public void setId_user(int int1) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId_user'");
+    }
 }

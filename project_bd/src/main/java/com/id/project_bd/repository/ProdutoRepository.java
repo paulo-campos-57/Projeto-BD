@@ -24,6 +24,24 @@ public class ProdutoRepository {
         produto.setIdProduto(idGerado);
     }
 
+    public void deleteProduto(Produto produto){
+        jdbcTemplate.update("DELETE FROM PRODUTO WHERE ID_PRODUTO = ?", produto.getIdProduto());
+
+        Integer idGerado = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
+        produto.setIdProduto(idGerado);
+    }
+
+    public List<Produto> getAllProdutos(){
+        return jdbcTemplate.query("SELECT * FROM PRODUTO", (resultSet, rowNum) -> {
+            Produto produto = new Produto();
+            produto.setIdProduto(resultSet.getInt("ID_PRODUTO"));
+            produto.setnomeProduto(resultSet.getString("NOME_PRODUTO"));
+            produto.setDescricao(resultSet.getString("DESCRICAO"));
+            produto.setPreco(resultSet.getDouble("PRECO"));
+            return produto;
+        });
+    }
+
     //alterando o valor de descrição e preco em produto
     public void updateProduto(Produto produto){
         jdbcTemplate.update("UPDATE PRODUTO SET DESCRICAO = ?, PRECO = ? WHERE ID_PRODUTO = ?",
