@@ -10,23 +10,23 @@ import com.id.project_bd.models.Produto;
 
 @Repository
 public class ProdutoRepository {
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    //inserir produto no banco de dados
-    public void insertProduto(Produto produto){
-        jdbcTemplate.update("INSERT INTO PRODUTO(ID_PRODUTO, NOME_PRODUTO, DESCRICAO, PRECO) VALUES(?, ?, ?, ?)"
-        , produto.getId_produto(), produto.getnome_produto(), produto.getDescricao(), produto.getPreco());
+    // inserir produto no banco de dados
+    public void insertProduto(Produto produto) {
+        jdbcTemplate.update("INSERT INTO PRODUTO(ID_PRODUTO, NOME_PRODUTO, DESCRICAO, PRECO) VALUES(?, ?, ?, ?)",
+                produto.getId_produto(), produto.getnome_produto(), produto.getDescricao(), produto.getPreco());
     }
 
-    //deletando um produto do banco de dados
-    public boolean deleteProduto(int id_produto){
+    // deletando um produto do banco de dados
+    public boolean deleteProduto(int id_produto) {
         int rowsAffected = jdbcTemplate.update("DELETE FROM PRODUTO WHERE ID_PRODUTO = ?", id_produto);
         return rowsAffected > 0;
     }
 
-    public List<Produto> getAllProdutos(){
+    public List<Produto> getAllProdutos() {
         return jdbcTemplate.query("SELECT * FROM PRODUTO", (resultSet, rowNum) -> {
             Produto produto = new Produto();
             produto.setIdproduto(resultSet.getInt("ID_PRODUTO"));
@@ -37,8 +37,8 @@ public class ProdutoRepository {
         });
     }
 
-    public void updateProduto(Produto produto){
-        jdbcTemplate.update("UPDATE PRODUTO SET DESCRICAO = ?, PRECO = ? WHERE ID_PRODUTO = ?", 
-        produto.getDescricao(), produto.getPreco(), produto.getId_produto());
+    public void updateProduto(Produto produto) {
+        jdbcTemplate.update("UPDATE PRODUTO SET DESCRICAO = ?, PRECO = ? WHERE ID_PRODUTO = ?",
+                produto.getDescricao(), produto.getPreco(), produto.getId_produto());
     }
 }
