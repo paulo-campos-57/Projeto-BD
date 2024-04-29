@@ -28,13 +28,17 @@ public class UserController {
         return "Usuário " + user.getId_user() + " criado com sucesso!\n";
     }
 
-    @DeleteMapping
-    public String deleteUser(@RequestBody User user) {
-        userRepository.deleteUser(user);
-        return "Usuário " + user.getId_user() + " deletado com sucesso!\n";
+    @DeleteMapping("/{id_user}")
+    public String deleteUser(@PathVariable int id_user) {
+        boolean deleted = userRepository.deleteUser(id_user);
+        if (deleted) {
+            return "Usuário " + id_user + " deletado com sucesso!\n";
+        } else {
+            return "Usuário com ID " + id_user + " não encontrado para exclusão.\n";
+        }
     }
 
-    @GetMapping
+    @GetMapping //DEPOIS FAZER OUTRO GET COM PATH ("/{ID_USER}") PARA PRINTAR CADA USÚARIO 
     public List<User> getUser() {
         return userRepository.getAllUsers();
     }

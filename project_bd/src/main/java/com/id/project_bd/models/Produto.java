@@ -1,14 +1,17 @@
 package com.id.project_bd.models;
 
 public class Produto {
+    //private int id_produto;
     private int id_produto;
-    private String nomeProduto;
+    private String nome_produto;
     private String descricao;
     private double preco;
 
-    public Produto(int id_produto, String nomeProduto, String descricao, double preco) {
+    public Produto(int id_produto, String nome_produto, String descricao, double preco) {
+        super();
+        //this.id_produto = id_produto;
         this.id_produto = id_produto;
-        this.nomeProduto = nomeProduto;
+        this.nome_produto = nome_produto;
         this.descricao = descricao;
         this.preco = preco;
     }
@@ -17,21 +20,22 @@ public class Produto {
         super();
     }
 
-    public int getIdProduto() {
+    public int getId_produto(){
         return id_produto;
     }
 
-    public void setIdProduto(int id_produto) {
+    public void setIdproduto(int id_produto){
         this.id_produto = id_produto;
     }
 
-    public String getnomeProduto() {
-        return nomeProduto;
+    public void setnome_produto(String nome_produto){
+        this.nome_produto = nome_produto;
     }
 
-    public void setnomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public String getnome_produto(){
+        return nome_produto;
     }
+    
 
     public String getDescricao() {
         return descricao;
@@ -53,7 +57,7 @@ public class Produto {
     public java.lang.String toString() {
         return "Produto{" +
                 "id_produto=" + id_produto +
-                ", nomeProduto='" + nomeProduto + '\'' +
+                ", nome_produto='" + nome_produto + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", preco=" + preco +
                 '}';

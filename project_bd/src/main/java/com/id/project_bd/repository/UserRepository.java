@@ -21,11 +21,13 @@ public class UserRepository {
                 user.getUser_name(), user.getSenha(), user.getContato1(), user.getContato2(),
                 user.getEstado(), user.getCidade(), user.getBairro(), user.getRua(), user.getNumero(),
                 user.getComplemento());
+                user.setId_user(user.getId_user());
     }
 
-    //deletando user
-    public void deleteUser(User user) {
-        jdbcTemplate.update("DELETE FROM USER WHERE ID_USER = ?", user.getId_user());
+    // Excluir usuário com base no ID
+    public boolean deleteUser(int id_user) {
+        int rowsAffected = jdbcTemplate.update("DELETE FROM USER WHERE ID_USER = ?", id_user);
+        return rowsAffected > 0; // Retorna true se pelo menos uma linha foi afetada (usuário excluído)
     }
 
     public List<User> getAllUsers() {
