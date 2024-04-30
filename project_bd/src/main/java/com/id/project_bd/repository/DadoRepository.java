@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.id.project_bd.models.Dado;
+import com.id.project_bd.models.Produto;
 
 @Repository
 public class DadoRepository {
@@ -36,10 +37,26 @@ public class DadoRepository {
     }
 
     public List<Dado> getAllDados() {
-        return jdbcTemplate.query("SELECT * FROM DADO", (resultSet, rowNum) -> {
+        String sql = "SELECT D.FK_ID_PRODUTO, D.QTD_LADOS, P.ID_PRODUTO, P.NOME_PRODUTO, P.DESCRICAO, P.PRECO " +
+                "FROM DADO D " +
+                "INNER JOIN PRODUTO P ON D.FK_ID_PRODUTO = P.ID_PRODUTO";
+
+        return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
             Dado dado = new Dado();
             dado.setFk_id_produto(resultSet.getInt("FK_ID_PRODUTO"));
             dado.setQtd_lados(resultSet.getInt("QTD_LADOS"));
+
+            Produto produto = new Produto();
+            produto.setIdproduto(resultSet.getInt("ID_PRODUTO"));
+            produto.setnome_produto(resultSet.getString("NOME_PRODUTO"));
+            produto.setDescricao(resultSet.getString("DESCRICAO"));
+            produto.setPreco(resultSet.getDouble("PRECO"));
+
+            dado.setIdproduto(resultSet.getInt("ID_PRODUTO"));
+            dado.setnome_produto(resultSet.getString("NOME_PRODUTO"));
+            dado.setDescricao(resultSet.getString("DESCRICAO"));
+            dado.setPreco(resultSet.getDouble("PRECO"));
+
             return dado;
         });
     }

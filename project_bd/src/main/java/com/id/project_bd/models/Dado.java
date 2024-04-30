@@ -3,6 +3,7 @@ package com.id.project_bd.models;
 public class Dado extends Produto {
     private int fk_id_produto;
     private int qtd_lados;
+    private Produto produto; // Adicionando um atributo do tipo Produto
 
     public Dado(int fk_id_produto, int qtd_lados) {
         this.fk_id_produto = fk_id_produto;
@@ -29,11 +30,20 @@ public class Dado extends Produto {
         this.qtd_lados = qtd_lados;
     }
 
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
     @java.lang.Override
     public java.lang.String toString() {
         return "Dado{" +
                 "fk_id_produto=" + fk_id_produto +
                 ", qtd_lados=" + qtd_lados +
+                ", produto=" + produto +
                 '}';
     }
 }
