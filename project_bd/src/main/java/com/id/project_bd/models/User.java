@@ -28,7 +28,9 @@ public class User {
         this.numero = numero;
         this.complemento = complemento;
     }
-
+    public User(int id_user) {
+        this.id_user = id_user;
+    }
     public User() {
         super();
     }
