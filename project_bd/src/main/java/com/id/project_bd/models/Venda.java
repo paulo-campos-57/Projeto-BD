@@ -2,9 +2,9 @@ package com.id.project_bd.models;
 import java.sql.Date;
 public class Venda extends User{
     private int id_venda;
-    private int id_produto;
+    private Produto id_produto;
     private Date dataVenda;
-    public Venda(int id_venda,int id_produto,int id_user,Date dataVenda){
+    public Venda(int id_venda,Produto id_produto,int id_user,Date dataVenda){
         super(id_user);
         this.id_venda=id_venda;
         this.id_produto=id_produto;
@@ -21,11 +21,11 @@ public class Venda extends User{
         this.id_venda = id_venda;
     }
 
-    public int getId_produto() {
+    public Produto getId_produto() {
         return id_produto;
     }
 
-    public void setId_produto(int id_produto) {
+    public void setId_produto(Produto id_produto) {
         this.id_produto = id_produto;
     }
 
