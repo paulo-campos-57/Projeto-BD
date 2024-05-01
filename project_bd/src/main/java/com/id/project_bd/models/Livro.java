@@ -4,15 +4,16 @@ public class Livro extends Produto {
     private int fk_id_produto;
     private int qtd_paginas;
     private double estado;
-    private Produto produto;
+    //private Produto produto;
     /*
      * Vamos ter uma escala de 1 a 5 para julgar o estado do livro. Por isso estado é uma variável inteira
      */
 
 
-    public Livro(int qtd_paginas, int estado) {
+    public Livro(int qtd_paginas, int estado, int fk_id_produto) {
         this.qtd_paginas = qtd_paginas;
         this.estado = estado;
+        this.fk_id_produto = fk_id_produto;
     }
 
     public Livro() {
@@ -43,13 +44,6 @@ public class Livro extends Produto {
         this.estado = d;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
 
     @java.lang.Override
     public java.lang.String toString() {

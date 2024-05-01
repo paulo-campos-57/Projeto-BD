@@ -1,12 +1,14 @@
 package com.id.project_bd.models;
 
 public class Mestre extends User {
+    private int fk_id_user;
     private String npc;
-    private String monstros;
+    private String monstro;
 
-    public Mestre(String npc, String monstros) {
+    public Mestre(String npc, String monstro, int fk_id_user) {
         this.npc = npc;
-        this.monstros = monstros;
+        this.monstro = monstro;
+        this.fk_id_user = fk_id_user;
     }
 
     public Mestre() {
@@ -21,19 +23,30 @@ public class Mestre extends User {
         this.npc = npc;
     }
 
-    public String getMonstros() {
-        return monstros;
+    public String getMonstro() {
+        return monstro;
     }
 
-    public void setMonstros(String monstros) {
-        this.monstros = monstros;
+    public void setMonstro(String monstro) {
+        this.monstro = monstro;
     }
+
+    public int getFk_id_user(){
+        return fk_id_user;
+    }
+
+    public void setFk_id_user(int fk_id_user){
+        this.fk_id_user = fk_id_user;
+    }
+
 
     @java.lang.Override
     public java.lang.String toString() {
         return "Mestre{" +
-                "npc='" + npc + '\'' +
-                ", monstros='" + monstros + '\'' +
-                '}';
-    }
+            "npc='" + npc + '\'' +
+            ", monstro='" + monstro + '\'' +
+            ", fk_id_user=" + fk_id_user + 
+            '}';
+}
+
 }
