@@ -4,14 +4,15 @@ import java.sql.Date;
 
 public class Compra extends User {
     private int id_compra;
-    private Produto id_produto;
+    private int fk_id_produto;
+    private int fk_id_user;
     private Date data_compra;
 
-    public Compra(int id_compra, Produto id_produto, int id_user, Date data_compra) {
-        super(id_user);
+    public Compra(int id_compra, Date data_compra, int fk_id_produto, int fk_id_user) {
         this.id_compra = id_compra;
-        this.id_produto = id_produto;
         this.data_compra = data_compra;
+        this.fk_id_produto = fk_id_produto;
+        this.fk_id_user = fk_id_user;
     }
 
     public Compra() {
@@ -26,13 +27,22 @@ public class Compra extends User {
         this.id_compra = id_compra;
     }
 
-    public Produto getId_produto() {
-        return id_produto;
+    public int getFk_id_produto(){
+        return fk_id_produto;
     }
 
-    public void setId_produto(Produto id_produto) {
-        this.id_produto = id_produto;
+    public void setFk_id_produto(int fk_id_produto){
+        this.fk_id_produto = fk_id_produto;
     }
+
+    public int getFk_id_user(){
+        return fk_id_user;
+    }
+
+    public void setFk_id_user(int fk_id_user){
+        this.fk_id_user = fk_id_user;
+    }
+
 
     public Date getData_compra() {
         return data_compra;
@@ -45,9 +55,10 @@ public class Compra extends User {
     @java.lang.Override
     public java.lang.String toString() {
         return "Compra{" +
-                ", id compra=" + id_compra +
-                ", id produto='" + id_produto + '\'' +
-                ", data='" + data_compra + '\'' +
+                ", id_compra=" + id_compra +
+                ", fk_id_produto=" + fk_id_produto + 
+                ", fk_id_user=" + fk_id_user +
+                ", data_compra='" + data_compra + '\'' +
                 '}';
     }
 }
