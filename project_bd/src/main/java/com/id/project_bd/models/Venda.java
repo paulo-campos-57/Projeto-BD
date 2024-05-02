@@ -1,18 +1,23 @@
 package com.id.project_bd.models;
+
 import java.sql.Date;
-public class Venda extends User{
+
+public class Venda extends User {
     private int id_venda;
     private Produto id_produto;
     private Date dataVenda;
-    public Venda(int id_venda,Produto id_produto,int id_user,Date dataVenda){
+
+    public Venda(int id_venda, Produto id_produto, int id_user, Date dataVenda) {
         super(id_user);
-        this.id_venda=id_venda;
-        this.id_produto=id_produto;
-        this.dataVenda=dataVenda;
+        this.id_venda = id_venda;
+        this.id_produto = id_produto;
+        this.dataVenda = dataVenda;
     }
-    public Venda(){
+
+    public Venda() {
         super();
     }
+
     public int getId_venda() {
         return id_venda;
     }
@@ -36,6 +41,7 @@ public class Venda extends User{
     public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
     }
+
     @java.lang.Override
     public java.lang.String toString() {
         return "Venda{" +
@@ -44,5 +50,4 @@ public class Venda extends User{
                 ", data='" + dataVenda + '\'' +
                 '}';
     }
-}    
-
+}

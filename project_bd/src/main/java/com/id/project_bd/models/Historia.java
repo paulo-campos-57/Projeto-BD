@@ -3,17 +3,18 @@ package com.id.project_bd.models;
 import java.time.LocalDate;
 
 public class Historia {
-    private int id;
+    private int id_historia;
     private String nome;
     private String prologo;
     private int qtd_jogadores;
     private LocalDate dt_inicio;
     private boolean presencial;
+    private int fk_id_mestre;
     private Mestre mestre;
     private Personagem personagens;
 
-    public Historia(int id, String nome, String prologo, int qtd_jogadores, LocalDate dt_inicio, boolean presencial, Mestre mestre, Personagem personagens) {
-        this.id = id;
+    public Historia(int id_historia, String nome, String prologo, int qtd_jogadores, LocalDate dt_inicio, boolean presencial, Mestre mestre, Personagem personagens, int fk_id_mestre) {
+        this.id_historia = id_historia;
         this.nome = nome;
         this.prologo = prologo;
         this.qtd_jogadores = qtd_jogadores;
@@ -21,18 +22,19 @@ public class Historia {
         this.presencial = presencial;
         this.mestre = mestre;
         this.personagens = personagens;
+        this.fk_id_mestre = fk_id_mestre;
     }
 
     public Historia() {
         super();
     }
 
-    public int getId() {
-        return id;
+    public int getIdhistoria() {
+        return id_historia;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdhistoria(int id_historia) {
+        this.id_historia = id_historia;
     }
 
     public String getNome() {
@@ -91,10 +93,18 @@ public class Historia {
         this.personagens = personagens;
     }
 
+    public int getFk_id_mestre(){
+        return fk_id_mestre;
+    }
+
+    public void setFk_id_mestre(int fk_id_mestre){
+        this.fk_id_mestre = fk_id_mestre;
+    }
+
     @java.lang.Override
     public java.lang.String toString() {
         return "Historia{" +
-                "id=" + id +
+                "id_historia=" + id_historia +
                 ", nome='" + nome + '\'' +
                 ", prologo=" + prologo +
                 ", qtd_jogadores=" + qtd_jogadores +
@@ -102,6 +112,7 @@ public class Historia {
                 ", presencial=" + presencial +
                 ", mestre=" + mestre +
                 ", personagens=" + personagens +
+                ", fk_id_mestre=" + fk_id_mestre +
                 '}';
     }
 }
