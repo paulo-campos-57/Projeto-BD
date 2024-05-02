@@ -8,11 +8,13 @@ import com.id.project_bd.models.Jogador;
 
 @Repository
 public class JogadorRepository {
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void insertJogador(Jogador Jogador){
-        jdbcTemplate.update("INSERT INTO JOGADOR(FK_ID_USER) VALUES(?)", Jogador.getFk_id_user());
+    public void insertJogador(Jogador jogador){
+        jdbcTemplate.update("INSERT INTO JOGADOR(FK_ID_USER) VALUES(?)", jogador.getFk_id_user());
+        System.out.println("to aq");
+        System.out.println(jogador.getFk_id_user());
     }
 }
