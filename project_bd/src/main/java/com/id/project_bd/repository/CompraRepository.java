@@ -16,8 +16,8 @@ public class CompraRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void insertCompra(Compra compra) {
-        jdbcTemplate.update("INSERT INTO COMPRA (ID_PRODUTO, ID_USER, DATA_COMPRA) VALUES (?, ?, ?)",
-            compra.getId_produto().getId_produto(), compra.getId_user(), compra.getData_compra());
+        jdbcTemplate.update("INSERT INTO COMPRA (ID_COMPRA, ID_PRODUTO, ID_USER, DATA_COMPRA) VALUES (?, ?, ?, ?)",
+            compra.getId_compra(), compra.getId_produto(), compra.getId_user(), compra.getData_compra());
     }
 
     public boolean deleteCompra(int idCompra) {
