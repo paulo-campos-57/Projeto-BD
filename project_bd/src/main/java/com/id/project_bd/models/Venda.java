@@ -4,13 +4,14 @@ import java.sql.Date;
 
 public class Venda extends User {
     private int id_venda;
-    private Produto id_produto;
+    private int fk_id_produto;
+    private int fk_id_user;
     private Date dataVenda;
 
-    public Venda(int id_venda, Produto id_produto, int id_user, Date dataVenda) {
-        super(id_user);
+    public Venda(int id_venda, int fk_id_produto, int fk_id_user, Date dataVenda) {
         this.id_venda = id_venda;
-        this.id_produto = id_produto;
+        this.fk_id_produto = fk_id_produto;
+        this.fk_id_user = fk_id_user;
         this.dataVenda = dataVenda;
     }
 
@@ -26,12 +27,20 @@ public class Venda extends User {
         this.id_venda = id_venda;
     }
 
-    public Produto getId_produto() {
-        return id_produto;
+    public int getFk_id_produto(){
+        return fk_id_produto;
     }
 
-    public void setId_produto(Produto id_produto) {
-        this.id_produto = id_produto;
+    public void setFk_id_produto(int fk_id_produto){
+        this.fk_id_produto = fk_id_produto;
+    }
+
+    public int getFk_id_user(){
+        return fk_id_user;
+    }
+
+    public void setFk_id_user(int fk_id_user){
+        this.fk_id_user = fk_id_user;
     }
 
     public Date getDataVenda() {
@@ -46,7 +55,8 @@ public class Venda extends User {
     public java.lang.String toString() {
         return "Venda{" +
                 ", id venda=" + id_venda +
-                ", id produto='" + id_produto + '\'' +
+                ", fk_id_produto='" + fk_id_produto + '\'' +
+                ", fk_id_user='" + fk_id_user + '\'' +
                 ", data='" + dataVenda + '\'' +
                 '}';
     }
