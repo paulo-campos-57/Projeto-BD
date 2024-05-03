@@ -2,7 +2,7 @@ package com.id.project_bd.models;
 
 import java.sql.Date;
 
-public class Compra extends User {
+public class Compra extends Produto {
     private int id_compra;
     private int fk_id_produto;
     private int fk_id_user;
