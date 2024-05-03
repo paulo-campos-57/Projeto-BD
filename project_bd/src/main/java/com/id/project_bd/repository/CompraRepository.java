@@ -21,12 +21,14 @@ public class CompraRepository {
     }
 
     public List<Compra> getAllCompras() {
-        String sql = "SELECT C.ID_COMPRA, C.DATA_COMPRA, P.ID_PRODUTO, P.NOME_PRODUTO, P.DESCRICAO, P.PRECO " +
+        String sql = "SELECT C.ID_COMPRA, C.FK_ID_PRODUTO, C.FK_ID_USER, C.DATA_COMPRA, P.ID_PRODUTO, P.NOME_PRODUTO, P.DESCRICAO, P.PRECO " +
                         "FROM COMPRA C " +
                         "INNER JOIN PRODUTO P ON C.FK_ID_PRODUTO = P.ID_PRODUTO";
         return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
             Compra compra = new Compra();
             compra.setId_compra(resultSet.getInt("ID_COMPRA"));
+            compra.setFk_id_produto(resultSet.getInt("FK_ID_PRODUTO"));
+            compra.setFk_id_user(resultSet.getInt("FK_ID_USER"));
             compra.setData_compra(resultSet.getDate("DATA_COMPRA"));
 
             Produto produto = new Produto();
