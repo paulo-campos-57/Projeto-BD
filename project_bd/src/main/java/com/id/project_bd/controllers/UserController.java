@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.User;
 import com.id.project_bd.repository.UserRepository;
@@ -21,6 +23,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+
+    @RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+    public ModelAndView userForm() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("userForm");
+        return mv;
+    }
+
+    @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
+    public ModelAndView userForm(User user) {
+        userRepository.insertUser(user);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sucesso");
+        return mv;
+    }
 
     @PostMapping
     public String createUser(@RequestBody User user) {
@@ -38,7 +55,7 @@ public class UserController {
         }
     }
 
-    @GetMapping //DEPOIS FAZER OUTRO GET COM PATH ("/{ID_USER}") PARA PRINTAR CADA USÚARIO 
+    @GetMapping // DEPOIS FAZER OUTRO GET COM PATH ("/{ID_USER}") PARA PRINTAR CADA USÚARIO
     public List<User> getUser() {
         return userRepository.getAllUsers();
     }
