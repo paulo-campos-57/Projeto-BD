@@ -21,6 +21,9 @@ public class JogadorRepository {
     }
 
     public boolean deleteJogador(int fk_id_user){
+
+        jdbcTemplate.update("DELETE FROM participacao WHERE FK_ID_PERSONAGEM = ?", fk_id_user);
+
         int rowsAffected = jdbcTemplate.update("DELETE FROM JOGADOR WHERE FK_ID_USER = ?", fk_id_user);
         return rowsAffected > 0;
     }

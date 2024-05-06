@@ -16,8 +16,9 @@ public class ProdutoRepository {
 
     // inserir produto no banco de dados
     public void insertProduto(Produto produto) {
-        jdbcTemplate.update("INSERT INTO PRODUTO(ID_PRODUTO, NOME_PRODUTO, DESCRICAO, PRECO) VALUES(?, ?, ?, ?)",
-                produto.getId_produto(), produto.getnome_produto(), produto.getDescricao(), produto.getPreco());
+        jdbcTemplate.update("INSERT INTO PRODUTO(NOME_PRODUTO, DESCRICAO, PRECO) VALUES(?, ?, ?)",
+                produto.getnome_produto(), produto.getDescricao(), produto.getPreco());
+                produto.setIdproduto(produto.getId_produto());
     }
 
     // deletando um produto do banco de dados
