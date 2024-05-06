@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.Mestre;
 import com.id.project_bd.repository.MestreRepository;
@@ -21,6 +23,21 @@ public class MestreController {
 
     @Autowired
     private MestreRepository mestreRepository;
+
+    @RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+    public ModelAndView mestreForm(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("mestreForm");
+        return mv;
+    }
+
+    @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
+    public ModelAndView mestreForm(Mestre mestre){{
+        mestreRepository.insertMestre(mestre);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sucessoMestre");
+        return mv;
+    }}
 
     @PostMapping
     public String createMestre(@RequestBody Mestre mestre){
