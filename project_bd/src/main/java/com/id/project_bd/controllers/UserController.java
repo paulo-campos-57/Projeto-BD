@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.id.project_bd.models.User;
 import com.id.project_bd.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
@@ -55,9 +54,14 @@ public class UserController {
         }
     }
 
-    @GetMapping // DEPOIS FAZER OUTRO GET COM PATH ("/{ID_USER}") PARA PRINTAR CADA USÚARIO
+    @GetMapping
     public List<User> getUser() {
         return userRepository.getAllUsers();
+    }
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable("id") int id) {
+        return userRepository.getUserById(id);
     }
 
     @GetMapping("/lista")
