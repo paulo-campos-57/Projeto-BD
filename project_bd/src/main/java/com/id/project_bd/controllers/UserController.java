@@ -60,6 +60,14 @@ public class UserController {
         return userRepository.getAllUsers();
     }
 
+    @GetMapping("/lista")
+    public ModelAndView getAllUsers() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("users", userRepository.getAllUsers());
+        mv.setViewName("listaUsuarios");
+        return mv;
+    }
+
     @PutMapping("/{id_user}")
     public String updateUser(@PathVariable int id_user, @RequestBody User user) {
         user.setId_user(id_user);
