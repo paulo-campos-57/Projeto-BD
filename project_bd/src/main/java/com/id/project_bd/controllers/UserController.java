@@ -59,16 +59,31 @@ public class UserController {
         return userRepository.getAllUsers();
     }
 
-    @GetMapping("/{id}")
+    /* 
+    @GetMapping("/{id_user}")
     public User getUserById(@PathVariable("id") int id) {
         return userRepository.getUserById(id);
     }
+    */
 
     @GetMapping("/lista")
     public ModelAndView getAllUsers() {
         ModelAndView mv = new ModelAndView();
         mv.addObject("users", userRepository.getAllUsers());
         mv.setViewName("listaUsuarios");
+        return mv;
+    }
+
+    @GetMapping("/{id_user}")
+    public ModelAndView getSpecificUser(@PathVariable int id_user) {
+        User user = userRepository.getUserById(id_user);
+        ModelAndView mv = new ModelAndView();
+        if (user != null) {
+            mv.addObject("user", user);
+            mv.setViewName("detalhesUsuario");
+        } else {
+            mv.setViewName("index");
+        }
         return mv;
     }
 
