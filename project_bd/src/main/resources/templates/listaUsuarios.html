@@ -128,7 +128,9 @@
             </thead>
             <tbody>
                 <tr th:each="user : ${users}">
-                    <td th:text="${user.id_user}"></td>
+                    <td>
+                        <a th:href="@{/users/{id}(id=${user.id_user})}" th:text="${user.id_user}"></a>
+                    </td>
                     <td th:text="${user.user_name}"></td>
                     <td th:text="${user.contato1}"></td>
                     <td th:text="${user.contato2}"></td>

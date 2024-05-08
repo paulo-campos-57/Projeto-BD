@@ -59,13 +59,6 @@ public class UserController {
         return userRepository.getAllUsers();
     }
 
-    /* 
-    @GetMapping("/{id_user}")
-    public User getUserById(@PathVariable("id") int id) {
-        return userRepository.getUserById(id);
-    }
-    */
-
     @GetMapping("/lista")
     public ModelAndView getAllUsers() {
         ModelAndView mv = new ModelAndView();
