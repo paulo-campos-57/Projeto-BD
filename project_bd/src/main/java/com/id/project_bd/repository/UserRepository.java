@@ -76,8 +76,9 @@ public class UserRepository {
 
     public void updateUser(User user) {
         jdbcTemplate.update(
-                "UPDATE USER SET ESTADO = ?, CIDADE = ?, BAIRRO = ?, RUA = ?, NUMERO =?, COMPLEMENTO = ? WHERE ID_USER = ?",
-                user.getEstado(), user.getCidade(), user.getBairro(), user.getRua(), user.getNumero(),
+                "UPDATE USER SET CONTATO1 = ?, CONTATO2 = ?, ESTADO = ?, CIDADE = ?, BAIRRO = ?, RUA = ?, NUMERO =?, COMPLEMENTO = ? WHERE ID_USER = ?",
+                user.getContato1(), user.getContato2(), user.getEstado(), user.getCidade(), user.getBairro(),
+                user.getRua(), user.getNumero(),
                 user.getComplemento(), user.getId_user());
     }
 }
