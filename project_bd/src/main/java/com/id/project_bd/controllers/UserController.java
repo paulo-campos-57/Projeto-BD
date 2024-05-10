@@ -86,4 +86,27 @@ public class UserController {
         userRepository.updateUser(user);
         return "Endereço do user " + user.getId_user() + " com sucesso!\n";
     }
+
+    @GetMapping("/alterar/{id_user}")
+    public ModelAndView alterarUsuario(@PathVariable int id_user){
+        User user = userRepository.getUserById(id_user);
+        ModelAndView mv = new ModelAndView();
+        if(user != null){
+            mv.addObject("user", user);
+            mv.setViewName("alterarUsuario");
+        } else {
+            mv.setViewName("index");
+        }
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/alterar/{id_user}", method = RequestMethod.POST)
+    public ModelAndView alterarUsuario(User user) {
+        userRepository.updateUser(user);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
+
 }

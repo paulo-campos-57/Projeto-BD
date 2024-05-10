@@ -124,6 +124,7 @@
                     <th>Rua</th>
                     <th>Número</th>
                     <th>Complemento</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -140,6 +141,10 @@
                     <td th:text="${user.rua}"></td>
                     <td th:text="${user.numero}"></td>
                     <td th:text="${user.complemento}"></td>
+                    <td>
+                        <a th:href="@{/users/alterar/{id}(id=${user.id_user})}">Editar</a>
+                        <a th:href="@{/users/excluir/{id}(id=${user.id_user})}">Excluir</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
