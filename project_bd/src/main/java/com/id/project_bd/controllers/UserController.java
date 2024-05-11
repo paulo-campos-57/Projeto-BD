@@ -3,6 +3,7 @@ package com.id.project_bd.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.id.project_bd.models.User;
 import com.id.project_bd.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -108,5 +110,18 @@ public class UserController {
         mv.setViewName("index");
         return mv;
     }
+
+    @GetMapping("/excluir/{id_user}")
+    public String excluirUsuario(@PathVariable("id_user") Integer id_user, Model model) {
+        // Remover o usuário do banco de dados
+        userRepository.deleteUser(id_user);
+
+        // Atualizar o modelo com a lista de usuários atualizada após a exclusão
+        model.addAttribute("users", userRepository.getAllUsers());
+
+        // Retornar o nome da view para renderizar novamente a mesma página
+        return "listaUsuarios"; // Nome da sua view Thymeleaf (listaUsuarios.html)
+    }
+    
 
 }
