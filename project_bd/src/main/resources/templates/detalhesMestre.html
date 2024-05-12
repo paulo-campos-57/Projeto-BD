@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Mestre</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <style>
+        .mestreDetails {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .mestreDetails p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Cabeçalho -->
+    </header>
+    <div class="container">
+        <h1 th:text="'Detalhes do Mestre: ' + ${mestre.fk_id_user}"></h1>
+        <div class="mestreDetails" th:if="${mestre}">
+            <p th:text="'ID do Usuário: ' + ${mestre.fk_id_user}"></p>
+            <p th:text="'NPC: ' + ${mestre.npc}"></p>
+            <p th:text="'Monstro: ' + ${mestre.monstro}"></p>
+        </div>
+        <div th:unless="${mestre}">
+            <p>Mestre não encontrado!</p>
+        </div>
+    </div>
+    <footer class="footer" style="
+            width: 100%; 
+            text-align: center; 
+            font-weight: bold;
+            font-style: italic;
+            background-color: rgb(63, 0, 63);">
+        <!-- Rodapé -->
+    </footer>
+</body>
+</html>

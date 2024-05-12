@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de usuários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgb(63, 0, 63);
+            color: #D2B48C;
+        }
+
+        .headerCabecalho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #D2B48C;
+        }
+
+        nav ul li a:hover {
+            color: green;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgb(63, 0, 63);
+            color: #D2B48C;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            background-color: rgb(63, 0, 63);
+            color: #D2B48C;
+            text-align: center;
+        }
+    </style>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img src="/images/logo.png" alt="Logo", 
+                        style="width: 27%; align-items: start;">
+                    <aside class="tituloNav", 
+                        style="position: absolute; top: 40px; right: 800px;
+                            width: 380px; height: 200px;">
+                        <h2 style="color: #D2B48C;">Taverna do Camaleão</h2>
+                    </aside>
+                </hgroup>
+            </div>
+            <nav>
+                <div class="navbarCabecalho", 
+                    style="display: flex; flex-flow: row nowrap;">
+                    <ul style="display: flex; flex-flow: row nowrap;">
+                        <li style="margin: 0 5px; padding: 2px 4px;
+                            font-size: 1em; list-style: none;
+                            text-transform: uppercase;">
+                            <a href="/" style="text-shadow: 1px 1px 1px black;
+                                text-decoration: none; color: #D2B48C;"
+                                onmouseover="this.style.color='green';" onmouseout="this.style.color='#D2B48C';">
+                                Voltar
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Lista de Mestres</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>fk_id_user</th>
+                    <th>NPC</th>
+                    <th>Monstro</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mestre : ${mestres}">
+                    <td>
+                        <!-- ID do mestre -->
+                        <a th:href="@{/mestres/{id}(id=${mestre.fk_id_user})}" th:text="${mestre.fk_id_user}"></a>
+                    </td>
+
+                    <td th:text="${mestre.npc}"></td>
+                    <td th:text="${mestre.monstro}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <img src="/images/logo.png" style="width: 10%;" alt="Logo">
+    </footer>
+</body>
+</html>

@@ -24,20 +24,42 @@ public class MestreController {
     @Autowired
     private MestreRepository mestreRepository;
 
-    @RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+    @RequestMapping(value = "/cadastro/{id_user}", method = RequestMethod.GET)
     public ModelAndView mestreForm(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("mestreForm");
         return mv;
     }
 
-    @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-    public ModelAndView mestreForm(Mestre mestre){{
+    @RequestMapping(value = "/cadastro/{id_user}", method = RequestMethod.POST)
+    public ModelAndView mestreForm(Mestre mestre){
         mestreRepository.insertMestre(mestre);
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("sucessoMestre");
+        mv.setViewName("index");
         return mv;
-    }}
+    }
+
+    @GetMapping("/lista")
+    public ModelAndView getAllMestres(){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("mestres", mestreRepository.getAllMestre());
+        mv.setViewName("listaMestres");
+        return mv;
+    }
+
+    @GetMapping("/{fk_id_user}")
+    public ModelAndView getSpecificMestre(@PathVariable int fk_id_user){
+        Mestre mestre = mestreRepository.getMestreById(fk_id_user);
+        ModelAndView mv = new ModelAndView();
+        if(mestre != null){
+            mv.addObject("mestre", mestre);
+            mv.setViewName("detalhesMestre");
+        } else {
+            mv.setViewName("index");
+        }
+        return mv;
+    }
+
 
     @PostMapping
     public String createMestre(@RequestBody Mestre mestre){

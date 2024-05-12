@@ -3,11 +3,12 @@ package com.id.project_bd.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.id.project_bd.models.Mestre;
-import com.id.project_bd.models.User;
 
 @Repository
 public class MestreRepository {
@@ -31,46 +32,24 @@ public class MestreRepository {
     
 
     public List<Mestre> getAllMestre() {
-        String sql = "SELECT M.fk_id_user, M.npc, M.monstro, U.id_user, U.user_name, U.senha, U.contato1, U.contato2, "
-                +
-                "U.estado, U.cidade, U.bairro, U.rua, U.numero, U.complemento " +
-                "FROM MESTRE M " +
-                "INNER JOIN USER U ON M.fk_id_user = U.id_user";
-
-        return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
+        return jdbcTemplate.query("SELECT * FROM MESTRE", (resultSet, rowNum) -> {
             Mestre mestre = new Mestre();
-            mestre.setFk_id_user(resultSet.getInt("fk_id_user"));
-            mestre.setNpc(resultSet.getString("npc"));
-            mestre.setMonstro(resultSet.getString("monstro"));
-
-            User user = new User();
-            user.setId_user(resultSet.getInt("id_user"));
-            user.setUser_name(resultSet.getString("user_name"));
-            user.setSenha(resultSet.getString("senha"));
-            user.setContato1(resultSet.getString("contato1"));
-            user.setContato2(resultSet.getString("contato2"));
-            user.setEstado(resultSet.getString("estado"));
-            user.setCidade(resultSet.getString("cidade"));
-            user.setBairro(resultSet.getString("bairro"));
-            user.setRua(resultSet.getString("rua"));
-            user.setNumero(resultSet.getString("numero"));
-            user.setComplemento(resultSet.getString("complemento"));
-
-            mestre.setId_user(resultSet.getInt("id_user"));
-            mestre.setUser_name(resultSet.getString("user_name"));
-            mestre.setSenha(resultSet.getString("senha"));
-            mestre.setContato1(resultSet.getString("contato1"));
-            mestre.setContato2(resultSet.getString("contato2"));
-            mestre.setEstado(resultSet.getString("estado"));
-            mestre.setCidade(resultSet.getString("cidade"));
-            mestre.setBairro(resultSet.getString("bairro"));
-            mestre.setRua(resultSet.getString("rua"));
-            mestre.setNumero(resultSet.getString("numero"));
-            mestre.setComplemento(resultSet.getString("complemento"));
-
-            //mestre.setUser(user);
+            mestre.setFk_id_user(resultSet.getInt("FK_ID_USER"));
+            mestre.setNpc(resultSet.getString("NPC"));
+            mestre.setMonstro(resultSet.getString("MONSTRO"));
             return mestre;
         });
+    }
+
+    @SuppressWarnings("deprecation")
+    public Mestre getMestreById(int fk_id_user) {
+        String sql = "SELECT * FROM MESTRE WHERE FK_ID_USER = ?";
+        try {
+            // Utiliza BeanPropertyRowMapper para mapear automaticamente os resultados para a classe Mestre
+            return jdbcTemplate.queryForObject(sql, new Object[]{fk_id_user}, new BeanPropertyRowMapper<>(Mestre.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null; // Lidar com o caso em que nenhum resultado é encontrado
+        }
     }
 
     public void updateMestre(Mestre mestre){
