@@ -3,6 +3,7 @@ package com.id.project_bd.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,6 +45,47 @@ public class HistoriaController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("historia", historiaRepository.getAllHistoria());
         mv.setViewName("listaHistoria");
+        return mv;
+    }
+
+    @GetMapping("/{id_historia}")
+    public ModelAndView getSpecificHistoria(@PathVariable int id_historia){
+        Historia historia = historiaRepository.getHistoriaById(id_historia);
+        ModelAndView mv = new ModelAndView();
+        if (historia != null){
+            mv.addObject("historia", historia);
+            mv.setViewName("detalhesHistoria");
+        } else {
+            mv.setViewName("index");
+        }
+        return mv;
+    }
+
+    @GetMapping("/excluir/{id_historia}")
+    public String excluirHistoria(@PathVariable("id_historia") Integer id_historia, Model model){
+        historiaRepository.deleteHistoria(id_historia);
+        model.addAttribute("historia", historiaRepository.getAllHistoria());
+        return "listaHistoria";
+    }
+
+    @GetMapping("/alterar/{id_historia}")
+    public ModelAndView alterarHistoria(@PathVariable int id_historia){
+        Historia historia = historiaRepository.getHistoriaById(id_historia);
+        ModelAndView mv = new ModelAndView();
+        if (historia != null){
+            mv.addObject("historia", historia);
+            mv.setViewName("alterarHistoria");
+        } else {
+            mv.setViewName("index");
+        }     
+        return mv;
+    }
+
+    @RequestMapping(value = "/alterar/{id_historia}", method = RequestMethod.POST)
+    public ModelAndView alterarHistoria(Historia historia){
+        historiaRepository.updateHistoria(historia);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
         return mv;
     }
 

@@ -136,6 +136,11 @@
                     <td th:text="${historia.dt_inicio}"></td>
                     <td th:text="${historia.presencial}"></td>
                     <td th:text="${historia.fk_id_mestre}"></td>
+                    <td>
+                        <a th:href="@{/historia/alterar/{id}(id=${historia.id_historia})}">Editar</a>
+                        <a th:href="@{/historia/excluir/{id}(id=${historia.id_historia})}"
+   onclick="return confirm('Tem certeza que deseja excluir essa Historia?')">Excluir</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

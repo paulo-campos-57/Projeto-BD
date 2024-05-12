@@ -3,10 +3,13 @@ package com.id.project_bd.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.id.project_bd.models.Historia;
+import com.id.project_bd.models.Mestre;
 
 @Repository
 public class HistoriaRepository {
@@ -41,6 +44,16 @@ public class HistoriaRepository {
             historia.setFk_id_mestre(resultSet.getInt("FK_ID_MESTRE"));
             return historia;
         });
+    }
+
+    @SuppressWarnings("deprecation")
+    public Historia getHistoriaById(int id_historia){
+        String sql = "SELECT * FROM HISTORIA WHERE ID_HISTORIA = ?";
+        try{
+            return jdbcTemplate.queryForObject(sql, new Object[]{id_historia}, new BeanPropertyRowMapper<>(Historia.class));
+        } catch (EmptyResultDataAccessException e){
+            return null;
+        }
     }
 
     public void updateHistoria(Historia historia){

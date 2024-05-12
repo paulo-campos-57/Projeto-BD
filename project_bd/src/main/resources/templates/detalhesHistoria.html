@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da História</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <style>
+        .historiaDetails {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .historiaDetails p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Cabeçalho -->
+    </header>
+    <div class="container">
+        <h1 th:text="'Detalhes da História: ' + ${historia.nome}"></h1>
+        <div class="historiaDetails" th:if="${historia}">
+            <p th:text="'Nome: ' + ${historia.nome}"></p>
+            <p th:text="'Prólogo: ' + ${historia.prologo}"></p>
+            <p th:text="'Quantidade de Jogadores: ' + ${historia.qtd_jogadores}"></p>
+            <p th:text="'Data de Início: ' + ${historia.dt_inicio}"></p>
+            <p>
+                Presencial: 
+                <span th:text="${historia.presencial} ? 'Sim' : 'Não'"></span>
+            </p>
+            <p th:text="'ID do Mestre: ' + ${historia.fk_id_mestre}"></p>
+        </div>
+        <div th:unless="${historia}">
+            <p>História não encontrada!</p>
+        </div>
+    </div>
+    <footer class="footer" style="
+            width: 100%; 
+            text-align: center; 
+            font-weight: bold;
+            font-style: italic;
+            background-color: rgb(63, 0, 63);">
+        <!-- Rodapé -->
+    </footer>
+</body>
+</html>
