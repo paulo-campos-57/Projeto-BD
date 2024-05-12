@@ -3,6 +3,7 @@ package com.id.project_bd.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,6 +59,34 @@ public class MestreController {
             mv.setViewName("index");
         }
         return mv;
+    }
+
+    @GetMapping("/alterar/{fk_id_user}")
+    public ModelAndView alterarMestre(@PathVariable int fk_id_user){
+        Mestre mestre = mestreRepository.getMestreById(fk_id_user);
+        ModelAndView mv = new ModelAndView();
+        if(mestre != null){
+            mv.addObject("mestre", mestre);
+            mv.setViewName("alterarMestre");
+        } else {
+            mv.setViewName("index");
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/alterar/{fk_id_user}", method = RequestMethod.POST)
+    public ModelAndView alterarMestre(Mestre mestre){
+        mestreRepository.updateMestre(mestre);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
+
+    @GetMapping("/excluir/{fk_id_user}")
+    public String excluirMestre(@PathVariable("fk_id_user") Integer fk_id_user, Model model){
+        mestreRepository.deleteMestre(fk_id_user);
+        model.addAttribute("mestres", mestreRepository.getAllMestre());
+        return "listaMestres";
     }
 
 

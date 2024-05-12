@@ -117,6 +117,7 @@
                     <th>fk_id_user</th>
                     <th>NPC</th>
                     <th>Monstro</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -128,6 +129,11 @@
 
                     <td th:text="${mestre.npc}"></td>
                     <td th:text="${mestre.monstro}"></td>
+                    <td>
+                        <a th:href="@{/mestres/alterar/{id}(id=${mestre.fk_id_user})}">Editar</a>
+                        <a th:href="@{/mestres/excluir/{id}(id=${mestre.fk_id_user})}"
+   onclick="return confirm('Tem certeza que deseja excluir esse usuário?')">Excluir</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
