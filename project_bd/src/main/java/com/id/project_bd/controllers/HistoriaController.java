@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.Historia;
 import com.id.project_bd.repository.HistoriaRepository;
@@ -21,6 +23,29 @@ public class HistoriaController {
 
     @Autowired
     private HistoriaRepository historiaRepository;
+
+    @RequestMapping(value = "/cadastro/{fk_id_mestre}", method = RequestMethod.GET)
+    public ModelAndView historiaForm(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("historiaForm");
+        return mv;
+    }
+
+    @RequestMapping(value = "/cadastro/{fk_id_mestre}", method = RequestMethod.POST)
+    public ModelAndView mestreForm(Historia historia){
+        historiaRepository.insertHistoria(historia);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
+
+    @GetMapping("/lista")
+    public ModelAndView getAllHistorias(){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("historia", historiaRepository.getAllHistoria());
+        mv.setViewName("listaHistoria");
+        return mv;
+    }
 
     @PostMapping
     public String createHistoria(@RequestBody Historia historia){

@@ -30,6 +30,12 @@
             <p th:text="'ID do Usuário: ' + ${mestre.fk_id_user}"></p>
             <p th:text="'NPC: ' + ${mestre.npc}"></p>
             <p th:text="'Monstro: ' + ${mestre.monstro}"></p>
+            <a th:href="@{/historia/cadastro/{id}(id=${mestre.fk_id_user})}" class="links" 
+                                style="text-shadow: 1px 1px 1px black;
+                                    text-decoration: none; color: #D2B48C;"
+                                    onmouseover="this.style.color='green';" onmouseout="this.style.color='#D2B48C';">
+                                Criar historia
+                            </a>
         </div>
         <div th:unless="${mestre}">
             <p>Mestre não encontrado!</p>
