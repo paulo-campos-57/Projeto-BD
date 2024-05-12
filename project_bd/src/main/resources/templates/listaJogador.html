@@ -115,24 +115,18 @@
             <thead>
                 <tr>
                     <th>fk_id_user</th>
-                    <th>NPC</th>
-                    <th>Monstro</th>
                     <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="mestre : ${mestres}">
+                <tr th:each="jogador : ${jogador}">
                     <td>
                         <!-- ID do mestre -->
-                        <a th:href="@{/mestres/{id}(id=${mestre.fk_id_user})}" th:text="${mestre.fk_id_user}"></a>
+                        <a th:href="@{/jogador/{id}(id=${jogador.fk_id_user})}" th:text="${jogador.fk_id_user}"></a>
                     </td>
-
-                    <td th:text="${mestre.npc}"></td>
-                    <td th:text="${mestre.monstro}"></td>
                     <td>
-                        <a th:href="@{/mestres/alterar/{id}(id=${mestre.fk_id_user})}">Editar</a>
-                        <a th:href="@{/mestres/excluir/{id}(id=${mestre.fk_id_user})}"
-   onclick="return confirm('Tem certeza que deseja excluir esse mestre?')">Excluir</a>
+                        <a th:href="@{/jogador/excluir/{id}(id=${jogador.fk_id_user})}"
+                        onclick="return confirm('Tem certeza que deseja excluir esse jogador?')">Excluir</a>
                     </td>
                 </tr>
             </tbody>
