@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+//import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.id.project_bd.models.User;
 import com.id.project_bd.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -90,10 +90,10 @@ public class UserController {
     }
 
     @GetMapping("/alterar/{id_user}")
-    public ModelAndView alterarUsuario(@PathVariable int id_user){
+    public ModelAndView alterarUsuario(@PathVariable int id_user) {
         User user = userRepository.getUserById(id_user);
         ModelAndView mv = new ModelAndView();
-        if(user != null){
+        if (user != null) {
             mv.addObject("user", user);
             mv.setViewName("alterarUsuario");
         } else {
@@ -122,6 +122,5 @@ public class UserController {
         // Retornar o nome da view para renderizar novamente a mesma página
         return "listaUsuarios"; // Nome da sua view Thymeleaf (listaUsuarios.html)
     }
-    
 
 }

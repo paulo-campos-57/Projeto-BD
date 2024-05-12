@@ -70,7 +70,7 @@ public class HistoriaController {
 
     @PutMapping("/{id_historia}")
     public String updateHistoria(@PathVariable int id_historia, @RequestBody Historia historia){
-        historia.setIdhistoria(id_historia);
+        historia.setId_historia(id_historia);
         historiaRepository.updateHistoria(historia);
         return "A historia foi atualizada com sucesso!\n";
     }

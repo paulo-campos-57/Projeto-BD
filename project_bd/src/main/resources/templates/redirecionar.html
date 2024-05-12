@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Redirecionar</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
@@ -42,16 +42,22 @@
             </nav>
         </div>
     </header>
-    <div class="container">
-        <h1 style="text-align: center;">Faça seu cadastro como mestre</h1><br>
-        <form id="cadastroForm" method="post" style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
-            <input type="text" name="fk_id_user" id="fk_id_user" placeholder="id_user" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
-            <input type="text" name="npc" placeholder="NPC" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
-            <input type="text" name="monstro" placeholder="Monstros" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
-            <button type="submit" style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#4CAF50';">Cadastrar</button>
-        </form>  
+    <div class="container" style="text-align: center;">
+        <h1 th:text="'Ações para ' + ${user.user_name}"></h1><br>
+        <a th:href="@{/users/alterar/{id}(id=${user.id_user})}">
+            <button type="submit" style="width: 70%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#4CAF50';">Editar usuário</button>
+        </a>
+        <a th:href="@{/mestres/cadastro/{id}(id=${user.id_user})}">
+            <button type="submit" style="width: 70%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer; margin: 2%;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#4CAF50';">Criar perfil mestre</button>
+        </a>
+        <a th:href="@{/jogador/cadastro/{id}(id=${user.id_user})}">
+            <button type="submit" style="width: 70%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer; margin: 0.5%;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#4CAF50';">Criar perfil jogador</button>
+        </a>
+        <a th:href="@{/users/excluir/{id}(id=${user.id_user})}"
+        onclick="return confirm('Tem certeza que deseja excluir esse usuário?')">
+            <button type="submit" style="width: 70%; padding: 10px; border-radius: 5px; border: none; background-color: #d11717; color: white; font-weight: bold; cursor: pointer; margin: 1%;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#d11717';">Excluir usuário</button>
+        </a>
     </div>
-    
     <footer class="footer" style="
             width: 100%; 
             text-align: center; 
@@ -61,16 +67,5 @@
         <img src="/images/logo.png" alt="Logo", 
         style="width: 10%; align-items: start;">
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Obter a URL atual
-            var url = new URL(window.location.href);
-            // Obter o último segmento da URL (que é o ID do usuário)
-            var idUser = url.pathname.split('/').pop();
-            // Preencher o campo fk_id_user com o ID do usuário
-            document.getElementById('fk_id_user').value = idUser;
-        });
-    </script>
 </body>
 </html>

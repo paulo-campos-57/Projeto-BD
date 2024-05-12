@@ -65,13 +65,6 @@
             <p th:text="'Rua: ' + ${user.rua}"></p>
             <p th:text="'Número: ' + ${user.numero}"></p>
             <p th:text="'Complemento: ' + ${user.complemento}"></p>
-            <a th:href="@{/mestres/cadastro/{id}(id=${user.id_user})}" class="links" 
-                                style="text-shadow: 1px 1px 1px black;
-                                    text-decoration: none; color: #D2B48C;"
-                                    onmouseover="this.style.color='green';" onmouseout="this.style.color='#D2B48C';">
-                                Cadastro mestre
-                            </a>
-                            <br>
             <a th:href="@{/jogador/cadastro/{id}(id=${user.id_user})}" class="links" 
                             style="text-shadow: 1px 1px 1px black;
                                 text-decoration: none; color: #D2B48C;"

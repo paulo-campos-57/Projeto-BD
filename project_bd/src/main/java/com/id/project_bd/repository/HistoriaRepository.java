@@ -17,7 +17,7 @@ public class HistoriaRepository {
     public void insertHistoria(Historia historia){
         jdbcTemplate.update("INSERT INTO HISTORIA(NOME, PROLOGO, QTD_JOGADORES, DT_INICIO, PRESENCIAL, FK_ID_MESTRE) VALUES(?, ?, ?, ?, ?, ?)", 
         historia.getNome(), historia.getPrologo(), historia.getQtd_jogadores(), historia.getDt_inicio(), historia.isPresencial(), historia.getFk_id_mestre());
-        historia.setIdhistoria(historia.getIdhistoria());
+        historia.setId_historia(historia.getId_historia());
     }
 
     public boolean deleteHistoria(int id_historia){
@@ -32,7 +32,7 @@ public class HistoriaRepository {
     public List<Historia> getAllHistoria(){
         return jdbcTemplate.query("SELECT * FROM HISTORIA", (resultSet, rowNum) -> {
             Historia historia = new Historia();
-            historia.setIdhistoria(resultSet.getInt("ID_HISTORIA"));
+            historia.setId_historia(resultSet.getInt("ID_HISTORIA"));
             historia.setNome(resultSet.getString("NOME"));
             historia.setPrologo(resultSet.getString("PROLOGO"));
             historia.setQtd_jogadores(resultSet.getInt("QTD_JOGADORES"));
@@ -45,6 +45,6 @@ public class HistoriaRepository {
 
     public void updateHistoria(Historia historia){
         jdbcTemplate.update("UPDATE HISTORIA SET NOME = ?, PROLOGO = ?, QTD_JOGADORES = ?, PRESENCIAL = ? WHERE ID_HISTORIA = ?", 
-        historia.getNome(), historia.getPrologo(), historia.getQtd_jogadores(), historia.isPresencial(), historia.getIdhistoria());
+        historia.getNome(), historia.getPrologo(), historia.getQtd_jogadores(), historia.isPresencial(), historia.getId_historia());
     }
 }

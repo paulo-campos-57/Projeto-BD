@@ -142,11 +142,7 @@
                     <td th:text="${user.numero}"></td>
                     <td th:text="${user.complemento}"></td>
                     <td>
-                        <a th:href="@{/users/alterar/{id}(id=${user.id_user})}">Editar</a>
-                        <a th:href="@{/users/excluir/{id}(id=${user.id_user})}"
-   onclick="return confirm('Tem certeza que deseja excluir esse usuário?')">Excluir</a>
-
-
+                        <a th:href="@{/redirecionar/{id}(id=${user.id_user})}">Opções</a>
                     </td>
                 </tr>
             </tbody>

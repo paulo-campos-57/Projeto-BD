@@ -128,9 +128,8 @@
                 <tr th:each="historia : ${historia}">
                     <td>
                         <!-- ID do mestre -->
-                        <a th:href="@{/historia/{id}(id=${historia.fk_id_mestre})}" th:text="${historia.fk_id_mestre}"></a>
+                        <a th:href="@{/historia/{id}(id=${historia.id_historia})}" th:text="${historia.id_historia}"></a>
                     </td>
-
                     <td th:text="${historia.nome}"></td>
                     <td th:text="${historia.prologo}"></td>
                     <td th:text="${historia.qtd_jogadores}"></td>

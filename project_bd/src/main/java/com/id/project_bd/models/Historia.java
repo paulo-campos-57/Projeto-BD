@@ -25,11 +25,11 @@ public class Historia {
         super();
     }
 
-    public int getIdhistoria() {
+    public int getId_historia() {
         return id_historia;
     }
 
-    public void setIdhistoria(int id_historia) {
+    public void setId_historia(int id_historia) {
         this.id_historia = id_historia;
     }
 
