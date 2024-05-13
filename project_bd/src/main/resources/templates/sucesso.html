@@ -8,38 +8,33 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="headerCabecalho", 
-            style="text-shadow: 1px 1px 1px black; display: flex; flex-flow: row nowrap;
-                    width: 100%; height: 100px; justify-content: space-around; align-items: center;
-                    background-color: rgb(63, 0, 63);; background-size: contain; background-repeat: repeat-x;">
+    <header class="cabecalho">
+        <div class="headerCabecalho">
             <div class="logo">
                 <hgroup>
-                    <img src="/images/logo.png" alt="Logo", 
-                        style="width: 27%; align-items: start;">
-                    <aside class="tituloNav", 
-                        style="position: absolute; top: 40px; right: 800px;
-                            width: 380px; height: 200px;">
-                        <h2 style="color: #D2B48C;">Taverna do Camaleão</h2>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
                     </aside>
                 </hgroup>
             </div>
+            <nav>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/" class="links">Voltar</a></li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </header>
     <div class="container">
         <h1>Usuário cadastrado com sucesso!</h1>
         <p>Retorne para a página inicial clicando 
-            <a href="/" class="links" onmouseover="this.style.color='blue';" onmouseout="this.style.color='black';">aqui</a>
+            <a href="/" class="links-second">aqui</a>
         </p>
     </div>
-    <footer class="footer" style="
-            width: 100%; 
-            text-align: center; 
-            font-weight: bold;
-            font-style: italic;
-            background-color: rgb(63, 0, 63);">
-        <img src="/images/logo.png" alt="Logo", 
-        style="width: 10%; align-items: start;">
-    </footer>
+    <footer class="footer">
+        <img src="/images/logo.png" alt="Logo">
+    </footer> 
 </body>
 </html>

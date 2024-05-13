@@ -5,9 +5,10 @@
     <title>Lista de usuários</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'EB Garamond';
             margin: 0;
             padding: 0;
+            min-height: 100px;
         }
 
         header {
@@ -78,32 +79,20 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
+    <header class="cabecalho">
         <div class="headerCabecalho">
             <div class="logo">
                 <hgroup>
-                    <img src="/images/logo.png" alt="Logo", 
-                        style="width: 27%; align-items: start;">
-                    <aside class="tituloNav", 
-                        style="position: absolute; top: 40px; right: 800px;
-                            width: 380px; height: 200px;">
-                        <h2 style="color: #D2B48C;">Taverna do Camaleão</h2>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
                     </aside>
                 </hgroup>
             </div>
             <nav>
-                <div class="navbarCabecalho", 
-                    style="display: flex; flex-flow: row nowrap;">
-                    <ul style="display: flex; flex-flow: row nowrap;">
-                        <li style="margin: 0 5px; padding: 2px 4px;
-                            font-size: 1em; list-style: none;
-                            text-transform: uppercase;">
-                            <a href="/" style="text-shadow: 1px 1px 1px black;
-                                text-decoration: none; color: #D2B48C;"
-                                onmouseover="this.style.color='green';" onmouseout="this.style.color='#D2B48C';">
-                                Voltar
-                            </a>
-                        </li>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/" class="links">Voltar</a></li>
                     </ul>
                 </div>
             </nav>
@@ -148,8 +137,15 @@
             </tbody>
         </table>
     </div>
-    <footer>
-        <img src="/images/logo.png" style="width: 10%;" alt="Logo">
+    <footer class="footer" style="
+            width: 100%; 
+            text-align: center; 
+            font-weight: bold;
+            font-style: italic;
+            background-color: rgb(63, 0, 63);
+            bottom: 0;">
+        <img src="/images/logo.png" alt="Logo", 
+        style="width: 10%; align-items: start;">
     </footer>
 </body>
 </html>
