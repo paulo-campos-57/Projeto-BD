@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.id.project_bd.models.Historia;
+// import com.id.project_bd.models.Historia;
 import com.id.project_bd.models.Personagem;
 
 @Repository
