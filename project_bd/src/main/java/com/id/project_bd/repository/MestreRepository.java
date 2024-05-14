@@ -22,8 +22,6 @@ public class MestreRepository {
     }
 
     public boolean deleteMestre(int fk_id_user) {
-        // Antes de excluir o mestre, exclua os registros dependentes na tabela 'participacao'
-        jdbcTemplate.update("DELETE FROM participacao WHERE FK_ID_MESTRE = ?", fk_id_user);
     
         // Agora você pode excluir o mestre na tabela 'MESTRE' sem violar a integridade
         int rowsAffected = jdbcTemplate.update("DELETE FROM MESTRE WHERE FK_ID_USER = ?", fk_id_user);

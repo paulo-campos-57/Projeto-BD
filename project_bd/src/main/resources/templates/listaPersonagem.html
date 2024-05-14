@@ -2,9 +2,12 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de usuários</title>
+    <title>Lista de Personagens</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <style>
+        /* Estilos adicionais podem ser colocados aqui */
+    </style>
 </head>
 <body>
     <header class="cabecalho">
@@ -27,25 +30,30 @@
         </div>
     </header>
     <div class="container-list">
-        <h1>Lista de Jogadores</h1>
+        <h1>Lista de Personagens</h1>
         <table>
             <thead>
                 <tr>
-                    <th>fk_id_user</th>
-                    <th>Ação</th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Classe</th>
+                    <th>Nível</th>
+                    <th>Habilidades</th>
+                    <th>BackStory</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="jogador : ${jogador}">
+                <!-- Itera sobre a lista de personagens -->
+                <tr th:each="personagem : ${personagem}">
                     <td>
                         <!-- ID do mestre -->
-                        <a th:href="@{/jogador/{id}(id=${jogador.fk_id_user})}" th:text="${jogador.fk_id_user}"></a>
+                        <a th:href="@{/personagem/{id}(id=${personagem.id_personagem})}" th:text="${personagem.id_personagem}"></a>
                     </td>
-                    <td>
-                        <a th:href="@{/jogador/excluir/{id}(id=${jogador.fk_id_user})}"
-                        onclick="return confirm('Tem certeza que deseja excluir esse jogador?')">Excluir</a>
-                        <a th:href="@{/personagem/cadastro/{id}(id=${jogador.fk_id_user})}">Criar</a>
-                    </td>
+                    <td th:text="${personagem.nome}"></td>
+                    <td th:text="${personagem.classe}"></td>
+                    <td th:text="${personagem.nivel}"></td>
+                    <td th:text="${personagem.habilidades}"></td>
+                    <td th:text="${personagem.backstory}"></td>
                 </tr>
             </tbody>
         </table>

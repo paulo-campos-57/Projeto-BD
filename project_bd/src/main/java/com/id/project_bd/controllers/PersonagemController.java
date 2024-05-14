@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.Personagem;
 import com.id.project_bd.repository.PersonagemRepository;
@@ -21,6 +23,29 @@ public class PersonagemController {
 
     @Autowired
     private PersonagemRepository personagemRepository;
+
+    @RequestMapping(value = "/cadastro/{fk_id_jogador}", method = RequestMethod.GET)
+    public ModelAndView personagemForm(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("personagemForm");
+        return mv;
+    }
+
+    @RequestMapping(value = "/cadastro/{fk_id_jogador}", method = RequestMethod.POST)
+    public ModelAndView personagemForm(Personagem personagem){
+        personagemRepository.insertPersonagem(personagem);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
+
+    @GetMapping("/lista")
+    public ModelAndView getAllPersonagens(){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("personagem", personagemRepository.getAllPersonagens());
+        mv.setViewName("listaPersonagem");
+        return mv;
+    }
 
     @PostMapping
     public String createPersonagem(@RequestBody Personagem personagem) {
