@@ -3,6 +3,7 @@ package com.id.project_bd.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,6 +45,47 @@ public class PersonagemController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("personagem", personagemRepository.getAllPersonagens());
         mv.setViewName("listaPersonagem");
+        return mv;
+    }
+
+    @GetMapping("/{id_personagem}")
+    public ModelAndView getSpecificPersonagem(@PathVariable int id_personagem){
+        Personagem personagem = personagemRepository.getPersonagemById(id_personagem);
+        ModelAndView mv = new ModelAndView();
+        if(personagem != null){
+            mv.addObject("personagem", personagem);
+            mv.setViewName("detalhesPersonagem");
+        } else {
+            mv.setViewName("index");
+        }
+        return mv;
+    }
+
+    @GetMapping("/excluir/{id_personagem}")
+    public String excluirPersonagem(@PathVariable("id_personagem") Integer id_personagem, Model model){
+        personagemRepository.deletePersonagem(id_personagem);
+        model.addAttribute("personagem", personagemRepository.getAllPersonagens());
+        return "listaPersonagem";
+    }
+
+    @GetMapping("/alterar/{id_personagem}")
+    public ModelAndView alterarPersonagem(@PathVariable int id_personagem){
+        Personagem personagem = personagemRepository.getPersonagemById(id_personagem);
+        ModelAndView mv = new ModelAndView();
+        if(personagem != null){
+            mv.addObject("personagem", personagem);
+            mv.setViewName("alterarPersonagem");
+        } else {
+            mv.setViewName("index");
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/alterar/{id_personagem}", method = RequestMethod.POST)
+    public ModelAndView alterarPersonagem(Personagem personagem){
+        personagemRepository.updatePersonagem(personagem);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
         return mv;
     }
 

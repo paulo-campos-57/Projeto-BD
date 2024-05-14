@@ -40,6 +40,7 @@
                     <th>Nível</th>
                     <th>Habilidades</th>
                     <th>BackStory</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,6 +55,11 @@
                     <td th:text="${personagem.nivel}"></td>
                     <td th:text="${personagem.habilidades}"></td>
                     <td th:text="${personagem.backstory}"></td>
+                    <td>
+                        <a th:href="@{/personagem/alterar/{id}(id=${personagem.id_personagem})}">Editar</a>
+                        <a th:href="@{/personagem/excluir/{id}(id=${personagem.id_personagem})}"
+   onclick="return confirm('Tem certeza que deseja excluir essa Personagem?')">Excluir</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

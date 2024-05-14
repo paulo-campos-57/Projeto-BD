@@ -3,9 +3,12 @@ package com.id.project_bd.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.id.project_bd.models.Historia;
 import com.id.project_bd.models.Personagem;
 
 @Repository
@@ -37,6 +40,17 @@ public class PersonagemRepository {
             personagem.setFk_id_jogador(resultSet.getInt("FK_ID_JOGADOR"));
             return personagem;
         });
+    }
+
+    @SuppressWarnings("deprecation")
+    public Personagem getPersonagemById(int id_personagem) {
+        String sql = "SELECT * FROM PERSONAGEM WHERE ID_PERSONAGEM = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[] { id_personagem },
+                    new BeanPropertyRowMapper<>(Personagem.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     public void updatePersonagem(Personagem personagem){
