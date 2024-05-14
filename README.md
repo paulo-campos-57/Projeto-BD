@@ -11,7 +11,7 @@ Desenvolvido em sistemas Unix e  Windows.<br>
 Para a execução desse projeto, é necessário preencher os seguintes requisitos:
 <table>
   <tr>- Java 17 (JDK 17) ou superior</tr><br>
-  <tr>- Apache Maven</tr>
+  <tr>- Apache Maven</tr><br>
   <tr>- MySQL Server</tr>
 </table>
 
@@ -64,7 +64,7 @@ Developed in Unix and Windows systems.<br>
 For this project to run, you'll need to meet the following requirements:
 <table>
   <tr>- Java 17 (JDK 17) or superior</tr><br>
-  <tr>- Apache Maven</tr>
+  <tr>- Apache Maven</tr><br>
   <tr>- MySQL Server</tr>
 </table>
 
