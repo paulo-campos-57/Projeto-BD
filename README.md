@@ -1,6 +1,6 @@
 # Projeto-BD
 Repositório direcionado ao projeto da disciplina de Banco de dados. Será desenvolvida uma aplicação que utiliza Java, MySQL e Spring de uma plataforma de jogadores de RPG.
-Compatível com sistemas Unix e  Windows.<br>
+Desenvolvido em sistemas Unix e  Windows.<br>
 <img align="center" alt="Linux" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg">
 <img align="center" alt="Windows" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg">
 <img align="center" alt="Java" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" />
@@ -10,8 +10,9 @@ Compatível com sistemas Unix e  Windows.<br>
 # Requisitos
 Para a execução desse projeto, é necessário preencher os seguintes requisitos:
 <table>
-  <tr>- Java 17 (JDK 17)</tr><br>
-  <tr>- Apache Maven</tr>
+  <tr>- Java 17 (JDK 17) ou superior</tr><br>
+  <tr>- Apache Maven</tr><br>
+  <tr>- MySQL Server</tr>
 </table>
 
 # Desenvolvedores
@@ -52,7 +53,7 @@ Para a execução desse projeto, é necessário preencher os seguintes requisito
 
 # DB-Project
 Repository aimed at the Database discipline project. An application will be developed that uses Java, MySQL, and Spring for an RPG player platform.
-Compatible with Unix and Windows systems.<br>
+Developed in Unix and Windows systems.<br>
 <img align="center" alt="Linux" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg">
 <img align="center" alt="Windows" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg">
 <img align="center" alt="Java" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" />
@@ -62,8 +63,9 @@ Compatible with Unix and Windows systems.<br>
 # Requirements
 For this project to run, you'll need to meet the following requirements:
 <table>
-  <tr>- Java 17 (JDK 17)</tr><br>
-  <tr>- Apache Maven</tr>
+  <tr>- Java 17 (JDK 17) or superior</tr><br>
+  <tr>- Apache Maven</tr><br>
+  <tr>- MySQL Server</tr>
 </table>
 
 # Developers
