@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.Personagem;
+import com.id.project_bd.repository.HistoriaRepository;
 import com.id.project_bd.repository.PersonagemRepository;
 
 @RestController
@@ -24,6 +25,9 @@ public class PersonagemController {
 
     @Autowired
     private PersonagemRepository personagemRepository;
+    
+    @Autowired
+    private HistoriaRepository historiaRepository;
 
     @RequestMapping(value = "/cadastro/{fk_id_jogador}", method = RequestMethod.GET)
     public ModelAndView personagemForm(){
@@ -54,6 +58,7 @@ public class PersonagemController {
         ModelAndView mv = new ModelAndView();
         if(personagem != null){
             mv.addObject("personagem", personagem);
+            mv.addObject("historia", historiaRepository.getAllHistoria());
             mv.setViewName("detalhesPersonagem");
         } else {
             mv.setViewName("index");

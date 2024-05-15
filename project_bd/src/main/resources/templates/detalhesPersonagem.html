@@ -65,6 +65,32 @@
             <p th:text="'Backstory: ' + ${personagem.backstory}"></p>
             <p th:text="'ID do Jogador: ' + ${personagem.fk_id_jogador}"></p>
         </div>
+        <h1>Lista de historias</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>id_historia</th>
+                    <th>Nome</th>
+                    <th>Prologo</th>
+                    <th>dt_Inicio</th>
+                    <th>Presencial</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="historia : ${historia}">
+                    <td>
+                        <!-- ID do mestre -->
+                        <a th:href="@{/participacao/{id_personagem}/{fk_id_mestre}/{id_historia}(id_personagem=${personagem.id_personagem}, fk_id_mestre=${historia.fk_id_mestre}, id_historia=${historia.id_historia})}"
+                        th:text="${historia.id_historia}"></a>
+
+                    </td>
+                    <td th:text="${historia.nome}"></td>
+                    <td th:text="${historia.prologo}"></td>
+                    <td th:text="${historia.dt_inicio}"></td>
+                    <td th:text="${historia.presencial}"></td>
+                </tr>
+            </tbody>
+        </table>
         <div th:unless="${personagem}">
             <p>Personagem não encontrado!</p>
         </div>
