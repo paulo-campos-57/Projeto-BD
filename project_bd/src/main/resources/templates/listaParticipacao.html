@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de usuários</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
+                    </aside>
+                </hgroup>
+            </div>
+            <nav>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/" class="links">Voltar</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container-list">
+        <h1>Lista de participações</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>fk_id_personagem</th>
+                    <th>fk_id_mestre</th>
+                    <th>fk_id_historia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="participacao : ${participacao}">
+                    <td th:text="${participacao.fk_id_personagem}"></td>
+                    <td th:text="${participacao.fk_id_mestre}"></td>
+                    <td th:text="${participacao.fk_id_historia}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer">
+        <img src="/images/logo.png" alt="Logo">
+    </footer> 
+</body>
+</html>

@@ -3,21 +3,31 @@ package com.id.project_bd.models;
 public class Produto {
     //private int id_produto;
     private int id_produto;
+    private int fk_id_user;
     private String nome_produto;
     private String descricao;
     private double preco;
 
-    public Produto(int id_produto, String nome_produto, String descricao, double preco) {
+    public Produto(int id_produto, String nome_produto, String descricao, double preco, int fk_id_user) {
         super();
         //this.id_produto = id_produto;
         this.id_produto = id_produto;
         this.nome_produto = nome_produto;
         this.descricao = descricao;
         this.preco = preco;
+        this.fk_id_user = fk_id_user;
     }
 
     public Produto() {
         super();
+    }
+
+    public int getFk_id_user(){
+        return fk_id_user;
+    }
+
+    public void setFk_id_user(int fk_id_user){
+        this.fk_id_user = fk_id_user;
     }
 
     public int getId_produto(){

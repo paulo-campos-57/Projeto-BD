@@ -38,6 +38,9 @@
         <a th:href="@{/jogador/cadastro/{id}(id=${user.id_user})}">
             <button type="submit" class="button-b">Criar perfil jogador</button>
         </a>
+        <a th:href="@{/produto/{id}(id=${user.id_user})}">
+            <button type="submit" class="button-b">Criar produto</button>
+        </a>
         <a th:href="@{/users/excluir/{id}(id=${user.id_user})}"
         onclick="return confirm('Tem certeza que deseja excluir esse usuário?')">
             <button type="submit" class="button-b-delete">Excluir usuário</button>

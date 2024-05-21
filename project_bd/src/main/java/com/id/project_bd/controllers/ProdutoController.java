@@ -10,9 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.id.project_bd.models.Dado;
+import com.id.project_bd.models.Livro;
 import com.id.project_bd.models.Produto;
+import com.id.project_bd.repository.DadoRepository;
+import com.id.project_bd.repository.LivroRepository;
 import com.id.project_bd.repository.ProdutoRepository;
 
 @RestController
@@ -21,6 +28,48 @@ public class ProdutoController {
     
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private LivroRepository livroRepository;
+
+    @Autowired
+    private DadoRepository dadoRepository;
+
+    @RequestMapping(value = "/{fk_id_user}", method = RequestMethod.GET)
+    public ModelAndView produtoForm(@PathVariable int fk_id_user) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("produtoForm");
+        mv.addObject("fk_id_user", fk_id_user);
+        return mv;
+    }
+
+    @RequestMapping(value = "/{fk_id_user}", method = RequestMethod.POST)
+    public ModelAndView produtoForm(Produto produto, @RequestParam String tipo, 
+                                    @RequestParam(required = false) Integer qtd_paginas, 
+                                    @RequestParam(required = false) Integer estado, 
+                                    @RequestParam(required = false) Integer qtd_lados, 
+                                    @PathVariable int fk_id_user) {
+        produto.setFk_id_user(fk_id_user);
+        Produto savedProduto = produtoRepository.insertProduto(produto);
+        
+        if (tipo.equals("livro")) {
+            Livro livro = new Livro();
+            livro.setFk_id_produto(savedProduto.getId_produto());
+            livro.setQtd_paginas(qtd_paginas);
+            livro.setEstado(estado);
+            livroRepository.insertLivro(livro);
+        } else if (tipo.equals("dado")) {
+            Dado dado = new Dado();
+            dado.setFk_id_produto(savedProduto.getId_produto());
+            dado.setQtd_lados(qtd_lados);
+            dadoRepository.insertDado(dado);
+        }
+
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
+
 
     @PostMapping
     public String createProduto(@RequestBody Produto produto){
