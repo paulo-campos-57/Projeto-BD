@@ -1,3 +1,5 @@
+@import url('https://necolas.github.io/normalize.css/8.0.1/normalize.css');
+
 * {
     font-family: 'EB Garamond';
     margin: 0;
@@ -30,6 +32,7 @@ body {
 .logo-img {
     width: 180%;
     max-width: 120px;
+    filter: drop-shadow(3px 1px 4px green);
 }
 
 .tituloNav {
@@ -183,4 +186,5 @@ tr {
 .footer img {
     width: 10%;
     align-items: start;
+    filter: drop-shadow(3px 1px 4px green);
 }
