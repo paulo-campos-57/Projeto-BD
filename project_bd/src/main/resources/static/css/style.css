@@ -175,6 +175,22 @@ tr {
     background-color: #f10e0e;
 }
 
+.error-text {
+    background-color: #f8d7da; 
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.error-text p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
 .footer {
     width: 100%;
     text-align: center;

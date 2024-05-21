@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img th:src="@{/images/logo.png}" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
+                    </aside>
+                </hgroup>
+            </div>
+            <nav>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a th:href="@{/}" class="links">Voltar</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Ocorreu um erro</h1>
+        <div class="error-text">
+            <p th:text="'Código de status: ' + ${statusCode}"></p>
+            <p th:text="'Mensagem: ' + ${errorMessage}"></p>
+            <p>Desculpe pelo inconveniente. Por favor, tente novamente mais tarde.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <img th:src="@{/images/logo.png}" alt="Logo">
+    </footer>
+</body>
+
+</html>
