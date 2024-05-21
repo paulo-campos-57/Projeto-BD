@@ -65,7 +65,9 @@ CREATE TABLE PRODUTO (
 	ID_PRODUTO INTEGER PRIMARY key AUTO_INCREMENT,
 	NOME_PRODUTO VARCHAR(100),
 	DESCRICAO VARCHAR(500),
-	PRECO DOUBLE
+	PRECO DOUBLE,
+	FK_ID_USER INTEGER,
+	FOREIGN KEY (FK_ID_USER) REFERENCES USER(ID_USER) ON DELETE CASCADE
 );
 
 CREATE TABLE DADO (
@@ -88,31 +90,86 @@ ALTER TABLE LIVRO
 RENAME COLUMN ID_LIVRO TO FK_ID_PRODUTO;
 
 CREATE TABLE VENDA (
-    ID_VENDA INTEGER PRIMARY KEY,
-    ID_PRODUTO INTEGER,
-    ID_USER INTEGER,
+    ID_VENDA INTEGER PRIMARY KEY AUTO_INCREMENT,
+    FK_ID_PRODUTO INTEGER,
+    FK_ID_USER INTEGER,
     DATA_VENDA DATE,
-    FOREIGN KEY (ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO),
-    FOREIGN KEY (ID_USER) REFERENCES USER(ID_USER)
+    FOREIGN KEY (FK_ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO),
+    FOREIGN KEY (FK_ID_USER) REFERENCES USER(ID_USER)
 );
-
-ALTER TABLE VENDA
-RENAME COLUMN ID_PRODUTO TO FK_ID_PRODUTO;
-
-ALTER TABLE VENDA
-RENAME COLUMN ID_USER TO FK_ID_USER;
 
 CREATE TABLE COMPRA (
-    ID_COMPRA INTEGER PRIMARY KEY,
-    ID_PRODUTO INTEGER,
-    ID_USER INTEGER,
+    ID_COMPRA INTEGER PRIMARY KEY AUTO_INCREMENT,
+    FK_ID_PRODUTO INTEGER,
+    FK_ID_USER INTEGER,
     DATA_COMPRA DATE,
-    FOREIGN KEY (ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO),
-    FOREIGN KEY (ID_USER) REFERENCES USER(ID_USER)
+    FOREIGN KEY (FK_ID_PRODUTO) REFERENCES PRODUTO(ID_PRODUTO),
+    FOREIGN KEY (FK_ID_USER) REFERENCES USER(ID_USER)
 );
 
-ALTER TABLE COMPRA
-RENAME COLUMN ID_PRODUTO TO FK_ID_PRODUTO;
+-- Insert users
+INSERT INTO USER (USER_NAME, SENHA, CONTATO1, CONTATO2, ESTADO, CIDADE, BAIRRO, RUA, NUMERO, COMPLEMENTO) VALUES
+('mestre_joao', 'senha12345', '81987654321', '81912345678', 'Pernambuco', 'Recife', 'Boa Viagem', 'Av. Boa Viagem', '123', 'Apto 101'),
+('jogador_carlos', 'senha54321', '81912348765', '81987651234', 'Pernambuco', 'Olinda', 'Casa Caiada', 'Rua das Flores', '456', 'Casa 1'),
+('jogador_ana', 'senha67890', '81987650987', '81912347654', 'Pernambuco', 'Recife', 'Pina', 'Rua da Aurora', '789', 'Apto 202'),
+('mestre_clara', 'senha11223', '81965432109', '81909876543', 'Pernambuco', 'Recife', 'Santo Amaro', 'Rua do Hospício', '101', 'Casa 3');
 
-ALTER TABLE COMPRA
-RENAME COLUMN ID_USER TO FK_ID_USER;
+-- Insert mestres
+INSERT INTO MESTRE (FK_ID_USER, NPC, MONSTRO) VALUES
+(1, 'Gandalf', 'Smaug'),
+(4, 'Merlin', 'Dragon');
+
+-- Insert jogadores
+INSERT INTO JOGADOR (FK_ID_USER) VALUES
+(2),
+(3);
+
+-- Insert personagens
+INSERT INTO PERSONAGEM (NOME, CLASSE, NIVEL, HABILIDADES, BACKSTORY, FK_ID_JOGADOR) VALUES
+('Aragorn', 'Guerreiro', 10, 'Espada Longa, Defesa', 'Filho do rei exilado, busca retomar seu trono.', 2),
+('Legolas', 'Arqueiro', 9, 'Arco e Flecha, Agilidade', 'Elfo habilidoso com arco, membro da Sociedade do Anel.', 3),
+('Frodo', 'Hobbit', 5, 'Furtividade, Coragem', 'Portador do anel, em uma missão para destruí-lo.', 2),
+('Gimli', 'Anão', 8, 'Machado Duplo, Força', 'Guerreiro anão com grande força e bravura.', 3);
+
+-- Insert historias
+INSERT INTO HISTORIA (NOME, PROLOGO, QTD_JOGADORES, DT_INICIO, PRESENCIAL, FK_ID_MESTRE) VALUES
+('A Jornada do Anel', 'A Sociedade do Anel deve levar o Anel para ser destruído em Mordor.', 4, '2024-05-01', TRUE, 1),
+('A Guerra dos Magos', 'Uma batalha épica entre magos pelo controle do reino.', 3, '2024-06-01', FALSE, 4);
+
+-- Insert participacoes
+INSERT INTO PARTICIPACAO (FK_ID_PERSONAGEM, FK_ID_MESTRE, FK_ID_HISTORIA) VALUES
+(1, 1, 1),
+(2, 1, 1),
+(3, 1, 1),
+(4, 4, 2);
+
+-- Insert produtos
+INSERT INTO PRODUTO (NOME_PRODUTO, DESCRICAO, PRECO, FK_ID_USER) VALUES
+('Livro de Magia', 'Um livro antigo com feitiços poderosos.', 50.00, 1),
+('Espada Longa', 'Uma espada forjada pelos anões.', 100.00, 2),
+('Arco Elfico', 'Um arco feito na floresta élfica.', 150.00, 3),
+('Poção de Cura', 'Uma poção que restaura saúde.', 25.00, 4);
+
+-- Insert dados
+INSERT INTO DADO (FK_ID_PRODUTO, QTD_LADOS) VALUES
+(1, 20),
+(2, 10);
+
+-- Insert livros
+INSERT INTO LIVRO (FK_ID_PRODUTO, QTD_PAGINAS, ESTADO) VALUES
+(3, 300, 9.0),
+(4, 150, 8.5);
+
+-- Insert vendas
+INSERT INTO VENDA (FK_ID_PRODUTO, FK_ID_USER, DATA_VENDA) VALUES
+(1, 2, '2024-03-01'),
+(2, 3, '2024-03-02'),
+(3, 2, '2024-04-01'),
+(4, 3, '2024-04-02');
+
+-- Insert compras
+INSERT INTO COMPRA (FK_ID_PRODUTO, FK_ID_USER, DATA_COMPRA) VALUES
+(1, 2, '2024-05-01'),
+(2, 3, '2024-05-02'),
+(3, 2, '2024-06-01'),
+(4, 3, '2024-06-02');
