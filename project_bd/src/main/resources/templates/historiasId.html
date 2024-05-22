@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Histórias do Usuário</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
+                    </aside>
+                </hgroup>
+            </div>
+            <nav>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/" class="links">Voltar</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container-list">
+        <div class="titulo-lista">
+            <h1>Histórias do Usuário</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da História</th>
+                    <th>Prologo</th>
+                    <th>Data inicio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="historia : ${users}">
+                    <td th:text="${historia.nome}"></td>
+                    <td th:text="${historia.prologo}"></td>
+                    <td th:text="${historia.dt_inicio}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer">
+        <img src="/images/logo.png" alt="Logo">
+    </footer>
+</body>
+
+</html>

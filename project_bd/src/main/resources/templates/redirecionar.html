@@ -38,6 +38,9 @@
         <a th:href="@{/jogador/cadastro/{id}(id=${user.id_user})}">
             <button type="submit" class="button-b">Criar perfil jogador</button>
         </a>
+        <a th:href="@{/users/historias/{id}(id=${user.id_user})}">
+            <button type="submit" class="button-b">Ver historias que participo</button>
+        </a>
         <a th:href="@{/produto/{id}(id=${user.id_user})}">
             <button type="submit" class="button-b">Criar produto</button>
         </a>

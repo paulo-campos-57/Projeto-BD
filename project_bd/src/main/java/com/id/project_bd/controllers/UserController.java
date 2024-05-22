@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.id.project_bd.models.Historia;
 //import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.id.project_bd.models.User;
 import com.id.project_bd.repository.UserRepository;
@@ -66,6 +67,14 @@ public class UserController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("users", userRepository.getAllUsers());
         mv.setViewName("listaUsuarios");
+        return mv;
+    }
+
+    @GetMapping("/historias/{id_user}")
+    public ModelAndView getHistoriasById(@PathVariable int id_user){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("users", userRepository.getHistoriasById(id_user));
+        mv.setViewName("historiasId");
         return mv;
     }
 

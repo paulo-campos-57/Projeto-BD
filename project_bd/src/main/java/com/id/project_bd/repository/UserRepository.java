@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.id.project_bd.models.Historia;
 import com.id.project_bd.models.User;
 
 @Repository
@@ -67,6 +68,25 @@ public class UserRepository {
             user.setNumero(resultSet.getString("NUMERO"));
             user.setComplemento(resultSet.getString("COMPLEMENTO"));
             return user;
+        });
+    }
+
+    @SuppressWarnings("deprecation")
+    public List<Historia> getHistoriasById(int id_user) {
+        String sql = "SELECT H.NOME, H.PROLOGO, H.DT_INICIO " +
+                     "FROM HISTORIA H " +
+                     "JOIN PARTICIPACAO P ON H.ID_HISTORIA = P.FK_ID_HISTORIA " +
+                     "JOIN PERSONAGEM PC ON P.FK_ID_PERSONAGEM = PC.ID_PERSONAGEM " +
+                     "JOIN JOGADOR J ON PC.FK_ID_JOGADOR = J.FK_ID_USER " +
+                     "WHERE J.FK_ID_USER = ?";
+
+        return jdbcTemplate.query(sql, new Object[]{id_user}, (resultSet, rowNum) -> {
+            Historia historia = new Historia();
+            historia.setNome(resultSet.getString("NOME"));
+            historia.setPrologo(resultSet.getString("PROLOGO"));
+            historia.setDt_inicio(resultSet.getDate("DT_INICIO"));
+
+            return historia;
         });
     }
 
