@@ -76,6 +76,16 @@ public class ProdutoRepository {
         return produtos;
     }
 
+    public List<Produto> getSortedByName() {
+        return jdbcTemplate.query("SELECT * FROM PRODUTO " +
+        "ORDER BY NOME_PRODUTO ASC", produtoMapper);
+    }
+
+    public List<Produto> getSortedByPrice() {
+        return jdbcTemplate.query("SELECT * FROM PRODUTO " +
+        "ORDER BY PRECO ASC", produtoMapper);
+    }
+
     public void updateProduto(Produto produto) {
         jdbcTemplate.update("UPDATE PRODUTO SET DESCRICAO = ?, PRECO = ? WHERE ID_PRODUTO = ?",
                 produto.getDescricao(), produto.getPreco(), produto.getId_produto());

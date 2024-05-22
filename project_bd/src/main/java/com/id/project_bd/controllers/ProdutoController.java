@@ -114,6 +114,22 @@ public class ProdutoController {
         return mv;
     }
 
+    @GetMapping("/lista/alfabetica")
+    public ModelAndView getSortdeByName() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("produtos", produtoRepository.getSortedByName());
+        mv.setViewName("listaProdutos");
+        return mv;
+    }
+
+    @GetMapping("/lista/preco")
+    public ModelAndView getSortdeByPrice() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("produtos", produtoRepository.getSortedByPrice());
+        mv.setViewName("listaProdutos");
+        return mv;
+    }
+
     @GetMapping("/detalhes/{id_produto}")
     public ModelAndView getSpecificProduto(@PathVariable int id_produto) {
         Produto produto = produtoRepository.getProdutoById(id_produto);
