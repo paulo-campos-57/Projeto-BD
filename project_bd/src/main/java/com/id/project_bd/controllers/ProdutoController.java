@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.Dado;
+import com.id.project_bd.models.Historia;
 import com.id.project_bd.models.Livro;
+import com.id.project_bd.models.Personagem;
 import com.id.project_bd.models.Produto;
 import com.id.project_bd.repository.DadoRepository;
 import com.id.project_bd.repository.LivroRepository;
@@ -69,7 +71,13 @@ public class ProdutoController {
         mv.setViewName("index");
         return mv;
     }
-
+    @RequestMapping(value = "/alterar/{id_produto}", method = RequestMethod.POST)
+    public ModelAndView alterarProduto(Produto produto){
+        produtoRepository.updateProduto(produto);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
 
     @PostMapping
     public String createProduto(@RequestBody Produto produto){
@@ -98,4 +106,45 @@ public class ProdutoController {
         produtoRepository.updateProduto(produto);
         return "Valores do produto "+ id_produto + " atualizado com sucesso!\n";
     }
+    @GetMapping("/lista")
+    public ModelAndView getAllProdutos() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("produtos", produtoRepository.getAllProdutos());
+        mv.setViewName("listaProdutos");
+        return mv;
+    }
+    @GetMapping("/{id_produto}")
+public ModelAndView getSpecificProduto(@PathVariable int id_produto) {
+    Produto produto = produtoRepository.getProdutoById(id_produto);
+    ModelAndView mv = new ModelAndView();
+    if (produto != null) {
+        mv.addObject("produto", produto);
+        mv.setViewName("detalhesProduto");
+    } else {
+        mv.setViewName("index");
+    }
+    return mv;
+}
+
+
+/*@GetMapping("/alterar/{id_produto}")
+public ModelAndView alterarProduto(@PathVariable int id_produto) {
+    Produto produto = produtoRepository.getProdutoById(id_produto);
+    ModelAndView mv = new ModelAndView();
+    if (produto != null) {
+        mv.addObject("produto", produto);
+        mv.setViewName("alterarProduto");
+    } else {
+        mv.setViewName("index");
+    }
+    return mv;
+}
+*/
+
+
+
+
+
+
+
 }
