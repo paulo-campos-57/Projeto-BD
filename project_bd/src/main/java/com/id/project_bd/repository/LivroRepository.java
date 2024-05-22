@@ -38,12 +38,12 @@ public class LivroRepository {
 
             Produto produto = new Produto();
             produto.setIdproduto(resultSet.getInt("ID_PRODUTO"));
-            produto.setnome_produto(resultSet.getString("NOME_PRODUTO"));
+            produto.setNome_produto(resultSet.getString("NOME_PRODUTO"));
             produto.setDescricao(resultSet.getString("DESCRICAO"));
             produto.setPreco(resultSet.getDouble("PRECO"));
 
             livro.setIdproduto(resultSet.getInt("ID_PRODUTO"));
-            livro.setnome_produto(resultSet.getString("NOME_PRODUTO"));
+            livro.setNome_produto(resultSet.getString("NOME_PRODUTO"));
             livro.setDescricao(resultSet.getString("DESCRICAO"));
             livro.setPreco(resultSet.getDouble("PRECO"));
             return livro;

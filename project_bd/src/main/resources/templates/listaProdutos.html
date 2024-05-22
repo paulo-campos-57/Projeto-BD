@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Lista de Produtos</title>
@@ -8,6 +9,7 @@
     <style>
     </style>
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -37,23 +39,24 @@
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Preço</th>
-                    <th>fk_id_user</th>           
+                    <th>fk_id_user</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-              
-                <tr th:each="produto : ${produto}">
+
+                <tr th:each="produto : ${produtos}">
                     <td>
                         <a th:href="@{/produto/{id}(id=${produto.id_produto})}" th:text="${produto.id_produto}"></a>
                     </td>
-                    <td th:text="${produto.fk_id_user}"></td>
-                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${produto.nome_produto}"></td>
                     <td th:text="${produto.descricao}"></td>
                     <td th:text="${produto.preco}"></td>
+                    <td th:text="${produto.fk_id_user}"></td>
                     <td>
                         <a th:href="@{/produto/alterar/{id}(id=${produto.id_produto})}">Editar</a>
                         <a th:href="@{/produto/excluir/{id}(id=${produto.id_produto})}"
-   onclick="return confirm('Tem certeza que deseja excluir esse produto?')">Excluir</a>
+                            onclick="return confirm('Tem certeza que deseja excluir esse produto?')">Excluir</a>
                     </td>
                 </tr>
             </tbody>
@@ -61,6 +64,7 @@
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
-    </footer> 
+    </footer>
 </body>
+
 </html>

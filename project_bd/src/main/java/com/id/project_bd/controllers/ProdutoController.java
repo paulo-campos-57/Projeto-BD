@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.Dado;
-//import com.id.project_bd.models.Historia;
 import com.id.project_bd.models.Livro;
-//import com.id.project_bd.models.Personagem;
 import com.id.project_bd.models.Produto;
 import com.id.project_bd.repository.DadoRepository;
 import com.id.project_bd.repository.LivroRepository;
@@ -92,7 +90,7 @@ public class ProdutoController {
         if (deleted) {
             return "Produto " + id_produto + " deletado com sucesso!\n";
         } else {
-            return "Produto " + id_produto + " não encontradp para exclusão!\n";
+            return "Produto " + id_produto + " não encontrado para exclusão!\n";
         }
     }
 
@@ -116,7 +114,7 @@ public class ProdutoController {
         return mv;
     }
 
-    @GetMapping("/{id_produto}")
+    @GetMapping("/detalhes/{id_produto}")
     public ModelAndView getSpecificProduto(@PathVariable int id_produto) {
         Produto produto = produtoRepository.getProdutoById(id_produto);
         ModelAndView mv = new ModelAndView();
@@ -128,20 +126,4 @@ public class ProdutoController {
         }
         return mv;
     }
-
-    /*
-     * @GetMapping("/alterar/{id_produto}")
-     * public ModelAndView alterarProduto(@PathVariable int id_produto) {
-     * Produto produto = produtoRepository.getProdutoById(id_produto);
-     * ModelAndView mv = new ModelAndView();
-     * if (produto != null) {
-     * mv.addObject("produto", produto);
-     * mv.setViewName("alterarProduto");
-     * } else {
-     * mv.setViewName("index");
-     * }
-     * return mv;
-     * }
-     */
-
 }

@@ -33,12 +33,12 @@ public class CompraRepository {
 
             Produto produto = new Produto();
             produto.setIdproduto(resultSet.getInt("ID_PRODUTO"));
-            produto.setnome_produto(resultSet.getString("NOME_PRODUTO"));
+            produto.setNome_produto(resultSet.getString("NOME_PRODUTO"));
             produto.setDescricao(resultSet.getString("DESCRICAO"));
             produto.setPreco(resultSet.getDouble("PRECO"));
 
             compra.setIdproduto(resultSet.getInt("ID_PRODUTO"));
-            compra.setnome_produto(resultSet.getString("NOME_PRODUTO"));
+            compra.setNome_produto(resultSet.getString("NOME_PRODUTO"));
             compra.setDescricao(resultSet.getString("DESCRICAO"));
             compra.setPreco(resultSet.getDouble("PRECO"));
 

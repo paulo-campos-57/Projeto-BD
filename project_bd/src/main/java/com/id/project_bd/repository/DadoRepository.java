@@ -37,12 +37,12 @@ public class DadoRepository {
 
             Produto produto = new Produto();
             produto.setIdproduto(resultSet.getInt("ID_PRODUTO"));
-            produto.setnome_produto(resultSet.getString("NOME_PRODUTO"));
+            produto.setNome_produto(resultSet.getString("NOME_PRODUTO"));
             produto.setDescricao(resultSet.getString("DESCRICAO"));
             produto.setPreco(resultSet.getDouble("PRECO"));
 
             dado.setIdproduto(resultSet.getInt("ID_PRODUTO"));
-            dado.setnome_produto(resultSet.getString("NOME_PRODUTO"));
+            dado.setNome_produto(resultSet.getString("NOME_PRODUTO"));
             dado.setDescricao(resultSet.getString("DESCRICAO"));
             dado.setPreco(resultSet.getDouble("PRECO"));
 

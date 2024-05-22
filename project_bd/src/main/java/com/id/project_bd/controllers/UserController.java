@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.id.project_bd.models.Historia;
-//import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.id.project_bd.models.User;
 import com.id.project_bd.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;

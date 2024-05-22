@@ -38,11 +38,11 @@ public class Produto {
         this.id_produto = id_produto;
     }
 
-    public void setnome_produto(String nome_produto){
+    public void setNome_produto(String nome_produto){
         this.nome_produto = nome_produto;
     }
 
-    public String getnome_produto(){
+    public String getNome_produto(){
         return nome_produto;
     }
     
@@ -74,7 +74,6 @@ public class Produto {
     }
 
     public void setId_user(int int1) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setId_user'");
     }
 }
