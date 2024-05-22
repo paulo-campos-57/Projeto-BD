@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header>
         <div class="headerCabecalho" style="text-shadow: 1px 1px 1px black; display: flex; flex-flow: row nowrap;
@@ -28,8 +30,8 @@
                             font-size: 1em; list-style: none;
                             text-transform: uppercase;">
                             <a href="/" class="links" style="text-shadow: 1px 1px 1px black;
-                                text-decoration: none; color: #D2B48C;"
-                                onmouseover="this.style.color='green';" onmouseout="this.style.color='#D2B48C';">
+                                text-decoration: none; color: #D2B48C;" onmouseover="this.style.color='green';"
+                                onmouseout="this.style.color='#D2B48C';">
                                 Voltar
                             </a>
                         </li>
@@ -47,28 +49,36 @@
             <!-- Campo para ID do Mestre (fk_id_mestre) preenchido via JavaScript -->
             <input type="hidden" name="fk_id_mestre" id="fk_id_mestre" value="">
 
-            <input type="text" name="nome" placeholder="Nome da História" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
+            <input type="text" name="nome" placeholder="Nome da História"
+                style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;"
+                required>
 
-            <textarea name="prologo" placeholder="Prólogo da História" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required></textarea>
-
-            <input type="number" name="qtd_jogadores" placeholder="Quantidade de Jogadores" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
+            <textarea name="prologo" placeholder="Prólogo da História"
+                style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;"
+                required></textarea>
 
             <label for="dt_inicio">Data de Início:</label>
-            <input type="date" name="dt_inicio" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
+            <input type="date" name="dt_inicio"
+                style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;"
+                required>
 
             <label for="presencial">Presencial:</label>
             <input type="checkbox" name="presencial" style="margin-bottom: 10px;">
 
-            <button type="submit" style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#4CAF50';">Cadastrar</button>
-        </form>  
+            <button type="submit"
+                style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer;"
+                onmouseover="this.style.backgroundColor='#45a049';"
+                onmouseout="this.style.backgroundColor='#4CAF50';">Cadastrar</button>
+        </form>
     </div>
-    
-    <footer class="footer" style="width: 100%; text-align: center; font-weight: bold; font-style: italic; background-color: rgb(63, 0, 63);">
+
+    <footer class="footer"
+        style="width: 100%; text-align: center; font-weight: bold; font-style: italic; background-color: rgb(63, 0, 63);">
         <img src="/images/logo.png" alt="Logo" style="width: 10%; align-items: start;">
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Obter a URL atual
             var url = new URL(window.location.href);
             // Obter o último segmento da URL (que é o ID do mestre)
@@ -78,4 +88,5 @@
         });
     </script>
 </body>
+
 </html>

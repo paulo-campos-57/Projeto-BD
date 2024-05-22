@@ -18,8 +18,8 @@ public class HistoriaRepository {
 
     public void insertHistoria(Historia historia) {
         jdbcTemplate.update(
-                "INSERT INTO HISTORIA(NOME, PROLOGO, QTD_JOGADORES, DT_INICIO, PRESENCIAL, FK_ID_MESTRE) VALUES(?, ?, ?, ?, ?, ?)",
-                historia.getNome(), historia.getPrologo(), historia.getQtd_jogadores(), historia.getDt_inicio(),
+                "INSERT INTO HISTORIA(NOME, PROLOGO, DT_INICIO, PRESENCIAL, FK_ID_MESTRE) VALUES(?, ?, ?, ?, ?)",
+                historia.getNome(), historia.getPrologo(), historia.getDt_inicio(),
                 historia.isPresencial(), historia.getFk_id_mestre());
         historia.setId_historia(historia.getId_historia());
     }
@@ -59,8 +59,8 @@ public class HistoriaRepository {
 
     public void updateHistoria(Historia historia) {
         jdbcTemplate.update(
-                "UPDATE HISTORIA SET NOME = ?, PROLOGO = ?, QTD_JOGADORES = ?, PRESENCIAL = ? WHERE ID_HISTORIA = ?",
-                historia.getNome(), historia.getPrologo(), historia.getQtd_jogadores(), historia.isPresencial(),
+                "UPDATE HISTORIA SET NOME = ?, PROLOGO = ?, PRESENCIAL = ? WHERE ID_HISTORIA = ?",
+                historia.getNome(), historia.getPrologo(), historia.isPresencial(),
                 historia.getId_historia());
     }
 }
