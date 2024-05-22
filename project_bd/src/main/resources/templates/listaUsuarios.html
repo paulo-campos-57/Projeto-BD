@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Lista de usuários</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -27,7 +29,17 @@
         </div>
     </header>
     <div class="container-list">
-        <h1>Lista de usuários</h1>
+        <div class="titulo-lista">
+            <h1>Lista de usuários</h1>
+            <div class="button-container">
+                <a href="/users/lista/ordenado">
+                    <button class="change">A - Z</button>
+                </a>
+                <a href="/users/lista">
+                    <button class="change">ID</button>
+                </a>
+            </div>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -65,15 +77,9 @@
             </tbody>
         </table>
     </div>
-    <footer class="footer" style="
-            width: 100%; 
-            text-align: center; 
-            font-weight: bold;
-            font-style: italic;
-            background-color: rgb(63, 0, 63);
-            bottom: 0;">
-        <img src="/images/logo.png" alt="Logo", 
-        style="width: 10%; align-items: start;">
+    <footer class="footer">
+        <img src="/images/logo.png" alt="Logo">
     </footer>
 </body>
+
 </html>

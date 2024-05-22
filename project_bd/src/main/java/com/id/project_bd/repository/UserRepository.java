@@ -70,6 +70,10 @@ public class UserRepository {
         });
     }
 
+    public List<User> getAllUsersSortedByName() {
+        return jdbcTemplate.query("SELECT * FROM USER ORDER BY USER_NAME ASC", userMapper);
+    }
+
     public User getUserById(int id_user) {
         return jdbcTemplate.queryForObject("SELECT * FROM USER WHERE ID_USER = ?", userMapper, id_user);
     }

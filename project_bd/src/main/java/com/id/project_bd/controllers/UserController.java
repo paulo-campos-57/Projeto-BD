@@ -69,6 +69,14 @@ public class UserController {
         return mv;
     }
 
+    @GetMapping("/lista/ordenado")
+    public ModelAndView getAllUsersSortedByName() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("users", userRepository.getAllUsersSortedByName());
+        mv.setViewName("listaUsuarios");
+        return mv;
+    }
+
     @GetMapping("/{id_user}")
     public ModelAndView getSpecificUser(@PathVariable int id_user) {
         User user = userRepository.getUserById(id_user);
