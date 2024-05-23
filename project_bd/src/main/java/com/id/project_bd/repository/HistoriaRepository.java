@@ -48,10 +48,15 @@ public class HistoriaRepository {
     }
 
     @SuppressWarnings("deprecation")
-    public List<User> getUsersByHistory(int id_historia){
-        String sql = "SELECT U.USER_NAME FROM USER U JOIN PARTICIPACAO P ON U.ID_USER = P.FK_ID_PERSONAGEM JOIN HISTORIA H ON P.FK_ID_HISTORIA = H.ID_HISTORIA WHERE H.ID_HISTORIA = ?;";
-        
-        return jdbcTemplate.query(sql, new Object[]{id_historia}, (resultSet, rowNum) -> {
+    public List<User> getUsersByHistory(int id_historia) {
+        String sql = "SELECT U.USER_NAME FROM USER U " + 
+                "JOIN JOGADOR J ON U.ID_USER = J.FK_ID_USER " +
+                "JOIN PERSONAGEM P2 ON J.FK_ID_USER = P2.FK_ID_JOGADOR " +
+                "JOIN PARTICIPACAO P ON P2.ID_PERSONAGEM  = P.FK_ID_PERSONAGEM " +
+                "JOIN HISTORIA H ON P.FK_ID_HISTORIA = H.ID_HISTORIA " +
+                "WHERE H.ID_HISTORIA = ?;";
+
+        return jdbcTemplate.query(sql, new Object[] { id_historia }, (resultSet, rowNum) -> {
             User user = new User();
             user.setUser_name(resultSet.getString("USER_NAME"));
 

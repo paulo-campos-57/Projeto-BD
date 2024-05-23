@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +8,48 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    <header>
-        <!-- Seu cabeçalho aqui -->
+    <header class="cabecalho">
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
+                    </aside>
+                </hgroup>
+            </div>
+            <nav>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/personagem/lista" class="links">Voltar</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
     <div class="container">
-        <h1 style="text-align: center;">Faça seu cadastro como mestre</h1><br>
-        <!-- Elementos para exibir os valores -->
+        <h1>Participe dessa história!</h1><br>
         <div>
             <p>id_personagem: <span id="idPersonagem"></span></p>
             <p>fk_id_mestre: <span id="fkIdMestre"></span></p>
             <p>id_Historia: <span id="idHistoria"></span></p>
         </div>
-        <!-- Formulário de cadastro -->
-        <form id="cadastroForm" method="post" style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
-            <input type="text" name="fk_id_personagem" id="fk_id_personagem" placeholder="id_personagem" style="display: none;"> <!-- Campo oculto para armazenar o fk_id_personagem -->
-            <input type="text" name="fk_id_mestre" id="fk_id_mestre" placeholder="fk_id_mestre" style="display: none;"> <!-- Campo oculto para armazenar o fk_id_mestre -->
-            <button type="submit" style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#4CAF50';">Cadastrar</button>
-        </form>  
+        <form id="cadastroForm" method="post">
+            <input type="text" name="fk_id_personagem" id="fk_id_personagem" placeholder="id_personagem"
+                style="display: none;">
+            <input type="text" name="fk_id_mestre" id="fk_id_mestre" placeholder="fk_id_mestre" style="display: none;">
+            <button type="submit" class="button-b">Cadastrar</button>
+        </form>
     </div>
-    
-    <footer class="footer" style="
-            width: 100%; 
-            text-align: center; 
-            font-weight: bold;
-            font-style: italic;
-            background-color: rgb(63, 0, 63);">
-        <!-- Seu rodapé aqui -->
+
+    <footer class="footer">
+        <img src="/images/logo.png" alt="Logo">
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Obter a URL atual
             var url = new URL(window.location.href);
             // Obter o último e penúltimo segmento da URL (que são id_personagem e fk_id_mestre)
@@ -45,7 +57,7 @@
             var idPersonagem = segments[segments.length - 3];
             var fkIdMestre = segments[segments.length - 2];
             var idHistoria = segments[segments.length - 1]
-            
+
             // Exibir os valores na página
             document.getElementById('idPersonagem').value = idPersonagem;
             document.getElementById('fkIdMestre').value = fkIdMestre;
@@ -58,4 +70,5 @@
         });
     </script>
 </body>
+
 </html>

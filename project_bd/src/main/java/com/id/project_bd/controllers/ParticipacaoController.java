@@ -18,12 +18,12 @@ import com.id.project_bd.repository.ParticipacaoRepository;
 @RestController
 @RequestMapping("/participacao")
 public class ParticipacaoController {
-    
+
     @Autowired
     private ParticipacaoRepository participacaoRepository;
 
     @RequestMapping(value = "/{id_personagem}/{fk_id_mestre}/{id_historia}", method = RequestMethod.GET)
-    public ModelAndView participcaoForm(){
+    public ModelAndView participcaoForm() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("participacaoForm");
         return mv;
@@ -31,15 +31,16 @@ public class ParticipacaoController {
 
     @RequestMapping(value = "/{id_personagem}/{fk_id_mestre}/{id_historia}", method = RequestMethod.POST)
     public ModelAndView participacaoForm(@PathVariable("id_personagem") int idPersonagem,
-                                        @PathVariable("fk_id_mestre") int fkIdMestre,
-                                        @PathVariable("id_historia") int idHistoria) {
-        // Agora você pode usar os valores int idPersonagem, int fkIdMestre e int idHistoria diretamente aqui
-        
+            @PathVariable("fk_id_mestre") int fkIdMestre,
+            @PathVariable("id_historia") int idHistoria) {
+        // Agora você pode usar os valores int idPersonagem, int fkIdMestre e int
+        // idHistoria diretamente aqui
+
         Participacao participacao = new Participacao();
         participacao.setfk_id_personagem(idPersonagem);
         participacao.setfk_id_mestre(fkIdMestre);
         participacao.setfk_id_historia(idHistoria);
-        
+
         participacaoRepository.insertParticipacao(participacao);
 
         ModelAndView mv = new ModelAndView();
@@ -47,16 +48,14 @@ public class ParticipacaoController {
         return mv;
     }
 
-
-
     @PostMapping
-    public String createParticipacao(@RequestBody Participacao participacao){
+    public String createParticipacao(@RequestBody Participacao participacao) {
         participacaoRepository.insertParticipacao(participacao);
         return "Participacao inserida!\n";
     }
 
     @GetMapping
-    public List<Participacao> getParticipacao(){
+    public List<Participacao> getParticipacao() {
         return participacaoRepository.getAllParticipacao();
     }
 }
