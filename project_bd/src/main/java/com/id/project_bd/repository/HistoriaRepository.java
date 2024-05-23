@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.id.project_bd.models.Historia;
+import com.id.project_bd.models.User;
 
 @Repository
 public class HistoriaRepository {
@@ -43,6 +44,18 @@ public class HistoriaRepository {
             historia.setPresencial(resultSet.getBoolean("PRESENCIAL"));
             historia.setFk_id_mestre(resultSet.getInt("FK_ID_MESTRE"));
             return historia;
+        });
+    }
+
+    @SuppressWarnings("deprecation")
+    public List<User> getUsersByHistory(int id_historia){
+        String sql = "SELECT U.USER_NAME FROM USER U JOIN PARTICIPACAO P ON U.ID_USER = P.FK_ID_PERSONAGEM JOIN HISTORIA H ON P.FK_ID_HISTORIA = H.ID_HISTORIA WHERE H.ID_HISTORIA = ?;";
+        
+        return jdbcTemplate.query(sql, new Object[]{id_historia}, (resultSet, rowNum) -> {
+            User user = new User();
+            user.setUser_name(resultSet.getString("USER_NAME"));
+
+            return user;
         });
     }
 

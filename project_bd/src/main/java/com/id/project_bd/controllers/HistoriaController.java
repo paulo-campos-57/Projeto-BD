@@ -48,6 +48,14 @@ public class HistoriaController {
         return mv;
     }
 
+    @GetMapping("/usuarios/{id_historia}")
+    public ModelAndView getUserByHistory(@PathVariable int id_historia){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("historia", historiaRepository.getUsersByHistory(id_historia));
+        mv.setViewName("idHIstorias");
+        return mv;
+    }
+
     @GetMapping("/{id_historia}")
     public ModelAndView getSpecificHistoria(@PathVariable int id_historia){
         Historia historia = historiaRepository.getHistoriaById(id_historia);

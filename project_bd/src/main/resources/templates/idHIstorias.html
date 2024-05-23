@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionar</title>
+    <title>Usuarios da historia</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -21,26 +22,32 @@
             <nav>
                 <div class="navbarCabecalho">
                     <ul>
-                        <li><a href="/historia/lista" class="links">Voltar</a></li>
+                        <li><a href="/" class="links">Voltar</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
-    <div class="container" style="text-align: center;">
-        <h1 th:text="'Ações para a historia' + ${historia.nome}"></h1><br>
-        <a th:href="@{/historia/alterar/{id}(id=${historia.id_historia})}">
-            <button type="submit" class="button-b">Editar historia</button>
-        </a>
-        <a th:href="@{/historia/excluir/{id}(id=${historia.id_historia})}">
-            <button type="submit" class="button-b">Excluir historia</button>
-        </a>
-        <a th:href="@{/historia/usuarios/{id}(id=${historia.id_historia})}">
-            <button type="submit" class="button-b">Ver participantes da historia</button>
-        </a>
+    <div class="container-list">
+        <div class="titulo-lista">
+            <h1>Usuarios da historia</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${historia}">
+                    <td th:text="${user.user_name}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
     </footer>
 </body>
+
 </html>
