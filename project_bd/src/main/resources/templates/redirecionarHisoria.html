@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionar</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
+                    </aside>
+                </hgroup>
+            </div>
+            <nav>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/historia/lista" class="links">Voltar</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container" style="text-align: center;">
+        <h1 th:text="'Ações para a historia' + ${historia.nome}"></h1><br>
+        <a th:href="@{/historia/alterar/{id}(id=${historia.id_historia})}">
+            <button type="submit" class="button-b">Editar historia</button>
+        </a>
+        <a th:href="@{/historia/excluir/{id}(id=${historia.id_historia})}">
+            <button type="submit" class="button-b">Excluir historia</button>
+        </a>
+    </div>
+    <footer class="footer">
+        <img src="/images/logo.png" alt="Logo">
+    </footer>
+</body>
+</html>
