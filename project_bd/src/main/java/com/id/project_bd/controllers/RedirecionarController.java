@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.Historia;
+import com.id.project_bd.models.Mestre;
 import com.id.project_bd.models.User;
 import com.id.project_bd.repository.HistoriaRepository;
+import com.id.project_bd.repository.MestreRepository;
 import com.id.project_bd.repository.UserRepository;
 
 @RestController
@@ -21,6 +23,9 @@ public class RedirecionarController {
 
     @Autowired
     private HistoriaRepository historiaRepository;
+
+    @Autowired
+    private MestreRepository mestreRepository;
 
     @GetMapping("/usuario/{id_user}")
     public ModelAndView redirecionarUsuario(@PathVariable("id_user") int id_user) {
@@ -37,6 +42,15 @@ public class RedirecionarController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirecionarHisoria");
         mv.addObject("historia", historia);
+        return mv;
+    }
+
+    @GetMapping("/mestre/{fk_id_user}")
+    public ModelAndView redirecionarMestre(@PathVariable("fk_id_user") int fk_id_user){
+        Mestre mestre = mestreRepository.getMestreById(fk_id_user);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirecionarMestre");
+        mv.addObject("mestre", mestre);
         return mv;
     }
 }

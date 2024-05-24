@@ -21,23 +21,23 @@
             <nav>
                 <div class="navbarCabecalho">
                     <ul>
-                        <li><a href="/historia/lista" class="links">Voltar</a></li>
+                        <li><a href="/mestres/lista" class="links">Voltar</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
     <div class="container" style="text-align: center;">
-        <h1 th:text="'Ações para a historia' + ${historia.nome}"></h1><br>
-        <a th:href="@{/historia/alterar/{id}(id=${historia.id_historia})}">
+        <h1 th:text="'Ações para mestre' + ${mestre.fk_id_user}"></h1><br>
+        <a th:href="@{/historia/cadastro/{id}(id=${mestre.fk_id_user})}">
+            <button type="submit" class="button-b">Criar historia</button>
+        </a>
+        <a th:href="@{/mestres/alterar/{id}(id=${mestre.fk_id_user})}">
             <button type="submit" class="button-b">Editar historia</button>
         </a>
-        <a th:href="@{/historia/usuarios/{id}(id=${historia.id_historia})}">
-            <button type="submit" class="button-b">Ver participantes da historia</button>
-        </a>
-        <a th:href="@{/historia/excluir/{id}(id=${historia.id_historia})}"
-        onclick="return confirm('Tem certeza que deseja excluir esse usuário?')">
-            <button type="submit" class="button-b-delete">Excluir usuário</button>
+        <a th:href="@{/mestres/excluir/{id}(id=${mestre.fk_id_user})}"
+        onclick="return confirm('Tem certeza que deseja excluir essa historia?')">
+            <button type="submit" class="button-b-delete">Excluir Historia</button>
         </a>
     </div>
     <footer class="footer">

@@ -51,6 +51,9 @@
                         <a th:href="@{/mestres/excluir/{id}(id=${mestre.fk_id_user})}"
    onclick="return confirm('Tem certeza que deseja excluir esse mestre?')">Excluir</a>
                     </td>
+                    <td>
+                        <a th:href="@{/redirecionar/mestre/{id}(id=${mestre.fk_id_user})}">Opções</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
