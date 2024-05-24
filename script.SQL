@@ -199,7 +199,7 @@ INSERT INTO PRODUTO (NOME_PRODUTO, DESCRICAO, PRECO, FK_ID_USER) VALUES
 ('D20', 'Dado de 20 lados, azul', 15.00, 3),
 ('D4', 'Dado de 4 lados, branco', 7.50, 3),
 ('Pôster', 'Põster de O Senhor dos Aneis, autografado pelo elenco', 1500.00, 5),
-('Action Figure', 'Batman', 400.00, 6)
+('Action Figure', 'Batman', 400.00, 6);
 
 INSERT INTO DADO (FK_ID_PRODUTO, QTD_LADOS) VALUES
 (4, 20),

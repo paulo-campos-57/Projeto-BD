@@ -12,6 +12,7 @@ public class User {
     private String rua;
     private String numero;
     private String complemento;
+    private int numHistorias;
 
     public User(int id_user, String user_name, String senha, String contato1, String contato2, String estado,
             String cidade, String bairro, String rua, String numero, String complemento) {
@@ -28,9 +29,11 @@ public class User {
         this.numero = numero;
         this.complemento = complemento;
     }
+
     public User(int id_user) {
         this.id_user = id_user;
     }
+
     public User() {
         super();
     }
@@ -121,6 +124,14 @@ public class User {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public int getNumHistorias() {
+        return numHistorias;
+    }
+
+    public void setNumHistorias(int numHistorias) {
+        this.numHistorias = numHistorias;
     }
 
     @Override

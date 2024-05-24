@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taverna do Camaleão</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -30,29 +33,42 @@
     </header>
     <div class="container">
         <h1 style="text-align: center;">Bem vindos, Aventureiros!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eius cumque quod excepturi ullam dicta, nemo doloribus architecto sed magnam modi vitae omnis esse repellendus dolore, libero qui voluptas commodi, blanditiis debitis magni impedit adipisci quas at. Facere dolores aliquid ipsam voluptatum eligendi consequatur ut neque, debitis vitae dignissimos corrupti quas totam aspernatur earum quidem harum quis. Magni, vitae placeat.
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eius cumque quod excepturi ullam dicta, nemo
+            doloribus architecto sed magnam modi vitae omnis esse repellendus dolore, libero qui voluptas commodi,
+            blanditiis debitis magni impedit adipisci quas at. Facere dolores aliquid ipsam voluptatum eligendi
+            consequatur ut neque, debitis vitae dignissimos corrupti quas totam aspernatur earum quidem harum quis.
+            Magni, vitae placeat.
         </p><br>
-        <form action="/users/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os usuários</button>        
+        <form class="index-form" action="/users/lista" method="get">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam aut distinctio amet assumenda quis
+                incidunt praesentium fugit doloribus ipsam quo.</p><br>
+            <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                <i class="fas fa-users"></i>
+                <span id="button-text" style="opacity: 0;">Ver todos os usuários</span>
+            </button><br>
         </form><br>
         <form action="/mestres/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os mestres</button>        
+            <button type="submit" class="custom-button">Ver todos os mestres</button>
         </form><br>
         <form action="/jogador/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os jogadores</button>        
+            <button type="submit" class="custom-button">Ver todos os jogadores</button>
         </form><br>
         <form action="/historia/lista" method="get">
-            <button type="submit" class="custom-button">Ver todas as histórias</button>        
+            <button type="submit" class="custom-button">Ver todas as histórias</button>
         </form><br>
         <form action="/personagem/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os personagens</button>        
+            <button type="submit" class="custom-button">Ver todos os personagens</button>
         </form><br>
         <form action="/produto/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os produtos</button>        
-        </form>                             
+            <button type="submit" class="custom-button">Ver todos os produtos</button>
+        </form><br>
+        <form action="/users/ranking" method="get">
+            <button type="submit" class="custom-button">Top 3 users</button>
+        </form>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
     </footer>
 </body>
+
 </html>

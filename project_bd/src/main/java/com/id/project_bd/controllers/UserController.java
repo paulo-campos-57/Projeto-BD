@@ -69,7 +69,7 @@ public class UserController {
     }
 
     @GetMapping("/historias/{id_user}")
-    public ModelAndView getHistoriasById(@PathVariable int id_user){
+    public ModelAndView getHistoriasById(@PathVariable int id_user) {
         ModelAndView mv = new ModelAndView();
         mv.addObject("users", userRepository.getHistoriasById(id_user));
         mv.setViewName("historiasId");
@@ -128,14 +128,19 @@ public class UserController {
 
     @GetMapping("/excluir/{id_user}")
     public String excluirUsuario(@PathVariable("id_user") Integer id_user, Model model) {
-        // Remover o usuário do banco de dados
         userRepository.deleteUser(id_user);
 
-        // Atualizar o modelo com a lista de usuários atualizada após a exclusão
         model.addAttribute("users", userRepository.getAllUsers());
 
-        // Retornar o nome da view para renderizar novamente a mesma página
-        return "listaUsuarios"; // Nome da sua view Thymeleaf (listaUsuarios.html)
+        return "listaUsuarios";
+    }
+
+    @GetMapping("/ranking")
+    public ModelAndView getTop3UsersByParticipations() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("users", userRepository.getTop3UsersByParticipations());
+        mv.setViewName("top3Users");
+        return mv;
     }
 
 }

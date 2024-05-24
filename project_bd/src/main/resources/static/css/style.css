@@ -92,6 +92,11 @@ body {
     padding: 30px 30px;
 }
 
+.index-form {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
 .container-list {
     min-height: 400px;
     margin: 20px;
@@ -102,7 +107,8 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     border: 1px solid #000;
     padding: 8px;
     text-align: left;
@@ -130,18 +136,50 @@ tr {
 }
 
 .custom-button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     border: none;
-    background-color: #4CAF50;
     color: white;
     font-weight: bold;
     cursor: pointer;
+    background-color: #4CAF50;
+    transition: width 0.3s, height 0.3s, background-color 0.3s, border-radius 0.3s;
+    margin: 2% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#button-text {
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.custom-button i {
+    transition: transform 0.3s;
 }
 
 .custom-button:hover {
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
     background-color: #45a049;
+}
+
+.custom-button:hover #button-text {
+    opacity: 1;
+}
+
+.custom-button:hover i {
+    transform: scale(1.2);
 }
 
 .button-b {
@@ -195,8 +233,8 @@ tr {
     padding: 10px;
     border-radius: 50px;
     border: none;
-    background-color: rgb(63, 0, 63); 
-    color: white; 
+    background-color: rgb(63, 0, 63);
+    color: white;
     font-weight: bold;
     cursor: pointer;
     margin: 2% 0;
@@ -219,7 +257,7 @@ tr {
 }
 
 .error-text {
-    background-color: #f8d7da; 
+    background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
     border-radius: 4px;
