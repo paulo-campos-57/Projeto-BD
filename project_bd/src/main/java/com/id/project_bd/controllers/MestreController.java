@@ -61,6 +61,14 @@ public class MestreController {
         return mv;
     }
 
+    @GetMapping("/historias/{fk_id_user}")
+    public ModelAndView getHistoryByMestre(@PathVariable int fk_id_user){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("mestre", mestreRepository.getHistoryByMestre(fk_id_user));
+        mv.setViewName("mestreHistorias");
+        return mv;
+    }
+
     @GetMapping("/alterar/{fk_id_user}")
     public ModelAndView alterarMestre(@PathVariable int fk_id_user){
         Mestre mestre = mestreRepository.getMestreById(fk_id_user);

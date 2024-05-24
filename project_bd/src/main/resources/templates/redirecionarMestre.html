@@ -33,7 +33,10 @@
             <button type="submit" class="button-b">Criar historia</button>
         </a>
         <a th:href="@{/mestres/alterar/{id}(id=${mestre.fk_id_user})}">
-            <button type="submit" class="button-b">Editar historia</button>
+            <button type="submit" class="button-b">Editar mestre</button>
+        </a>
+        <a th:href="@{/mestres/historias/{id}(id=${mestre.fk_id_user})}">
+            <button type="submit" class="button-b">VIsualizar minhas historias</button>
         </a>
         <a th:href="@{/mestres/excluir/{id}(id=${mestre.fk_id_user})}"
         onclick="return confirm('Tem certeza que deseja excluir essa historia?')">

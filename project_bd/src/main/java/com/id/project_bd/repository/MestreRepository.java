@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.id.project_bd.models.Historia;
 import com.id.project_bd.models.Mestre;
 
 @Repository
@@ -26,6 +27,20 @@ public class MestreRepository {
         // Agora você pode excluir o mestre na tabela 'MESTRE' sem violar a integridade
         int rowsAffected = jdbcTemplate.update("DELETE FROM MESTRE WHERE FK_ID_USER = ?", fk_id_user);
         return rowsAffected > 0;
+    }
+
+    @SuppressWarnings("deprecation")
+    public List<Historia> getHistoryByMestre(int fk_id_user){
+        String sql = "select h.NOME from historia h " + 
+        "join mestre m on h.FK_ID_MESTRE = m.FK_ID_USER " + 
+        "where m.FK_ID_USER = ?;";
+
+        return jdbcTemplate.query(sql, new Object[] {fk_id_user}, (resultSet, rowNum) -> {
+            Historia historia = new Historia();
+            historia.setNome(resultSet.getString("NOME"));
+
+            return historia;
+        });
     }
     
 
