@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de usuários</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
+                    </aside>
+                </hgroup>
+            </div>
+            <nav>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/users/lista" class="links">Voltar</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container-list">
+        <div class="titulo-lista">
+            <h1>Lista de usuários</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome de Usuário</th>
+                    <th>Denunciar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}" th:if="${user.id_user} != ${currentUserId}">
+                    <td th:text="${user.id_user}"></td>
+                    <td th:text="${user.user_name}"></td>
+                    <td>
+                        <a th:href="@{/users/denuncia/{currentUserId}/{id_user}(currentUserId=${currentUserId}, id_user=${user.id_user})}">Denunciar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer">
+        <img src="/images/logo.png" alt="Logo">
+    </footer>
+</body>
+
+</html>

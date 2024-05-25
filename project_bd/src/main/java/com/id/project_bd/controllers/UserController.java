@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.id.project_bd.models.Denuncia;
 import com.id.project_bd.models.User;
+import com.id.project_bd.repository.DenunciaRepository;
 import com.id.project_bd.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +26,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private DenunciaRepository denunciaRepository;
 
     @RequestMapping(value = "/cadastro", method = RequestMethod.GET)
     public ModelAndView userForm() {
@@ -39,11 +45,20 @@ public class UserController {
         return mv;
     }
 
+
     @PostMapping
     public String createUser(@RequestBody User user) {
         userRepository.insertUser(user);
         return "Usuário " + user.getId_user() + " criado com sucesso!\n";
     }
+
+    @PostMapping("/denuncia")
+    public String createDenuncia(@RequestBody Denuncia denuncia){
+        denunciaRepository.insertDenuncia(denuncia);
+        return "Denuncia cadastrada";
+    }
+
+    
 
     @DeleteMapping("/{id_user}")
     public String deleteUser(@PathVariable int id_user) {
@@ -59,6 +74,42 @@ public class UserController {
     public List<User> getUser() {
         return userRepository.getAllUsers();
     }
+
+    @GetMapping("/denuncia/{id_user}")
+    public ModelAndView getAllUsers(@PathVariable("id_user") int id_user) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("users", userRepository.getAllUsers());
+        mv.addObject("currentUserId", id_user);  // Passando o ID do usuário no caminho para o modelo
+        mv.setViewName("listaDenuncia");
+        return mv;
+    }
+
+    @GetMapping("/denuncia/{currentUserId}/{id_user}")
+    public ModelAndView exibirFormularioDenuncia(@PathVariable("currentUserId") int currentUserId,
+                                                  @PathVariable("id_user") int idUser) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("currentUserId", currentUserId);
+        mv.addObject("idUser", idUser);
+        mv.setViewName("formularioDenuncia");
+        return mv;
+    }
+
+    @PostMapping("/denuncia/{currentUserId}/{id_user}")
+    public ModelAndView denunciarUsuario(@PathVariable("currentUserId") int currentUserId,
+                                   @PathVariable("id_user") int idUser,
+                                   @RequestParam("comentario") String comentario) {
+        Denuncia denuncia = new Denuncia(currentUserId, idUser, comentario);
+        denunciaRepository.insertDenuncia(denuncia);
+        
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("users", userRepository.getAllUsers());
+        mv.addObject("currentUserId", currentUserId);
+        mv.setViewName("index");
+        return mv;
+    }
+
+
+
 
     @GetMapping("/lista")
     public ModelAndView getAllUsers() {
