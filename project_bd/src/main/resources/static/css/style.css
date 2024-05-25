@@ -316,6 +316,58 @@ tr {
     color: #000;
 }
 
+.finalizar-compra {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.finalizar-compra h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.finalizar-compra p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.finalizar-compra .form-group {
+    margin-bottom: 15px;
+}
+
+.finalizar-compra .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 18px;
+}
+
+.finalizar-compra .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.finalizar-compra .form-group input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.finalizar-compra .form-group input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
 .footer {
     width: 100%;
     text-align: center;

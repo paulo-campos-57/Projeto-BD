@@ -155,4 +155,10 @@ public class UserRepository {
         });
     }
 
+    public boolean existsByUsername(String username) {
+        String sql = "SELECT COUNT(*) FROM USER WHERE USER_NAME = ?";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, username);
+        return count > 0;
+    }
+
 }

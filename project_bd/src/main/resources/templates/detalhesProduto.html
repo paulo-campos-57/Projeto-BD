@@ -39,7 +39,8 @@
             <p><strong>Preço:</strong> <span th:text="${produto.preco}">Preço do produto</span></p>
             <p><strong>ID do Usuário:</strong> <span th:text="${produto.fk_id_user}">ID do usuário</span></p>
         </div>
-        <button class="button-compra">Comprar</button>
+        <a th:href="@{/finalizar/compra/{id_produto}(id=${produto.id_produto})}" style="text-decoration: none;"><button
+                class="button-compra">Comprar</button></a>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
