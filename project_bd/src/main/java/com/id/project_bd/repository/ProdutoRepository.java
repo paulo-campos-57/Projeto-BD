@@ -14,6 +14,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import com.id.project_bd.models.Dado;
+import com.id.project_bd.models.Livro;
 import com.id.project_bd.models.Produto;
 
 @Repository
@@ -78,12 +80,12 @@ public class ProdutoRepository {
 
     public List<Produto> getSortedByName() {
         return jdbcTemplate.query("SELECT * FROM PRODUTO " +
-        "ORDER BY NOME_PRODUTO ASC", produtoMapper);
+                "ORDER BY NOME_PRODUTO ASC", produtoMapper);
     }
 
     public List<Produto> getSortedByPrice() {
         return jdbcTemplate.query("SELECT * FROM PRODUTO " +
-        "ORDER BY PRECO ASC", produtoMapper);
+                "ORDER BY PRECO ASC", produtoMapper);
     }
 
     public void updateProduto(Produto produto) {
@@ -93,7 +95,64 @@ public class ProdutoRepository {
 
     public Produto getProdutoById(int id_produto) {
         String sql = "SELECT * FROM PRODUTO WHERE ID_PRODUTO = ?";
-        return jdbcTemplate.queryForObject(sql, produtoMapper, id_produto);
+        Produto produto = jdbcTemplate.queryForObject(sql, produtoMapper, id_produto);
+
+        if (isDado(produto.getId_produto())) {
+            return getDadoById(produto.getId_produto());
+        } else if (isLivro(produto.getId_produto())) {
+            return getLivroById(produto.getId_produto());
+        }
+        return produto;
+    }
+
+    private boolean isDado(int id_produto) {
+        String sql = "SELECT COUNT(*) FROM DADO WHERE FK_ID_PRODUTO = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, id_produto);
+        return count != null && count > 0;
+    }
+
+    private boolean isLivro(int id_produto) {
+        String sql = "SELECT COUNT(*) FROM LIVRO WHERE FK_ID_PRODUTO = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, id_produto);
+        return count != null && count > 0;
+    }
+
+    private Dado getDadoById(int id_produto) {
+        String sql = "SELECT D.FK_ID_PRODUTO, D.QTD_LADOS, P.ID_PRODUTO, P.NOME_PRODUTO, P.DESCRICAO, P.PRECO " +
+                "FROM DADO D " +
+                "INNER JOIN PRODUTO P ON D.FK_ID_PRODUTO = P.ID_PRODUTO " +
+                "WHERE P.ID_PRODUTO = ?";
+        return jdbcTemplate.queryForObject(sql, (resultSet, rowNum) -> {
+            Dado dado = new Dado();
+            dado.setFk_id_produto(resultSet.getInt("FK_ID_PRODUTO"));
+            dado.setQtd_lados(resultSet.getInt("QTD_LADOS"));
+
+            dado.setIdproduto(resultSet.getInt("ID_PRODUTO"));
+            dado.setNome_produto(resultSet.getString("NOME_PRODUTO"));
+            dado.setDescricao(resultSet.getString("DESCRICAO"));
+            dado.setPreco(resultSet.getDouble("PRECO"));
+            return dado;
+        }, id_produto);
+    }
+
+    private Livro getLivroById(int id_produto) {
+        String sql = "SELECT L.FK_ID_PRODUTO, L.QTD_PAGINAS, L.ESTADO, P.ID_PRODUTO, P.NOME_PRODUTO, P.DESCRICAO, P.PRECO "
+                +
+                "FROM LIVRO L " +
+                "INNER JOIN PRODUTO P ON L.FK_ID_PRODUTO = P.ID_PRODUTO " +
+                "WHERE P.ID_PRODUTO = ?";
+        return jdbcTemplate.queryForObject(sql, (resultSet, rowNum) -> {
+            Livro livro = new Livro();
+            livro.setFk_id_produto(resultSet.getInt("FK_ID_PRODUTO"));
+            livro.setQtd_paginas(resultSet.getInt("QTD_PAGINAS"));
+            livro.setEstado(resultSet.getDouble("ESTADO"));
+
+            livro.setIdproduto(resultSet.getInt("ID_PRODUTO"));
+            livro.setNome_produto(resultSet.getString("NOME_PRODUTO"));
+            livro.setDescricao(resultSet.getString("DESCRICAO"));
+            livro.setPreco(resultSet.getDouble("PRECO"));
+            return livro;
+        }, id_produto);
     }
 
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -29,31 +31,46 @@
     </header>
     <div class="container">
         <h1 style="text-align: center;">Cadastro de Produto</h1><br>
-        <form action="#" method="post" style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
-            <input type="text" name="nome_produto" placeholder="Nome do Produto" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
-            <textarea name="descricao" placeholder="Descrição" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required></textarea>
-            <input type="number" name="preco" placeholder="Preço" step="0.01" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
-            <select name="tipo_produto" id="tipo_produto" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
+        <form action="#" method="post"
+            style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+            <input type="text" name="nome_produto" placeholder="Nome do Produto"
+                style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;"
+                required>
+            <textarea name="descricao" placeholder="Descrição"
+                style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;"
+                required></textarea>
+            <input type="number" name="preco" placeholder="Preço" step="0.01"
+                style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;"
+                required>
+            <select name="tipo_produto" id="tipo_produto"
+                style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;"
+                required>
                 <option value="produto">Produto Genérico</option>
                 <option value="livro">Livro</option>
                 <option value="dado">Dado</option>
             </select>
             <div id="livro" style="display:none;">
-                <input type="number" name="qtd_paginas" placeholder="Quantidade de Páginas" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;">
-                <input type="number" name="estado" placeholder="Estado (1 a 5)" min="1" max="5" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;">
+                <input type="number" name="qtd_paginas" placeholder="Quantidade de Páginas"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;">
+                <input type="number" name="estado" placeholder="Estado (1 a 5)" min="1" max="5"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;">
             </div>
             <div id="dado" style="display:none;">
-                <input type="number" name="qtd_lados" placeholder="Quantidade de Lados" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;">
+                <input type="number" name="qtd_lados" placeholder="Quantidade de Lados"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;">
             </div>
             <input type="hidden" name="tipo" id="tipo">
-            <button type="submit" style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#4CAF50';">Cadastrar</button>
-        </form>  
+            <button type="submit"
+                style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer;"
+                onmouseover="this.style.backgroundColor='#45a049';"
+                onmouseout="this.style.backgroundColor='#4CAF50';">Cadastrar</button>
+        </form>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
-    </footer> 
+    </footer>
     <script>
-        document.querySelector('select[name="tipo_produto"]').addEventListener('change', function() {
+        document.querySelector('select[name="tipo_produto"]').addEventListener('change', function () {
             var livroDiv = document.getElementById('livro');
             var dadoDiv = document.getElementById('dado');
             var tipoInput = document.getElementById('tipo');
@@ -73,4 +90,5 @@
         });
     </script>
 </body>
+
 </html>

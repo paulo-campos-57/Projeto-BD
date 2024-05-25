@@ -21,7 +21,7 @@ public class DenunciaRepository {
 
     @SuppressWarnings("deprecation")
     public List<Denuncia> getDenunciasById(int id_user){
-        String sql = "select d.COMENTARIO from denuncia d " + 
+        String sql = "select d.COMENTARIO from DENUNCIA d " + 
         "where d.FK_ID_DENUNCIADO = ?;";
 
         return jdbcTemplate.query(sql, new Object[] {id_user}, (resultSet, rowNum) -> {

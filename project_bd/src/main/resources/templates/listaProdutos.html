@@ -46,39 +46,40 @@
                     </a>
                 </div>
             </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Preço</th>
-                    <th>fk_id_user</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>fk_id_user</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <tr th:each="produto : ${produtos}">
-                    <td>
-                        <a th:href="@{/produto/{id}(id=${produto.id_produto})}" th:text="${produto.id_produto}"></a>
-                    </td>
-                    <td th:text="${produto.nome_produto}"></td>
-                    <td th:text="${produto.descricao}"></td>
-                    <td th:text="${produto.preco}"></td>
-                    <td th:text="${produto.fk_id_user}"></td>
-                    <td>
-                        <a th:href="@{/produto/alterar/{id}(id=${produto.id_produto})}">Editar</a>
-                        <a th:href="@{/produto/excluir/{id}(id=${produto.id_produto})}"
-                            onclick="return confirm('Tem certeza que deseja excluir esse produto?')">Excluir</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <footer class="footer">
-        <img src="/images/logo.png" alt="Logo">
-    </footer>
+                    <tr th:each="produto : ${produtos}">
+                        <td>
+                            <a th:href="@{/produto/detalhes/{id_produto}(id_produto=${produto.id_produto})}"
+                                th:text="${produto.id_produto}"></a>
+                        </td>
+                        <td th:text="${produto.nome_produto}"></td>
+                        <td th:text="${produto.descricao}"></td>
+                        <td th:text="${produto.preco}"></td>
+                        <td th:text="${produto.fk_id_user}"></td>
+                        <td>
+                            <a th:href="@{/produto/alterar/{id}(id=${produto.id_produto})}">Editar</a>
+                            <a th:href="@{/produto/excluir/{id}(id=${produto.id_produto})}"
+                                onclick="return confirm('Tem certeza que deseja excluir esse produto?')">Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="footer">
+            <img src="/images/logo.png" alt="Logo">
+        </footer>
 </body>
 
 </html>

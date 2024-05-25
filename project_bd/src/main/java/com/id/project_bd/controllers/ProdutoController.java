@@ -136,10 +136,22 @@ public class ProdutoController {
         ModelAndView mv = new ModelAndView();
         if (produto != null) {
             mv.addObject("produto", produto);
-            mv.setViewName("detalhesProduto");
+            if (produto instanceof Dado) {
+                Dado dado = (Dado) produto;
+                mv.addObject("qtd_lados", dado.getQtd_lados());
+                mv.setViewName("detalhesDado");
+            } else if (produto instanceof Livro) {
+                Livro livro = (Livro) produto;
+                mv.addObject("estado", livro.getEstado());
+                mv.addObject("qtd_paginas", livro.getQtd_paginas());
+                mv.setViewName("detalhesLivro");
+            } else {
+                mv.setViewName("detalhesProduto");
+            }
         } else {
             mv.setViewName("index");
         }
         return mv;
     }
+
 }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taverna do Camaleão</title>
+    <title>Detalhes do livro - Taverna do Camaleão</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -31,13 +31,15 @@
         </div>
     </header>
     <div class="container">
-        <h1>Detalhes do Produto</h1>
+        <h1>Detalhes do Livro</h1>
         <div class="detalhes">
             <h2 th:text="${produto.nome_produto}">Nome do Produto</h2>
             <p><strong>ID:</strong> <span th:text="${produto.id_produto}">1</span></p>
             <p><strong>Descrição:</strong> <span th:text="${produto.descricao}">Descrição do produto</span></p>
             <p><strong>Preço:</strong> <span th:text="${produto.preco}">Preço do produto</span></p>
             <p><strong>ID do Usuário:</strong> <span th:text="${produto.fk_id_user}">ID do usuário</span></p>
+            <p><strong>Estado do livro</strong> <span th:text="${produto.estado}">Estado do livro</p>
+            <p><strong>Quantidade de páginas:</strong> <span th:text="${produto.qtd_paginas}">Quantidade de páginas do livro</span></p>
         </div>
         <button class="button-compra">Comprar</button>
     </div>

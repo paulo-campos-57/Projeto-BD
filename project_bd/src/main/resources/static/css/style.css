@@ -214,6 +214,23 @@ tr {
     background-color: #f10e0e;
 }
 
+.button-compra {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 2% auto;
+    display: block;
+}
+
+.button-compra:hover {
+    background-color: #45a049;
+}
+
 .titulo-lista {
     display: flex;
     align-items: center;
@@ -270,6 +287,33 @@ tr {
 .error-text p {
     margin: 10px 0;
     font-size: 16px;
+}
+
+.detalhes {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detalhes h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.detalhes p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.detalhes p strong {
+    color: #000;
 }
 
 .footer {
