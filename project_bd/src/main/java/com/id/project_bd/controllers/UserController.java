@@ -108,6 +108,14 @@ public class UserController {
         return mv;
     }
 
+    @GetMapping("verDenuncia/{id_user}")
+    public ModelAndView denunciasById(@PathVariable int id_user){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("denuncia", denunciaRepository.getDenunciasById(id_user));
+        mv.setViewName("denunciasUsuario");
+        return mv;    
+    }
+
 
 
 

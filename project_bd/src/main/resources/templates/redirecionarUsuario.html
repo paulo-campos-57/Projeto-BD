@@ -47,6 +47,9 @@
         <a th:href="@{/users/denuncia/{id}(id=${user.id_user})}">
             <button type="submit" class="button-b">Denuncia usuario</button>
         </a>
+        <a th:href="@{/users/verDenuncia/{id}(id=${user.id_user})}">
+            <button type="submit" class="button-b">Ver quem me deunciou</button>
+        </a>
         <a th:href="@{/users/excluir/{id}(id=${user.id_user})}"
         onclick="return confirm('Tem certeza que deseja excluir esse usuário?')">
             <button type="submit" class="button-b-delete">Excluir usuário</button>
