@@ -33,42 +33,96 @@
     </header>
     <div class="container">
         <h1 style="text-align: center;">Bem vindos, Aventureiros!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eius cumque quod excepturi ullam dicta, nemo
-            doloribus architecto sed magnam modi vitae omnis esse repellendus dolore, libero qui voluptas commodi,
-            blanditiis debitis magni impedit adipisci quas at. Facere dolores aliquid ipsam voluptatum eligendi
-            consequatur ut neque, debitis vitae dignissimos corrupti quas totam aspernatur earum quidem harum quis.
-            Magni, vitae placeat.
+        <p>Seja bem-vindo à Taverna do Camaleão, sua plataforma de aventuras no mundo do RPG! Aqui, você encontrará um
+            universo repleto de magia, desafios e histórias épicas. Prepare-se para explorar mundos fantásticos, criar
+            personagens lendários e viver emocionantes jornadas ao lado de outros aventureiros. Entre na taverna, pegue
+            seu dado e embarque em uma jornada inesquecível. Que as rolagens sejam sempre a seu favor!
         </p><br>
         <form class="index-form" action="/users/lista" method="get">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam aut distinctio amet assumenda quis
-                incidunt praesentium fugit doloribus ipsam quo.</p><br>
+            <h2 class="index-subt">Nossos usuários</h2>
+            <p>Embarque em novas jornadas ao lado de companheiros destemidos! Descubra os aventureiros que estão
+                prontos para desbravar os mais incríveis desafios em nossa taverna. Clique no botão abaixo e mergulhe
+                nessa aventura épica!</p>
             <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
                 <i class="fas fa-users"></i>
-                <span id="button-text" style="opacity: 0;">Ver todos os usuários</span>
-            </button><br>
+                <span id="button-text">Ver todos os usuários</span>
+            </button>
         </form><br>
-        <form action="/mestres/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os mestres</button>
+        <form class="index-form" action="/mestres/lista" method="get">
+            <h2 class="index-subt">Nossos mestres</h2>
+            <p>Descubra os mestres por trás das histórias e aventuras que cativam sua imaginação! Conheça os visionários
+                que moldam mundos e desafios. Clique no botão abaixo e mergulhe no conhecimento e criatividade dos
+                nossos mestres!</p>
+            <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                <i class="fas fa-book"></i>
+                <span id="button-text">Ver todos os mestres</span>
+            </button>
         </form><br>
-        <form action="/jogador/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os jogadores</button>
+        <form class="index-form" action="/jogador/lista" method="get">
+            <h2 class="index-subt">Nossos jogadores</h2>
+            <p>Junte-se aos protagonistas das mais incríveis jornadas! Descubra os jogadores que dão vida aos heróis e
+                vilões em nossas mesas de RPG. Clique no botão abaixo e embarque em aventuras cheias de desafios,
+                amizades e conquistas na Taverna do Camaleão!</p>
+            <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                <i class="fas fa-dice"></i>
+                <span id="button-text">Ver todos os jogadores</span>
+            </button>
         </form><br>
-        <form action="/historia/lista" method="get">
-            <button type="submit" class="custom-button">Ver todas as histórias</button>
+        <form class="index-form" action="/historia/lista" method="get">
+            <h2 class="index-subt">Nossas histórias</h2>
+            <p>Explore os contos e enredos que encantam a imaginação! Conheça as histórias que se desdobram em nossa
+                taverna, repletas de magia, mistério e emoção. Clique no botão abaixo e mergulhe em narrativas épicas e
+                inesquecíveis na Taverna do Camaleão!</p>
+            <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                <i class="fas fa-feather-alt"></i>
+                <span id="button-text">Ver todos as histórias</span>
+            </button>
         </form><br>
-        <form action="/personagem/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os personagens</button>
+        <form class="index-form" action="/personagem/lista" method="get">
+            <h2 class="index-subt">Nossos personagens</h2>
+            <p>Descubra os personagens que povoam nossos mundos de fantasia! Conheça os heróis e anti-heróis, magos e
+                guerreiros, seres lendários e criaturas misteriosas que dão vida às aventuras na Taverna do Camaleão.
+                Clique no botão abaixo e embarque na jornada desses fascinantes protagonistas!</p>
+            <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                <i class="fas fa-user-circle"></i>
+                <span id="button-text">Ver todos as personagens</span>
+            </button>
         </form><br>
-        <form action="/produto/lista" method="get">
-            <button type="submit" class="custom-button">Ver todos os produtos</button>
+        <form class="index-form" action="/produto/lista" method="get">
+            <h2 class="index-subt">Nossos produtos</h2>
+            <p>Explore os tesouros da Taverna do Camaleão! Nossa coleção de produtos traz itens essenciais para a sua
+                jornada de RPG. Descubra as melhores
+                ofertas e adquira tudo o que precisa para viver grandes aventuras. Clique abaixo para conferir nossos
+                produtos e prepare-se para a próxima missão!</p>
+            <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                <i class="fas fa-tag"></i>
+                <span id="button-text">Ver todos os produtos</span>
+            </button>
         </form><br>
-        <form action="/users/ranking" method="get">
-            <button type="submit" class="custom-button">Top 3 users</button>
-        </form>
+        <form class="index-form" action="/users/ranking" method="get">
+            <h2 class="index-subt">Nosso Top 3</h2>
+            <p>Descubra os grandes heróis da Taverna do Camaleão! Conheça os três jogadores mais ativos e engajados em
+                nossas histórias épicas, aqueles que desbravam os desafios com coragem e criatividade. Explore suas
+                façanhas e conquistas, e inspire-se com suas jornadas lendárias. Clique abaixo para conhecer os Top 3
+                usuários e faça parte dessa seleção de destemidos aventureiros!</p>
+            <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                <i class="fas fa-medal"></i>
+                <span id="button-text">Top 3 usuários</span>
+            </button>
+        </form><br>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
     </footer>
+    <script>
+        function showText() {
+            document.getElementById("button-text").style.opacity = "1";
+        }
+
+        function hideText() {
+            document.getElementById("button-text").style.opacity = "0";
+        }
+    </script>
 </body>
 
 </html>

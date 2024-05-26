@@ -93,9 +93,19 @@ body {
 }
 
 .index-form {
-    border: 1px solid black;
-    border-radius: 10px;
+    border: 1px solid #ccc; /* Cor da borda */
+    border-radius: 10px; /* Borda arredondada */
+    padding: 20px; /* Espaçamento interno */
+    background-color: #f9f9f9; /* Cor de fundo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
 }
+
+.index-subt {
+    color: #333; /* Cor do texto */
+    font-size: 24px;
+    margin-bottom: 15px; /* Espaçamento inferior */
+}
+
 
 .container-list {
     min-height: 400px;
@@ -123,18 +133,6 @@ tr {
     background-color: #f2f2f2;
 }
 
-.mestreDetails {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9;
-}
-
-.mestreDetails p {
-    margin: 5px 0;
-}
-
 .custom-button {
     width: 50px;
     height: 50px;
@@ -155,7 +153,6 @@ tr {
 #button-text {
     position: absolute;
     left: 50%;
-    bottom: -20px;
     transform: translateX(-50%);
     color: white;
     font-size: 14px;
@@ -180,6 +177,7 @@ tr {
 
 .custom-button:hover i {
     transform: scale(1.2);
+    opacity: 0;
 }
 
 .button-b {
