@@ -28,11 +28,12 @@
         </div>
     </header>
     <div class="container">
-        <h1 th:text="'Detalhes do Mestre: ' + ${mestre.fk_id_user}"></h1>
-        <div class="mestreDetails" th:if="${mestre}">
-            <p th:text="'ID do Usuário: ' + ${mestre.fk_id_user}"></p>
-            <p th:text="'NPC: ' + ${mestre.npc}"></p>
-            <p th:text="'Monstro: ' + ${mestre.monstro}"></p>
+        <h1>Detalhes do mestre</h1>
+        <div class="detalhes" th:if="${mestre}">
+            <h2 th:text="${mestre.fk_id_user}">ID do mestre</h2>
+            <p><strong>ID: </strong> <span th:text="${mestre.fk_id_user}">ID</span></p>
+            <p><strong>NPC: </strong> <span th:text="${mestre.npc}">NPC</span></p>
+            <p><strong>Monstro: </strong> <span th:text="${mestre.monstro}">Monstro</span></p>
             <a th:href="@{/historia/cadastro/{id}(id=${mestre.fk_id_user})}" class="links" 
                                 style="text-shadow: 1px 1px 1px black;
                                     text-decoration: none; color: #D2B48C;"

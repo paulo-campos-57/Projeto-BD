@@ -1,73 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes da História</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <style>
-        .historiaDetails {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 20px;
-            background-color: #f9f9f9;
-        }
-
-        .historiaDetails p {
-            margin: 5px 0;
-        }
-    </style>
 </head>
+
 <body>
-    <header>
-        <div class="headerCabecalho", 
-            style="text-shadow: 1px 1px 1px black; display: flex; flex-flow: row nowrap;
-                    width: 100%; height: 100px; justify-content: space-around; align-items: center;
-                    background-color: rgb(63, 0, 63); background-size: contain; background-repeat: repeat-x;">
+    <header class="cabecalho">
+        <div class="headerCabecalho">
             <div class="logo">
                 <hgroup>
-                    <img src="/images/logo.png" alt="Logo", 
-                        style="width: 27%; align-items: start;">
-                    <aside class="tituloNav", 
-                        style="position: absolute; top: 40px; right: 800px;
-                            width: 380px; height: 200px;">
-                        <h2 style="color: #D2B48C;">Taverna do Camaleão</h2>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
                     </aside>
                 </hgroup>
             </div>
             <nav>
-                <div class="navbarCabecalho", 
-                    style="display: flex; flex-flow: row nowrap;">
-                    <ul style="display: flex; flex-flow: row nowrap;">
-                        <li style="margin: 0 5px; padding: 2px 4px;
-                            font-size: 1em; list-style: none;
-                            text-transform: uppercase;">
-                            <a href="/" class="links" 
-                                style="text-shadow: 1px 1px 1px black;
-                                    text-decoration: none; color: #D2B48C;"
-                                    onmouseover="this.style.color='green';" onmouseout="this.style.color='#D2B48C';">
-                                Voltar
-                            </a>
-                        </li>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/historia/lista" class="links">Voltar</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
     <div class="container">
-        <h1 th:text="'Detalhes da História: ' + ${historia.nome}"></h1>
-        <div class="historiaDetails" th:if="${historia}">
-            <p th:text="'Nome: ' + ${historia.nome}"></p>
-            <p th:text="'Prólogo: ' + ${historia.prologo}"></p>
-            <p th:text="'Quantidade de Jogadores: ' + ${historia.qtd_jogadores}"></p>
-            <p th:text="'Data de Início: ' + ${historia.dt_inicio}"></p>
+        <h1>Detalhes da História</h1>
+        <div class="detalhes" th:if="${historia}">
+            <h2 th:text="${historia.nome}">Nome da história</h2>
+            <p><strong>Nome: </strong> <span th:text="${historia.nome}">Nome</span></p>
+            <p><strong>Prólogo: </strong> <span th:text="${historia.prologo}">Prólogo</span></p>
+            <p><strong>Quantidade de jogadores: </strong> <span th:text="${historia.qtd_jogadores}">Quantidade de jogadores</span></p>
+            <p><strong>Data de início: </strong> <span th:text="${historia.dt_inicio}">Data de início</span></p>
             <p>
-                Presencial: 
+                <strong>Presencial:</strong>
                 <span th:text="${historia.presencial} ? 'Sim' : 'Não'"></span>
             </p>
-            <p th:text="'ID do Mestre: ' + ${historia.fk_id_mestre}"></p>
+            <p><strong>ID do mestre: </strong> <span th:text="${historia.fk_id_mestre}">ID do mestre</span></p>
         </div>
         <div th:unless="${historia}">
             <p>História não encontrada!</p>
@@ -79,8 +53,8 @@
             font-weight: bold;
             font-style: italic;
             background-color: rgb(63, 0, 63);">
-        <img src="/images/logo.png" alt="Logo", 
-        style="width: 10%; align-items: start;">
+        <img src="/images/logo.png" alt="Logo" , style="width: 10%; align-items: start;">
     </footer>
 </body>
+
 </html>

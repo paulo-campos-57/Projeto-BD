@@ -28,15 +28,16 @@
         </div>
     </header>
     <div class="container">
-        <h1 th:text="'Detalhes do Personagem: ' + ${personagem.nome}"></h1>
-        <div class="personagemDetails" th:if="${personagem}">
-            <p th:text="'ID: ' + ${personagem.id_personagem}"></p>
-            <p th:text="'Nome: ' + ${personagem.nome}"></p>
-            <p th:text="'Classe: ' + ${personagem.classe}"></p>
-            <p th:text="'Nível: ' + ${personagem.nivel}"></p>
-            <p th:text="'Habilidades: ' + ${personagem.habilidades}"></p>
-            <p th:text="'Backstory: ' + ${personagem.backstory}"></p>
-            <p th:text="'ID do Jogador: ' + ${personagem.fk_id_jogador}"></p>
+        <h1>Detalhes do Personagem</h1>
+        <div class="detalhes" th:if="${personagem}">
+            <h2 th:text="${personagem.nome}">Nome do personagem</h2>
+            <p><strong>ID: </strong> <span th:text="${personagem.id_personagem}">ID</span></p>
+            <p><strong>Nome: </strong> <span th:text="${personagem.nome}">Nome</span></p>
+            <p><strong>Classe: </strong> <span th:text="${personagem.classe}">Classe</span></p>
+            <p><strong>Nível: </strong> <span th:text="${personagem.nivel}">Nível</span></p>
+            <p><strong>Habilidades: </strong> <span th:text="${personagem.habilidades}">Habilidades</span></p>
+            <p><strong>Backstory: </strong> <span th:text="${personagem.backstory}">Backstory</span></p>
+            <p><strong>ID do jogador: </strong> <span th:text="${personagem.fk_id_jogador}">ID do jogador</span></p>
         </div>
         <h1>Lista de historias</h1>
         <table>

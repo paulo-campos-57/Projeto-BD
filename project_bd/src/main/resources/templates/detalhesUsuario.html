@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -29,17 +31,17 @@
     </header>
     <div class="container">
         <h1 th:text="'Detalhes de ' + ${user.user_name}"></h1>
-        <div class="userDetails" th:if="${user}">
-            <p th:text="'ID: ' + ${user.id_user}"></p>
-            <p th:text="'Nome: ' + ${user.user_name}"></p>
-            <p th:text="'Contato 1: ' + ${user.contato1}"></p>
-            <p th:text="'Contato 2: ' + ${user.contato2}"></p>
-            <p th:text="'Estado: ' + ${user.estado}"></p>
-            <p th:text="'Cidade: ' + ${user.cidade}"></p>
-            <p th:text="'Bairro: ' + ${user.bairro}"></p>
-            <p th:text="'Rua: ' + ${user.rua}"></p>
-            <p th:text="'Número: ' + ${user.numero}"></p>
-            <p th:text="'Complemento: ' + ${user.complemento}"></p>
+        <div class="detalhes" th:if="${user}">
+            <p><strong>ID: </strong> <span th:text="${user.id_user}">ID</span></p>
+            <p><strong>Nome: </strong> <span th:text="${user.user_name}">Nome</span></p>
+            <p><strong>Contato 1: </strong> <span th:text="${user.contato1}">Contato1</span></p>
+            <p><strong>Contato 2: </strong> <span th:text="${user.contato2}">Contato2</span></p>
+            <p><strong>Estado: </strong> <span th:text="${user.estado}">Estado</span></p>
+            <p><strong>Cidade: </strong> <span th:text="${user.cidade}">Cidade</span></p>
+            <p><strong>Bairro: </strong> <span th:text="${user.bairro}">Bairro</span></p>
+            <p><strong>Rua: </strong> <span th:text="${user.rua}">Rua</span></p>
+            <p><strong>Número: </strong> <span th:text="${user.numero}">Número</span></p>
+            <p><strong>Complemento: </strong> <span th:text="${user.complemento}">Complemento</span></p>
         </div>
         <div th:unless="${user}">
             <p>User not found!</p>
@@ -49,4 +51,5 @@
         <img src="/images/logo.png" alt="Logo">
     </footer>
 </body>
+
 </html>
