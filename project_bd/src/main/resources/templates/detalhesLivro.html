@@ -42,7 +42,7 @@
             <p><strong>Quantidade de páginas:</strong> <span th:text="${produto.qtd_paginas}">Quantidade de páginas do
                     livro</span></p>
         </div>
-        <a th:href="@{/finalizar/compra/{id_produto}(id=${produto.id_produto})}" style="text-decoration: none;"><button
+        <a th:href="@{/finalizar/compra/{id_produto}(id_produto=${produto.id_produto})}" style="text-decoration: none;"><button
                 class="button-compra">Comprar</button></a>
     </div>
     <footer class="footer">

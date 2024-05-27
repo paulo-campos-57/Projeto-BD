@@ -30,18 +30,18 @@
             </nav>
         </div>
     </header>
-    <div class="container">
-        <h1>Detalhes do Produto</h1>
-        <div class="detalhes">
-            <h2 th:text="${produto.nome_produto}">Nome do Produto</h2>
-            <p><strong>ID:</strong> <span th:text="${produto.id_produto}">1</span></p>
-            <p><strong>Descrição:</strong> <span th:text="${produto.descricao}">Descrição do produto</span></p>
-            <p><strong>Preço:</strong> <span th:text="${produto.preco}">Preço do produto</span></p>
-            <p><strong>ID do Usuário:</strong> <span th:text="${produto.fk_id_user}">ID do usuário</span></p>
-        </div>
-        <a th:href="@{/finalizar/compra/{id_produto}(id=${produto.id_produto})}" style="text-decoration: none;"><button
+        <div class="container">
+            <h1>Detalhes do Produto</h1>
+            <div class="detalhes">
+                <h2 th:text="${produto.nome_produto}">Nome do Produto</h2>
+                <p><strong>ID:</strong> <span th:text="${produto.id_produto}">1</span></p>
+                <p><strong>Descrição:</strong> <span th:text="${produto.descricao}">Descrição do produto</span></p>
+                <p><strong>Preço:</strong> <span th:text="${produto.preco}">Preço do produto</span></p>
+                <p><strong>ID do Usuário:</strong> <span th:text="${produto.fk_id_user}">ID do usuário</span></p>
+            </div>
+            <a th:href="@{/finalizar/compra/{id_produto}(id_produto=${produto.id_produto})}" style="text-decoration: none;"><button
                 class="button-compra">Comprar</button></a>
-    </div>
+        </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
     </footer>

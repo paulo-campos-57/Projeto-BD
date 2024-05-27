@@ -16,8 +16,8 @@ public class VendaRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void insertVenda(Venda venda) {
-        jdbcTemplate.update("INSERT INTO VENDA(ID_VENDA, FK_ID_PRODUTO, FK_ID_USER, DATA_VENDA) VALUES(?, ?, ?, ?)",
-                venda.getId_venda(), venda.getFk_id_produto(), venda.getFk_id_user(), venda.getDataVenda());
+        jdbcTemplate.update("INSERT INTO VENDA(FK_ID_PRODUTO, FK_ID_USER, DATA_VENDA) VALUES(?, ?, ?)",
+                venda.getFk_id_produto(), venda.getFk_id_user(), venda.getDataVenda());
     }
 
     public List<Venda> getAllVendas() {

@@ -34,20 +34,43 @@
         <div class="finalizar-compra">
             <h2>Finalizar Compra</h2>
             <p>Para finalizar a compra, informe seu nome de usuário.</p>
-            <form action="/finalizar/compra/verificar/{id_produto}" method="get" class="compra">
+            <form method="post" class="compra" id="formCompra">
                 <div class="form-group">
                     <label for="nome">Nome de usuário:</label>
                     <input type="text" id="nome" name="username" required>
                 </div>
+                <!-- Adicionando campo oculto para a data atual -->
+                <input type="hidden" id="dataAtual" name="dataAtual">
                 <div class="form-group">
                     <input type="submit" value="Finalizar Compra">
                 </div>
             </form>
+            <div id="idProduto"></div> <!-- Aqui será exibido o ID do produto -->
         </div>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
     </footer>
+
+    <script>
+        // Função para extrair o ID do produto do URL
+        function extrairIDProduto() {
+            var url = window.location.href; // Obter o URL atual
+            var partesURL = url.split("/"); // Dividir a URL pelos '/'
+            var id_produto = partesURL.pop(); // Obter o último segmento da URL, que é o ID do produto
+            return id_produto; // Retorna o ID do produto
+        }
+
+        // Exibir o ID do produto na tela
+        var id_produto = extrairIDProduto();
+        document.getElementById("idProduto").innerHTML = "ID do Produto: " + id_produto;
+
+        // Preencher o campo de data atual com a data atual antes de enviar o formulário
+        document.getElementById("formCompra").addEventListener("submit", function (event) {
+            var dataAtual = new Date().toISOString().split('T')[0]; // Obtém a data atual no formato 'YYYY-MM-DD'
+            document.getElementById("dataAtual").value = dataAtual; // Preenche o campo oculto com a data atual
+        });
+    </script>
 </body>
 
 </html>

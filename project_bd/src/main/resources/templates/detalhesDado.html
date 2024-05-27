@@ -41,8 +41,8 @@
             <p><strong>Quantidade de Lados:</strong> <span th:text="${produto.qtd_lados}">Quantidade de lados do
                     dado</span></p>
         </div>
-        <a th:href="@{/finalizar/compra/{id_produto}(id=${produto.id_produto})}" style="text-decoration: none;"><button
-                class="button-compra">Comprar</button></a>
+        <a th:href="@{/finalizar/compra/{id_produto}(id_produto=${produto.id_produto})}" style="text-decoration: none;"><button
+            class="button-compra">Comprar</button></a>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
