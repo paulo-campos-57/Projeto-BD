@@ -90,20 +90,30 @@ body {
     width: 70%;
     min-height: 450px;
     padding: 30px 30px;
+    border: 2px solid black;
+    border-bottom: none;
+    border-top: none;
 }
 
 .index-form {
-    border: 1px solid #ccc; /* Cor da borda */
-    border-radius: 10px; /* Borda arredondada */
-    padding: 20px; /* Espaçamento interno */
-    background-color: #f9f9f9; /* Cor de fundo */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    border: 1px solid #ccc;
+    /* Cor da borda */
+    border-radius: 10px;
+    /* Borda arredondada */
+    padding: 20px;
+    /* Espaçamento interno */
+    background-color: #f9f9f9;
+    /* Cor de fundo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra */
 }
 
 .index-subt {
-    color: #333; /* Cor do texto */
+    color: #333;
+    /* Cor do texto */
     font-size: 24px;
-    margin-bottom: 15px; /* Espaçamento inferior */
+    margin-bottom: 15px;
+    /* Espaçamento inferior */
 }
 
 
@@ -269,6 +279,66 @@ tr {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.search-container {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+}
+
+.search-container p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.search-container form {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input[type="text"] {
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    margin-right: 10px;
+    flex-grow: 0.5;
+    max-width: 200px;
+}
+
+.search-container button[type="submit"] {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.toggle-button {
+    margin-bottom: 10px;
+    background-color: rgb(63, 0, 63);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.search-container {
+    display: none;
+}
+
+.search-container.show-search {
+    display: block;
 }
 
 .error-text {

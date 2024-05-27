@@ -5,12 +5,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.List;
-import java.sql.Connection;
 import com.id.project_bd.models.Historia;
 import com.id.project_bd.models.User;
 
@@ -166,7 +164,7 @@ public class UserRepository {
     public Integer findIdByUsername(String username) {
         String sql = "SELECT ID_USER FROM USER WHERE USER_NAME = ?";
         try {
-            return jdbcTemplate.queryForObject(sql, new Object[]{username}, Integer.class);
+            return jdbcTemplate.queryForObject(sql, new Object[] { username }, Integer.class);
         } catch (Exception e) {
             return null; // Retorna null se o usuário não for encontrado
         }
@@ -175,23 +173,21 @@ public class UserRepository {
     @SuppressWarnings("deprecation")
     public Integer findVendedorProduto(int id_produto) {
         String sql = "SELECT u.ID_USER FROM user u " +
-                    "JOIN produto p ON u.ID_USER = p.FK_ID_USER " +
-                    "WHERE p.ID_PRODUTO = ?";
+                "JOIN produto p ON u.ID_USER = p.FK_ID_USER " +
+                "WHERE p.ID_PRODUTO = ?";
         try {
-            return jdbcTemplate.queryForObject(sql, new Object[]{id_produto}, Integer.class);
+            return jdbcTemplate.queryForObject(sql, new Object[] { id_produto }, Integer.class);
         } catch (Exception e) {
             return null; // Retorna null se o vendedor não for encontrado
         }
     }
 
-    public void mudarUsuario(int id_produto2, int id_novo){
-        String sql = "UPDATE PRODUTO " + 
-        "SET FK_ID_USER = ? " + 
-        "WHERE ID_PRODUTO = ?;";
+    public void mudarUsuario(int id_produto2, int id_novo) {
+        String sql = "UPDATE PRODUTO " +
+                "SET FK_ID_USER = ? " +
+                "WHERE ID_PRODUTO = ?;";
 
         jdbcTemplate.update(sql, id_novo, id_produto2);
     }
-
-    
 
 }

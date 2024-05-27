@@ -1,9 +1,6 @@
 package com.id.project_bd.controllers;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,9 +34,9 @@ public class FormCompraController {
         return mv;
     }
 
-
     @RequestMapping(value = "/compra/{id_produto}", method = RequestMethod.POST)
-    public ModelAndView verificarCompra(@PathVariable String id_produto, @RequestParam String username, @RequestParam java.sql.Date dataAtual) {
+    public ModelAndView verificarCompra(@PathVariable String id_produto, @RequestParam String username,
+            @RequestParam java.sql.Date dataAtual) {
         ModelAndView mv = new ModelAndView();
 
         boolean userExists = userRepository.existsByUsername(username);
@@ -51,7 +48,7 @@ public class FormCompraController {
                 mv.addObject("id_comprador", id_comprador);
             }
             System.out.println("ID_PRODUTO: " + id_produto); // Imprimindo o valor de id_produto
-            
+
             // Aqui você pode chamar o método para encontrar o vendedor do produto
             Integer id_vendedor = userRepository.findVendedorProduto(Integer.parseInt(id_produto));
             if (id_vendedor != null) {
@@ -81,7 +78,6 @@ public class FormCompraController {
 
             compraRepository.insertCompra(compra);
 
-
             mv.setViewName("compraSucesso");
         } else {
             mv.setViewName("compraFalha");
@@ -89,6 +85,5 @@ public class FormCompraController {
 
         return mv;
     }
-
 
 }

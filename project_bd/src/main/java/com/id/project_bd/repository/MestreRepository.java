@@ -23,26 +23,25 @@ public class MestreRepository {
     }
 
     public boolean deleteMestre(int fk_id_user) {
-    
+
         // Agora você pode excluir o mestre na tabela 'MESTRE' sem violar a integridade
         int rowsAffected = jdbcTemplate.update("DELETE FROM MESTRE WHERE FK_ID_USER = ?", fk_id_user);
         return rowsAffected > 0;
     }
 
     @SuppressWarnings("deprecation")
-    public List<Historia> getHistoryByMestre(int fk_id_user){
-        String sql = "select h.NOME from historia h " + 
-        "join mestre m on h.FK_ID_MESTRE = m.FK_ID_USER " + 
-        "where m.FK_ID_USER = ?;";
+    public List<Historia> getHistoryByMestre(int fk_id_user) {
+        String sql = "select h.NOME from historia h " +
+                "join mestre m on h.FK_ID_MESTRE = m.FK_ID_USER " +
+                "where m.FK_ID_USER = ?;";
 
-        return jdbcTemplate.query(sql, new Object[] {fk_id_user}, (resultSet, rowNum) -> {
+        return jdbcTemplate.query(sql, new Object[] { fk_id_user }, (resultSet, rowNum) -> {
             Historia historia = new Historia();
             historia.setNome(resultSet.getString("NOME"));
 
             return historia;
         });
     }
-    
 
     public List<Mestre> getAllMestre() {
         return jdbcTemplate.query("SELECT * FROM MESTRE", (resultSet, rowNum) -> {
@@ -58,15 +57,33 @@ public class MestreRepository {
     public Mestre getMestreById(int fk_id_user) {
         String sql = "SELECT * FROM MESTRE WHERE FK_ID_USER = ?";
         try {
-            // Utiliza BeanPropertyRowMapper para mapear automaticamente os resultados para a classe Mestre
-            return jdbcTemplate.queryForObject(sql, new Object[]{fk_id_user}, new BeanPropertyRowMapper<>(Mestre.class));
+            // Utiliza BeanPropertyRowMapper para mapear automaticamente os resultados para
+            // a classe Mestre
+            return jdbcTemplate.queryForObject(sql, new Object[] { fk_id_user },
+                    new BeanPropertyRowMapper<>(Mestre.class));
         } catch (EmptyResultDataAccessException e) {
             return null; // Lidar com o caso em que nenhum resultado é encontrado
         }
     }
 
-    public void updateMestre(Mestre mestre){
+    public void updateMestre(Mestre mestre) {
         jdbcTemplate.update("UPDATE MESTRE SET NPC = ?, MONSTRO = ? WHERE FK_ID_USER = ?",
-        mestre.getNpc(), mestre.getMonstro(), mestre.getFk_id_user());
+                mestre.getNpc(), mestre.getMonstro(), mestre.getFk_id_user());
     }
+
+    public List<Mestre> getTop3MestresByParticipations() {
+        String sql = "SELECT m.FK_ID_USER, COUNT(p.FK_ID_HISTORIA) AS num_historias " +
+                "FROM MESTRE m " +
+                "JOIN PARTICIPACAO p ON m.FK_ID_USER = p.FK_ID_MESTRE " +
+                "GROUP BY m.FK_ID_USER " +
+                "ORDER BY num_historias DESC " +
+                "LIMIT 3";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> {
+            Mestre mestre = new Mestre();
+            mestre.setFk_id_user(rs.getInt("FK_ID_USER"));
+            mestre.setNumHistorias(rs.getInt("num_historias"));
+            return mestre;
+        });
+    }
+
 }

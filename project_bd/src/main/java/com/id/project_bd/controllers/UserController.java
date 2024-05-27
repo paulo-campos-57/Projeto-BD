@@ -45,7 +45,6 @@ public class UserController {
         return mv;
     }
 
-
     @PostMapping
     public String createUser(@RequestBody User user) {
         userRepository.insertUser(user);
@@ -53,12 +52,10 @@ public class UserController {
     }
 
     @PostMapping("/denuncia")
-    public String createDenuncia(@RequestBody Denuncia denuncia){
+    public String createDenuncia(@RequestBody Denuncia denuncia) {
         denunciaRepository.insertDenuncia(denuncia);
         return "Denuncia cadastrada";
     }
-
-    
 
     @DeleteMapping("/{id_user}")
     public String deleteUser(@PathVariable int id_user) {
@@ -79,14 +76,14 @@ public class UserController {
     public ModelAndView getAllUsers(@PathVariable("id_user") int id_user) {
         ModelAndView mv = new ModelAndView();
         mv.addObject("users", userRepository.getAllUsers());
-        mv.addObject("currentUserId", id_user);  // Passando o ID do usuário no caminho para o modelo
+        mv.addObject("currentUserId", id_user); // Passando o ID do usuário no caminho para o modelo
         mv.setViewName("listaDenuncia");
         return mv;
     }
 
     @GetMapping("/denuncia/{currentUserId}/{id_user}")
     public ModelAndView exibirFormularioDenuncia(@PathVariable("currentUserId") int currentUserId,
-                                                  @PathVariable("id_user") int idUser) {
+            @PathVariable("id_user") int idUser) {
         ModelAndView mv = new ModelAndView();
         mv.addObject("currentUserId", currentUserId);
         mv.addObject("idUser", idUser);
@@ -96,11 +93,11 @@ public class UserController {
 
     @PostMapping("/denuncia/{currentUserId}/{id_user}")
     public ModelAndView denunciarUsuario(@PathVariable("currentUserId") int currentUserId,
-                                   @PathVariable("id_user") int idUser,
-                                   @RequestParam("comentario") String comentario) {
+            @PathVariable("id_user") int idUser,
+            @RequestParam("comentario") String comentario) {
         Denuncia denuncia = new Denuncia(currentUserId, idUser, comentario);
         denunciaRepository.insertDenuncia(denuncia);
-        
+
         ModelAndView mv = new ModelAndView();
         mv.addObject("users", userRepository.getAllUsers());
         mv.addObject("currentUserId", currentUserId);
@@ -109,15 +106,12 @@ public class UserController {
     }
 
     @GetMapping("verDenuncia/{id_user}")
-    public ModelAndView denunciasById(@PathVariable int id_user){
+    public ModelAndView denunciasById(@PathVariable int id_user) {
         ModelAndView mv = new ModelAndView();
         mv.addObject("denuncia", denunciaRepository.getDenunciasById(id_user));
         mv.setViewName("denunciasUsuario");
-        return mv;    
+        return mv;
     }
-
-
-
 
     @GetMapping("/lista")
     public ModelAndView getAllUsers() {

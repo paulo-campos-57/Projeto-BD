@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Top 3 Usuários por Participações</title>
+    <title>Personagens por Classe</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
@@ -21,36 +21,35 @@
             <nav>
                 <div class="navbarCabecalho">
                     <ul>
-                        <li><a href="/" class="links">Voltar</a></li>
+                        <li><a href="/personagem/lista" class="links">Voltar</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
     <div class="container">
-        <div class="titulo-lista">
-            <h1>Usuários com mais participações</h1>
-            <div class="button-container">
-                <a href="/mestres/ranking">
-                    <button class="change">
-                        Mestres
-                    </button>
-                </a>
-            </div>
-        </div>
+        <h1>Personagens da Classe: <span th:text="${classe}"></span></h1>
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nome de Usuário</th>
-                    <th>Participações</th>
+                    <th>Nome</th>
+                    <th>Classe</th>
+                    <th>Nível</th>
+                    <th>Habilidades</th>
+                    <th>Backstory</th>
+                    <th>ID do Jogador</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.id_user}">ID</td>
-                    <td th:text="${user.user_name}">Nome de Usuário</td>
-                    <td th:text="${user.numHistorias}">Participações</td>
+                <tr th:each="personagem : ${personagens}">
+                    <td th:text="${personagem.id_personagem}"></td>
+                    <td th:text="${personagem.nome}"></td>
+                    <td th:text="${personagem.classe}"></td>
+                    <td th:text="${personagem.nivel}"></td>
+                    <td th:text="${personagem.habilidades}"></td>
+                    <td th:text="${personagem.backstory}"></td>
+                    <td th:text="${personagem.fk_id_jogador}"></td>
                 </tr>
             </tbody>
         </table>

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Lista de Personagens</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <style>
-        /* Estilos adicionais podem ser colocados aqui */
-    </style>
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -30,7 +29,33 @@
         </div>
     </header>
     <div class="container-list">
-        <h1>Lista de Personagens</h1>
+        <div class="titulo-lista">
+            <h1>Lista de Personagens</h1>
+            <div class="button-container">
+                <a href="/personagem/lista/alfabetico">
+                    <button class="change">
+                        A - Z
+                    </button>
+                </a>
+                <a href="/personagem/lista/nivel">
+                    <button class="change">
+                        LVL
+                    </button>
+                </a>
+                <a href="/personagem/lista">
+                    <button class="change">
+                        ID
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="search-container">
+            <p>Busca personagens de uma classe específica? Encontre aqui!</p>
+            <form action="/personagem/classe" method="get">
+                <input type="text" name="classe" placeholder="Digite a classe" required>
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -44,11 +69,10 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Itera sobre a lista de personagens -->
                 <tr th:each="personagem : ${personagem}">
                     <td>
-                        <!-- ID do mestre -->
-                        <a th:href="@{/personagem/{id}(id=${personagem.id_personagem})}" th:text="${personagem.id_personagem}"></a>
+                        <a th:href="@{/personagem/{id}(id=${personagem.id_personagem})}"
+                            th:text="${personagem.id_personagem}"></a>
                     </td>
                     <td th:text="${personagem.nome}"></td>
                     <td th:text="${personagem.classe}"></td>
@@ -58,7 +82,7 @@
                     <td>
                         <a th:href="@{/personagem/alterar/{id}(id=${personagem.id_personagem})}">Editar</a>
                         <a th:href="@{/personagem/excluir/{id}(id=${personagem.id_personagem})}"
-   onclick="return confirm('Tem certeza que deseja excluir essa Personagem?')">Excluir</a>
+                            onclick="return confirm('Tem certeza que deseja excluir essa Personagem?')">Excluir</a>
                     </td>
                 </tr>
             </tbody>
@@ -66,6 +90,20 @@
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
-    </footer> 
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchContainer = document.querySelector('.search-container');
+            const toggleButton = document.createElement('button');
+            toggleButton.textContent = 'Busca alguma classe específica?';
+            toggleButton.classList.add('toggle-button');
+            searchContainer.parentNode.insertBefore(toggleButton, searchContainer);
+
+            toggleButton.addEventListener('click', function () {
+                searchContainer.classList.toggle('show-search');
+            });
+        });
+    </script>
 </body>
+
 </html>

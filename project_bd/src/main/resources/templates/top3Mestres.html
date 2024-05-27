@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Top 3 Usuários por Participações</title>
+    <title>Top 3 Mestres por Participações</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
@@ -29,11 +29,11 @@
     </header>
     <div class="container">
         <div class="titulo-lista">
-            <h1>Usuários com mais participações</h1>
+            <h1>Mestres com mais participações</h1>
             <div class="button-container">
-                <a href="/mestres/ranking">
+                <a href="/users/ranking">
                     <button class="change">
-                        Mestres
+                        Users
                     </button>
                 </a>
             </div>
@@ -41,16 +41,14 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nome de Usuário</th>
+                    <th>ID do Mestre</th>
                     <th>Participações</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.id_user}">ID</td>
-                    <td th:text="${user.user_name}">Nome de Usuário</td>
-                    <td th:text="${user.numHistorias}">Participações</td>
+                <tr th:each="mestre : ${mestres}">
+                    <td th:text="${mestre.fk_id_user}">ID do Mestre</td>
+                    <td th:text="${mestre.numHistorias}">Participações</td>
                 </tr>
             </tbody>
         </table>

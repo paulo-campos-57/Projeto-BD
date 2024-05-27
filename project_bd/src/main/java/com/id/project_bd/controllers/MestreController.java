@@ -26,14 +26,14 @@ public class MestreController {
     private MestreRepository mestreRepository;
 
     @RequestMapping(value = "/cadastro/{id_user}", method = RequestMethod.GET)
-    public ModelAndView mestreForm(){
+    public ModelAndView mestreForm() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("mestreForm");
         return mv;
     }
 
     @RequestMapping(value = "/cadastro/{id_user}", method = RequestMethod.POST)
-    public ModelAndView mestreForm(Mestre mestre){
+    public ModelAndView mestreForm(Mestre mestre) {
         mestreRepository.insertMestre(mestre);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");
@@ -41,7 +41,7 @@ public class MestreController {
     }
 
     @GetMapping("/lista")
-    public ModelAndView getAllMestres(){
+    public ModelAndView getAllMestres() {
         ModelAndView mv = new ModelAndView();
         mv.addObject("mestres", mestreRepository.getAllMestre());
         mv.setViewName("listaMestres");
@@ -49,10 +49,10 @@ public class MestreController {
     }
 
     @GetMapping("/{fk_id_user}")
-    public ModelAndView getSpecificMestre(@PathVariable int fk_id_user){
+    public ModelAndView getSpecificMestre(@PathVariable int fk_id_user) {
         Mestre mestre = mestreRepository.getMestreById(fk_id_user);
         ModelAndView mv = new ModelAndView();
-        if(mestre != null){
+        if (mestre != null) {
             mv.addObject("mestre", mestre);
             mv.setViewName("detalhesMestre");
         } else {
@@ -62,7 +62,7 @@ public class MestreController {
     }
 
     @GetMapping("/historias/{fk_id_user}")
-    public ModelAndView getHistoryByMestre(@PathVariable int fk_id_user){
+    public ModelAndView getHistoryByMestre(@PathVariable int fk_id_user) {
         ModelAndView mv = new ModelAndView();
         mv.addObject("mestre", mestreRepository.getHistoryByMestre(fk_id_user));
         mv.setViewName("mestreHistorias");
@@ -70,10 +70,10 @@ public class MestreController {
     }
 
     @GetMapping("/alterar/{fk_id_user}")
-    public ModelAndView alterarMestre(@PathVariable int fk_id_user){
+    public ModelAndView alterarMestre(@PathVariable int fk_id_user) {
         Mestre mestre = mestreRepository.getMestreById(fk_id_user);
         ModelAndView mv = new ModelAndView();
-        if(mestre != null){
+        if (mestre != null) {
             mv.addObject("mestre", mestre);
             mv.setViewName("alterarMestre");
         } else {
@@ -83,7 +83,7 @@ public class MestreController {
     }
 
     @RequestMapping(value = "/alterar/{fk_id_user}", method = RequestMethod.POST)
-    public ModelAndView alterarMestre(Mestre mestre){
+    public ModelAndView alterarMestre(Mestre mestre) {
         mestreRepository.updateMestre(mestre);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");
@@ -91,23 +91,22 @@ public class MestreController {
     }
 
     @GetMapping("/excluir/{fk_id_user}")
-    public String excluirMestre(@PathVariable("fk_id_user") Integer fk_id_user, Model model){
+    public String excluirMestre(@PathVariable("fk_id_user") Integer fk_id_user, Model model) {
         mestreRepository.deleteMestre(fk_id_user);
         model.addAttribute("mestres", mestreRepository.getAllMestre());
         return "listaMestres";
     }
 
-
     @PostMapping
-    public String createMestre(@RequestBody Mestre mestre){
+    public String createMestre(@RequestBody Mestre mestre) {
         mestreRepository.insertMestre(mestre);
         return "Mestre inserido!\n";
     }
 
     @DeleteMapping("/{fk_id_user}")
-    public String deleteMestre(@PathVariable int fk_id_user){
+    public String deleteMestre(@PathVariable int fk_id_user) {
         boolean deleted = mestreRepository.deleteMestre(fk_id_user);
-        if(deleted){
+        if (deleted) {
             return "Mestre deletado!\n";
         } else {
             return "O mestre com essas informações não exite no banco de dados!\n";
@@ -115,14 +114,22 @@ public class MestreController {
     }
 
     @GetMapping
-    public List<Mestre> getMestre(){
+    public List<Mestre> getMestre() {
         return mestreRepository.getAllMestre();
     }
 
     @PutMapping("/{fk_id_user}")
-    public String updateMestre(@PathVariable int fk_id_user, @RequestBody Mestre mestre){
+    public String updateMestre(@PathVariable int fk_id_user, @RequestBody Mestre mestre) {
         mestre.setFk_id_user(fk_id_user);
         mestreRepository.updateMestre(mestre);
         return "Novas informações salvas com sucesso!\n";
+    }
+
+    @GetMapping("/ranking")
+    public ModelAndView getTop3MestresByParticipations() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("mestres", mestreRepository.getTop3MestresByParticipations());
+        mv.setViewName("top3Mestres");
+        return mv;
     }
 }
