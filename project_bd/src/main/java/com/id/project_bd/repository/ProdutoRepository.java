@@ -154,5 +154,8 @@ public class ProdutoRepository {
             return livro;
         }, id_produto);
     }
-
+    public List<Produto> getProdutosByUser(int fk_id_user) {
+        String sql = "SELECT * FROM PRODUTO WHERE FK_ID_USER = ?";
+        return jdbcTemplate.query(sql, produtoMapper, fk_id_user);
+    }    
 }

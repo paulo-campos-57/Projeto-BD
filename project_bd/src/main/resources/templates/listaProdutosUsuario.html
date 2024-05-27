@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos do Usuário</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <style>
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Taverna do Camaleão</h2>
+                    </aside>
+                </hgroup>
+            </div>
+            <nav>
+                <div class="navbarCabecalho">
+                    <ul>
+                        <li><a href="/" class="links">Voltar</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container-list">
+        <div class="container-list">
+            <div class="titulo-lista">
+                <h1>Produtos do Usuário</h1>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="produto : ${produtos}">
+                        <td>
+                            <a th:href="@{/produto/detalhes/{id_produto}(id_produto=${produto.id_produto})}"
+                                th:text="${produto.id_produto}"></a>
+                        </td>
+                        <td th:text="${produto.nome_produto}"></td>
+                        <td th:text="${produto.descricao}"></td>
+                        <td th:text="${produto.preco}"></td>
+                        <td>
+                            <a th:href="@{/produto/alterar/{id}(id=${produto.id_produto})}">Editar</a>
+                            <a th:href="@{/produto/excluir/{id}(id=${produto.id_produto})}"
+                                onclick="return confirm('Tem certeza que deseja excluir esse produto?')">Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="footer">
+            <img src="/images/logo.png" alt="Logo">
+        </footer>
+</body>
+
+</html>

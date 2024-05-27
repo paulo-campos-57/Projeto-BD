@@ -153,5 +153,13 @@ public class ProdutoController {
         }
         return mv;
     }
-
+    @GetMapping("/usuario/{fk_id_user}")
+    public ModelAndView getProdutosByUser(@PathVariable int fk_id_user) {
+        List<Produto> produtos = produtoRepository.getProdutosByUser(fk_id_user);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("produtos", produtos);
+        mv.setViewName("listaProdutosUsuario");
+        return mv;
+    }
+    
 }
