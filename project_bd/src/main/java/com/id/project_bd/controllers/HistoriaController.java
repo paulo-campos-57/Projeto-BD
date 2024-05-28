@@ -124,4 +124,12 @@ public class HistoriaController {
         historiaRepository.updateHistoria(historia);
         return "A historia foi atualizada com sucesso!\n";
     }
+    @GetMapping("/top3longas")
+    public ModelAndView getTop3LongasHistorias() {
+        List<Historia> historias = historiaRepository.getTop3LongasHistorias();
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("historias", historias);
+        mv.setViewName("listaTop3LongasHistorias");
+        return mv;
+    }
 }

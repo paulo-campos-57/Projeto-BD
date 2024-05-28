@@ -81,4 +81,8 @@ public class HistoriaRepository {
                 historia.getNome(), historia.getPrologo(), historia.isPresencial(),
                 historia.getId_historia());
     }
+    public List<Historia> getTop3LongasHistorias() {
+        String sql = "SELECT * FROM HISTORIA ORDER BY DT_INICIO ASC LIMIT 3";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Historia.class));
+    }
 }

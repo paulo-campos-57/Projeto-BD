@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 3 Histórias Longas</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="headerCabecalho">
+            <div class="logo">
+                <hgroup>
+                    <img src="/images/logo.png" alt="Logo" class="logo-img">
+                    <aside class="tituloNav">
+                        <h2 class="titulo">Top 3 Histórias Longas</h2>
+                    </aside>
+                </hgroup>
+            </div>
+        </div>
+    </header>
+    <div class="container" style="text-align: center;">
+        <h1>Top 3 Histórias Longas</h1><br>
+        <ul>
+            <li th:each="historia : ${historias}">
+                <span th:text="${historia.nome}">Nome da História</span> - 
+                <span th:text="${historia.dt_inicio}">Data de Início</span>
+            </li>
+        </ul>
+    </div>
+    <footer class="footer">
+        <img src="/images/logo.png" alt="Logo">
+    </footer>
+</body>
+</html>
