@@ -175,6 +175,18 @@ INSERT INTO MESTRE (FK_ID_USER, NPC, MONSTRO) VALUES
 (7, 'Berend Gemviper', 'Tarrasque'),
 (9, 'Orion', 'Gigante de gelo');
 
+INSERT INTO JOGADOR (FK_ID_USER) VALUES
+(2),
+(3),
+(5),
+(6),
+(7),
+(8),
+(10),
+(11),
+(12),
+(13);
+
 
 INSERT INTO PERSONAGEM (NOME, CLASSE, NIVEL, HABILIDADES, BACKSTORY, FK_ID_JOGADOR) VALUES
 ('Aragorn', 'Guerreiro', 10, 'Espada Longa, Defesa', 'Filho do rei exilado, busca retomar seu trono.', 2),
@@ -222,4 +234,3 @@ INSERT INTO DADO (FK_ID_PRODUTO, QTD_LADOS) VALUES
 INSERT INTO LIVRO (FK_ID_PRODUTO, QTD_PAGINAS , ESTADO) VALUES
 (1, 346, 4),
 (2, 289, 3);
-
