@@ -197,12 +197,14 @@ public class UserController {
     }
 
     @GetMapping("/excluir/{id_user}")
-    public String excluirUsuario(@PathVariable("id_user") Integer id_user, Model model) {
+    public ModelAndView excluirUsuario(@PathVariable("id_user") Integer id_user, Model model) {
         userRepository.deleteUser(id_user);
 
         model.addAttribute("users", userRepository.getAllUsers());
 
-        return "listaUsuarios";
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
     }
 
     @GetMapping("/ranking")

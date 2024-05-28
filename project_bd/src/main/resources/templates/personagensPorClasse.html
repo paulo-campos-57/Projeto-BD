@@ -29,30 +29,37 @@
     </header>
     <div class="container">
         <h1>Personagens da Classe: <span th:text="${classe}"></span></h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Classe</th>
-                    <th>Nível</th>
-                    <th>Habilidades</th>
-                    <th>Backstory</th>
-                    <th>ID do Jogador</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="personagem : ${personagens}">
-                    <td th:text="${personagem.id_personagem}"></td>
-                    <td th:text="${personagem.nome}"></td>
-                    <td th:text="${personagem.classe}"></td>
-                    <td th:text="${personagem.nivel}"></td>
-                    <td th:text="${personagem.habilidades}"></td>
-                    <td th:text="${personagem.backstory}"></td>
-                    <td th:text="${personagem.fk_id_jogador}"></td>
-                </tr>
-            </tbody>
-        </table>
+
+        <div th:if="${#lists.isEmpty(personagens)}">
+            <p>Não há personagens da classe buscada.</p>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(personagens)}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Classe</th>
+                        <th>Nível</th>
+                        <th>Habilidades</th>
+                        <th>Backstory</th>
+                        <th>ID do Jogador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="personagem : ${personagens}">
+                        <td th:text="${personagem.id_personagem}"></td>
+                        <td th:text="${personagem.nome}"></td>
+                        <td th:text="${personagem.classe}"></td>
+                        <td th:text="${personagem.nivel}"></td>
+                        <td th:text="${personagem.habilidades}"></td>
+                        <td th:text="${personagem.backstory}"></td>
+                        <td th:text="${personagem.fk_id_jogador}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">

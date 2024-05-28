@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecionar</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -29,42 +32,129 @@
     </header>
     <div class="container" style="text-align: center;">
         <h1 th:text="'Ações para ' + ${user.user_name}"></h1><br>
-        <a th:href="@{/users/alterar/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b">Editar usuário</button>
-        </a>
-        <a th:href="@{/mestres/cadastro/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b">Criar perfil mestre</button>
-        </a>
-        <a th:href="@{/personagem/cadastro/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b">Criar personagem</button>
-        </a>
-        <a th:href="@{/users/historias/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b">Ver historias que participo</button>
-        </a>
-        <a th:href="@{/produto/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b">Criar produto</button>
-        </a>
-        <a th:href="@{/produto/usuario/{fk_id_user}(fk_id_user=${user.id_user})}">
-            <button type="submit" class="button-b">Ver meus produtos</button>
-        </a>
-        <a th:href="@{/users/denuncia/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b-delete">Denuncia usuario</button>
-        </a>
-        <a th:href="@{/users/verDenuncia/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b-delete">Ver quem me deunciou</button>
-        </a>
-        <a th:href="@{/jogador/excluir/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b-delete">Deletar jogador</button>
-        </a>
-        <a th:href="@{/users/excluir/{id}(id=${user.id_user})}"
-        onclick="return confirm('Tem certeza que deseja excluir esse usuário?')">
-            <button type="submit" class="button-b-delete">Excluir usuário</button>
-        </a>
-        
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Editar informações</h2>
+                <p>Atualize as suas informações de endereço e contato.</p>
+            </div>
+            <a th:href="@{/users/alterar/{id}(id=${user.id_user})}" style="text-decoration: none;">
+                <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-pencil-alt"></i>
+                    <span id="button-text">Editar usuário</span>
+                </button>
+            </a>
+        </div><br>
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Criar perfil mestre</h2>
+                <p>Faça um cadastro como mestre.</p>
+            </div>
+            <a th:href="@{/mestres/cadastro/{id}(id=${user.id_user})}" style="text-decoration: none;">
+                <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-book"></i>
+                    <span id="button-text">Criar perfil mestre</span>
+                </button>
+            </a>
+        </div><br>
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Criar personagem</h2>
+                <p>Crie um personagem.</p>
+            </div>
+            <a th:href="@{/personagem/cadastro/{id}(id=${user.id_user})}" style="text-decoration: none;">
+                <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="button-text">Criar personagem</span>
+                </button>
+            </a>
+        </div><br>
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Ver histórias que participo</h2>
+                <p>Veja as histórias que você faz parte.</p>
+            </div>
+            <a th:href="@{/users/historias/{id}(id=${user.id_user})}" style="text-decoration: none;">
+                <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-feather-alt"></i>
+                    <span id="button-text">Ver histórias</span>
+                </button>
+            </a>
+        </div><br>
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Cadastrar um produto</h2>
+                <p>Cadastre um produto para venda.</p>
+            </div>
+            <a th:href="@{/produto/{id}(id=${user.id_user})}" style="text-decoration: none;">
+                <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-tag"></i>
+                    <span id="button-text">Inserir produto</span>
+                </button>
+            </a>
+        </div><br>
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Ver meus produtos</h2>
+                <p>Ver meus produtos registrados.</p>
+            </div>
+            <a th:href="@{/produto/usuario/{fk_id_user}(fk_id_user=${user.id_user})}" style="text-decoration: none;">
+                <button type="submit" class="custom-button" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-box"></i>
+                    <span id="button-text">Ver meus produtos</span>
+                </button>
+            </a>
+        </div><br>
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Denunciar usuário</h2>
+                <p>Denuncie algum usuário específico.</p>
+            </div>
+            <a th:href="@{/users/denuncia/{id}(id=${user.id_user})}" style="text-decoration: none;">
+                <button type="submit" class="custom-button-b" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-flag"></i>
+                    <span id="button-text-b">Denunciar usuário</span>
+                </button>
+            </a>
+        </div><br>
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Minhas denúncias</h2>
+                <p>Veja as denúncias feitas contra você.</p>
+            </div>
+            <a th:href="@{/users/verDenuncia/{id}(id=${user.id_user})}" style="text-decoration: none;">
+                <button type="submit" class="custom-button-b" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="button-text-b">Ver denúncias</span>
+                </button>
+            </a>
+        </div><br>
+        <div class="index-form">
+            <div class="redirect-text">
+                <h2 class="index-subt">Excluir usuário</h2>
+                <p>Exclua seu perfil.</p>
+            </div>
+            <a th:href="@{/users/excluir/{id}(id=${user.id_user})}"
+                onclick="return confirm('Tem certeza que deseja excluir esse jogador?')" style="text-decoration: none;">
+                <button type="submit" class="custom-button-b" onmouseover="showTextB()" onmouseout="hideTextB()">
+                    <i class="fas fa-trash-alt"></i>
+                    <span id="button-text-b">Excluir jogador</span>
+                </button>
+            </a>
+        </div>
 
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
     </footer>
+    <script>
+        function showText() {
+            document.getElementById("button-text").style.opacity = "1";
+        }
+
+        function hideText() {
+            document.getElementById("button-text").style.opacity = "0";
+        }
+    </script>
 </body>
+
 </html>

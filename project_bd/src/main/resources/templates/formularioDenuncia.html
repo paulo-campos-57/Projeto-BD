@@ -6,6 +6,7 @@
     <title>Formulário de Denúncia</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -28,17 +29,33 @@
             </nav>
         </div>
     </header>
-    <div class="container-formulario">
-        <h1>Formulário de Denúncia</h1>
-        <form th:action="@{/users/denuncia/{currentUserId}/{id_user}(currentUserId=${currentUserId}, id_user=${idUser})}" method="post">
-            <label for="comentario">Comentário:</label><br>
-            <textarea id="comentario" name="comentario" rows="4" cols="50" required></textarea><br>
-            <button type="submit">Enviar Denúncia</button>
-        </form>
+    <div class="container">
+        <div class="denuncia">
+            <h1>Formulário de Denúncia</h1>
+            <form
+                th:action="@{/users/denuncia/{currentUserId}/{id_user}(currentUserId=${currentUserId}, id_user=${idUser})}"
+                method="post" class="form-denuncia">
+                <label for="comentario">Comentário:</label><br>
+                <textarea id="comentario" name="comentario" rows="4" cols="50" required></textarea><br>
+                <button type="submit" class="custom-button-b" onmouseover="showText()" onmouseout="hideText()">
+                    <i class="fas fa-flag"></i>
+                    <span id="button-text-b">Denunciar usuário</span>
+                </button>
+            </form>
+        </div>
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
     </footer>
+    <script>
+        function showText() {
+            document.getElementById("button-text").style.opacity = "1";
+        }
+
+        function hideText() {
+            document.getElementById("button-text").style.opacity = "0";
+        }
+    </script>
 </body>
 
 </html>

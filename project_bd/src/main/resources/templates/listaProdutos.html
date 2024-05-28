@@ -54,7 +54,6 @@
                         <th>Descrição</th>
                         <th>Preço</th>
                         <th>fk_id_user</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,11 +67,6 @@
                         <td th:text="${produto.descricao}"></td>
                         <td th:text="${produto.preco}"></td>
                         <td th:text="${produto.fk_id_user}"></td>
-                        <td>
-                            <a th:href="@{/produto/alterar/{id}(id=${produto.id_produto})}">Editar</a>
-                            <a th:href="@{/produto/excluir/{id}(id=${produto.id_produto})}"
-                                onclick="return confirm('Tem certeza que deseja excluir esse produto?')">Excluir</a>
-                        </td>
                     </tr>
                 </tbody>
             </table>

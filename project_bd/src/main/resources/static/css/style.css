@@ -97,25 +97,22 @@ body {
 
 .index-form {
     border: 1px solid #ccc;
-    /* Cor da borda */
     border-radius: 10px;
-    /* Borda arredondada */
     padding: 20px;
-    /* Espaçamento interno */
     background-color: #f9f9f9;
-    /* Cor de fundo */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Sombra */
 }
 
 .index-subt {
     color: #333;
-    /* Cor do texto */
     font-size: 24px;
     margin-bottom: 15px;
-    /* Espaçamento inferior */
 }
 
+.redirect-text {
+    text-align: left;
+    margin-bottom: 20px;
+}
 
 .container-list {
     min-height: 400px;
@@ -188,6 +185,75 @@ tr {
 .custom-button:hover i {
     transform: scale(1.2);
     opacity: 0;
+}
+
+.custom-button-b {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f44336;
+    transition: width 0.3s, height 0.3s, background-color 0.3s, border-radius 0.3s;
+    margin: 2% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#button-text-b {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.custom-button-b i {
+    transition: transform 0.3s;
+}
+
+.custom-button-b:hover {
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #d32f2f;
+}
+
+.custom-button-b:hover #button-text-b {
+    opacity: 1;
+}
+
+.custom-button-b:hover i {
+    transform: scale(1.2);
+    opacity: 0;
+}
+
+.denuncia {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.form-denuncia label {
+    font-weight: bold;
+}
+
+.form-denuncia textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
 }
 
 .button-b {

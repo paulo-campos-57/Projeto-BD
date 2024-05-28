@@ -70,10 +70,13 @@ public class HistoriaController {
     }
 
     @GetMapping("/excluir/{id_historia}")
-    public String excluirHistoria(@PathVariable("id_historia") Integer id_historia, Model model){
+    public ModelAndView excluirHistoria(@PathVariable("id_historia") Integer id_historia, Model model){
         historiaRepository.deleteHistoria(id_historia);
         model.addAttribute("historia", historiaRepository.getAllHistoria());
-        return "listaHistoria";
+        
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
     }
 
     @GetMapping("/alterar/{id_historia}")

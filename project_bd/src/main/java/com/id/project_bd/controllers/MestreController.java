@@ -91,10 +91,13 @@ public class MestreController {
     }
 
     @GetMapping("/excluir/{fk_id_user}")
-    public String excluirMestre(@PathVariable("fk_id_user") Integer fk_id_user, Model model) {
+    public ModelAndView excluirMestre(@PathVariable("fk_id_user") Integer fk_id_user, Model model) {
         mestreRepository.deleteMestre(fk_id_user);
         model.addAttribute("mestres", mestreRepository.getAllMestre());
-        return "listaMestres";
+        
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
     }
 
     @PostMapping

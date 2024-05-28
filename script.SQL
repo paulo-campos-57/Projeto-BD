@@ -12,22 +12,6 @@ CREATE TABLE USER (
     COMPLEMENTO VARCHAR(100)
 );
 
-
-/*
- * select u.ID_USER from user u
-where u.USER_NAME = "?";
- *select d.COMENTARIO from denuncia d
-where d.FK_ID_DENUNCIADO = ?;
-
-select u.ID_USER from user u 
-join produto p on u.ID_USER = p.FK_ID_USER 
-where p.ID_PRODUTO = ?;
-
-UPDATE PRODUTO
-SET FK_ID_USER = ?
-WHERE ID_PRODUTO = ?; */
-
-
 CREATE TABLE DENUNCIA(
     FK_ID_DENUNCIA INTEGER,
     FK_ID_DENUNCIADO INTEGER,

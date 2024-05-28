@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -35,17 +37,15 @@
         <a th:href="@{/historia/usuarios/{id}(id=${historia.id_historia})}">
             <button type="submit" class="button-b">Ver participantes da história</button>
         </a>
-        <a th:href="@{/historia/top3longas}">
-            <button type="submit" class="button-b">Ver Top 3 Histórias Mais Longas</button>
-        </a>
         <a th:href="@{/historia/excluir/{id}(id=${historia.id_historia})}"
-           onclick="return confirm('Tem certeza que deseja excluir essa história?')">
+            onclick="return confirm('Tem certeza que deseja excluir essa história?')">
             <button type="submit" class="button-b-delete">Excluir história</button>
         </a>
-        
+
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
     </footer>
 </body>
+
 </html>

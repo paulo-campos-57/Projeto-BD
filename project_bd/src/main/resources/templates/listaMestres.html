@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Lista de usuários</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="headerCabecalho">
@@ -47,11 +49,6 @@
                     <td th:text="${mestre.npc}"></td>
                     <td th:text="${mestre.monstro}"></td>
                     <td>
-                        <a th:href="@{/mestres/alterar/{id}(id=${mestre.fk_id_user})}">Editar</a>
-                        <a th:href="@{/mestres/excluir/{id}(id=${mestre.fk_id_user})}"
-   onclick="return confirm('Tem certeza que deseja excluir esse mestre?')">Excluir</a>
-                    </td>
-                    <td>
                         <a th:href="@{/redirecionar/mestre/{id}(id=${mestre.fk_id_user})}">Opções</a>
                     </td>
                 </tr>
@@ -60,6 +57,7 @@
     </div>
     <footer class="footer">
         <img src="/images/logo.png" alt="Logo">
-    </footer> 
+    </footer>
 </body>
+
 </html>

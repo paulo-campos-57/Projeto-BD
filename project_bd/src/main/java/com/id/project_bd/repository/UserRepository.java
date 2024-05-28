@@ -79,7 +79,7 @@ public class UserRepository {
     // Excluir usuário com base no ID
     public boolean deleteUser(int id_user) {
         int rowsAffected = jdbcTemplate.update("DELETE FROM USER WHERE ID_USER = ?", id_user);
-        return rowsAffected > 0; // Retorna true se pelo menos uma linha foi afetada (usuário excluído)
+        return rowsAffected > 0;
     }
 
     public List<User> getAllUsers() {
@@ -178,18 +178,18 @@ public class UserRepository {
         try {
             return jdbcTemplate.queryForObject(sql, new Object[] { id_produto }, Integer.class);
         } catch (Exception e) {
-            return null; // Retorna null se o vendedor não for encontrado
+            return null;
         }
     }
 
     @SuppressWarnings("deprecation")
-    public Integer findId(String userName){
-        String sql = "select u.ID_USER from user u " + 
-        "where u.USER_NAME = ?";
+    public Integer findId(String userName) {
+        String sql = "select u.ID_USER from user u " +
+                "where u.USER_NAME = ?";
 
-        try{
-            return jdbcTemplate.queryForObject(sql, new Object[] {userName}, Integer.class);
-        }catch (Exception e){
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[] { userName }, Integer.class);
+        } catch (Exception e) {
             return null;
         }
 
