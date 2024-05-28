@@ -182,6 +182,19 @@ public class UserRepository {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    public Integer findId(String userName){
+        String sql = "select u.ID_USER from user u " + 
+        "where u.USER_NAME = ?";
+
+        try{
+            return jdbcTemplate.queryForObject(sql, new Object[] {userName}, Integer.class);
+        }catch (Exception e){
+            return null;
+        }
+
+    }
+
     public void mudarUsuario(int id_produto2, int id_novo) {
         String sql = "UPDATE PRODUTO " +
                 "SET FK_ID_USER = ? " +

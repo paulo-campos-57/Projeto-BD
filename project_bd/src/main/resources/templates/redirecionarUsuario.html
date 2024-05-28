@@ -35,8 +35,8 @@
         <a th:href="@{/mestres/cadastro/{id}(id=${user.id_user})}">
             <button type="submit" class="button-b">Criar perfil mestre</button>
         </a>
-        <a th:href="@{/jogador/cadastro/{id}(id=${user.id_user})}">
-            <button type="submit" class="button-b">Criar perfil jogador</button>
+        <a th:href="@{/personagem/cadastro/{id}(id=${user.id_user})}">
+            <button type="submit" class="button-b">Criar personagem</button>
         </a>
         <a th:href="@{/users/historias/{id}(id=${user.id_user})}">
             <button type="submit" class="button-b">Ver historias que participo</button>
@@ -52,6 +52,9 @@
         </a>
         <a th:href="@{/users/verDenuncia/{id}(id=${user.id_user})}">
             <button type="submit" class="button-b-delete">Ver quem me deunciou</button>
+        </a>
+        <a th:href="@{/jogador/excluir/{id}(id=${user.id_user})}">
+            <button type="submit" class="button-b-delete">Deletar personagem</button>
         </a>
         <a th:href="@{/users/excluir/{id}(id=${user.id_user})}"
         onclick="return confirm('Tem certeza que deseja excluir esse usuário?')">

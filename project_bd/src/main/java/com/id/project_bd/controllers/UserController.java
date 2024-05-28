@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.id.project_bd.models.Denuncia;
+import com.id.project_bd.models.Jogador;
 import com.id.project_bd.models.User;
 import com.id.project_bd.repository.DenunciaRepository;
+import com.id.project_bd.repository.JogadorRepository;
 import com.id.project_bd.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +32,9 @@ public class UserController {
     @Autowired
     private DenunciaRepository denunciaRepository;
 
+    @Autowired
+    private JogadorRepository jogadorRepository;
+
     @RequestMapping(value = "/cadastro", method = RequestMethod.GET)
     public ModelAndView userForm() {
         ModelAndView mv = new ModelAndView();
@@ -40,6 +45,18 @@ public class UserController {
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
     public ModelAndView userForm(User user) {
         userRepository.insertUser(user);
+        String userName = user.getUser_name();
+
+        System.out.println("user: " + userName);
+
+        Integer userid = userRepository.findId(userName);
+
+        System.out.println("id: " + userid);
+
+        Jogador jogador = new Jogador();
+        jogador.setFk_id_user(userid);
+        jogadorRepository.insertJogador(jogador);
+
         ModelAndView mv = new ModelAndView();
         mv.setViewName("sucesso");
         return mv;

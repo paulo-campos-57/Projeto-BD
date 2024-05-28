@@ -12,7 +12,10 @@ CREATE TABLE USER (
     COMPLEMENTO VARCHAR(100)
 );
 
+
 /*
+ * select u.ID_USER from user u
+where u.USER_NAME = "?";
  *select d.COMENTARIO from denuncia d
 where d.FK_ID_DENUNCIADO = ?;
 
@@ -172,17 +175,6 @@ INSERT INTO MESTRE (FK_ID_USER, NPC, MONSTRO) VALUES
 (7, 'Berend Gemviper', 'Tarrasque'),
 (9, 'Orion', 'Gigante de gelo');
 
-INSERT INTO JOGADOR (FK_ID_USER) VALUES
-(2),
-(3),
-(5),
-(6),
-(7),
-(8),
-(10),
-(11),
-(12),
-(13);
 
 INSERT INTO PERSONAGEM (NOME, CLASSE, NIVEL, HABILIDADES, BACKSTORY, FK_ID_JOGADOR) VALUES
 ('Aragorn', 'Guerreiro', 10, 'Espada Longa, Defesa', 'Filho do rei exilado, busca retomar seu trono.', 2),
